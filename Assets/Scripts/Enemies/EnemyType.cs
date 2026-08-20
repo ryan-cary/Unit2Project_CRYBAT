@@ -3,8 +3,7 @@ public enum EnemyType
     Melee,
     Exploder,
     Shooter,
-    MachineGun,
-    Popup
+    MachineGun
 }
 
 public enum BossPhase
