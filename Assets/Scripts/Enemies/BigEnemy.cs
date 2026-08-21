@@ -3,7 +3,14 @@ using UnityEngine;
 public class BigEnemy : Enemy
 {
     [SerializeField] private float moveRange;
-    [SerializeField] private float shootInterval;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float healthRegenRate;
+
+    new private void Start()
+    {
+        base.Start();
+        health = new Health(maxHealth, healthRegenRate);
+    }
 
     protected override void Update()
     {
@@ -34,7 +41,7 @@ public class BigEnemy : Enemy
 
     protected override void Attack()
     {
-        if (timer <= shootInterval)
+        if (timer <= attackRate)
         {
             timer += Time.deltaTime;
         }

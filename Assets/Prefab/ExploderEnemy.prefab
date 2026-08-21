@@ -86,6 +86,7 @@ MonoBehaviour:
   OnDefeated:
     m_PersistentCalls:
       m_Calls: []
+  enemyType: 1
   attackDamage: 40
   attackRange: 0.5
   attackRate: 0

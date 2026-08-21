@@ -215,10 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerPrefab: {fileID: 681556212235292093, guid: 3dfd4ec77432143298bce9a853efe643, type: 3}
-  exploderEnemyPrefab: {fileID: 0}
-  MachineGunEnemyPrefab: {fileID: 0}
-  meleeEnemyPrefab: {fileID: 0}
-  shooterEnemyPrefab: {fileID: 0}
+  enemyPrefabs:
+  - {fileID: 5897845175592691663, guid: 15cf4edf80a264958b45516341fb9032, type: 3}
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
@@ -229,7 +227,7 @@ MonoBehaviour:
   pickupSpawner: {fileID: 872089614}
   bulletLifetime: 5
   enemySpawnRate: 5
-  spawnRadius: 10
+  spawnRadius: 30
 --- !u!4 &448539890
 Transform:
   m_ObjectHideFlags: 0
@@ -801,6 +799,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 448539889}
+    - target: {fileID: 8517381234867139766, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517381234867139766, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
