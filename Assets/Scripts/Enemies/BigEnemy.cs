@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class BigEnemy : Enemy
 {
+    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private float bulletSpeed;
     [SerializeField] private float moveRange;
     [SerializeField] private float maxHealth;
     [SerializeField] private float healthRegenRate;
+    [SerializeField] private float bulletsPerShot;
+    private float shootAngle;
 
     new private void Start()
     {
         base.Start();
         health = new Health(maxHealth, healthRegenRate);
+        weapon = new Weapon("Machine Gun", attackDamage, bulletSpeed);
+        shootAngle = 360f / bulletsPerShot;
     }
 
     protected override void Update()
@@ -54,6 +60,9 @@ public class BigEnemy : Enemy
 
     public override void Shoot()
     {
-        Debug.Log("Big Enemy Shoots");
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            weapon.Shoot(bulletPrefab, this, "Player", i * shootAngle);
+        }
     }
 }
