@@ -9,8 +9,6 @@ public class GunPowerUpPickup : Pickup
     public override void OnPicked()
     {
         base.OnPicked();
-
-        Player player = GameManager.GetInstance().GetPlayer();
-        player.PowerUpWeapon(duration, shootRate);
+        GameManager.GetInstance().GetPlayer().CollectGunPowerUp(duration, shootRate);
     }
 }

@@ -32,18 +32,18 @@ public class PlayerInput : MonoBehaviour
 
     void ShootInput()
     {
-        if (player.HasGunPowerUp())
+        if (player.GetGunPowerUpBehavior().HasGunPowerUp())
         {
             
             if (!startedShootingPowerUp && Input.GetMouseButton(0))
             {
-                player.StartShootCoroutine();
+                player.GetGunPowerUpBehavior().StartShootCoroutine();
                 startedShootingPowerUp = true;
             }
             if (Input.GetMouseButtonUp(0))
             {
-                player.StopShootCoroutine();
-                startedShootingPowerUp = false;;
+                player.GetGunPowerUpBehavior().StopShootCoroutine();
+                startedShootingPowerUp = false;
             }
         }
         else

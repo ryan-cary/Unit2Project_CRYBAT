@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using System.Collections;
 
 public class Player : PlayableObject
 {
@@ -9,19 +8,10 @@ public class Player : PlayableObject
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
 
-    [SerializeField] private GameObject powerUpSymbol;
-
     private Camera camera;
 
-    // GunPowerUp variables
-    private bool hasGunPowerUp = false;
-    private float powerUpTimer = 0;
-    private float powerUpShootRate;
-    private float maxPowerUpTime;
-
-    private Coroutine shootPowerUpCoroutine;
-
-    public Action<bool, float, Vector2> OnPowerUpTimerChange;
+    // Pickup behavior references
+    [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
 
     // Nuke Pickup variables
     [SerializeField] private GameObject nukeBlastPrefab;
@@ -42,7 +32,6 @@ public class Player : PlayableObject
     void Update()
     {
         health.RegenHealth();
-        AdvancePowerUpTimer();
     }
 
     public void Move(Vector3 direction, Vector2 target)
@@ -63,33 +52,6 @@ public class Player : PlayableObject
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
-    public void StartShootCoroutine()
-    {
-        if (shootPowerUpCoroutine != null)
-        {
-            StopCoroutine(shootPowerUpCoroutine);
-        }
-        shootPowerUpCoroutine = StartCoroutine(ShootPowerUpCorountine());
-    }
-
-    public void StopShootCoroutine()
-    {
-        if (shootPowerUpCoroutine != null)
-        {
-            StopCoroutine(shootPowerUpCoroutine);
-            shootPowerUpCoroutine = null;
-        }
-    }
-
-    public IEnumerator ShootPowerUpCorountine()
-    {
-        while (hasGunPowerUp)
-        {
-            yield return new WaitForSeconds(powerUpShootRate);
-            Shoot();
-        }
-    }
-
     public override void GetDamage(float damage)
     {
         health.DeductHealth(damage);
@@ -106,42 +68,14 @@ public class Player : PlayableObject
         Destroy(gameObject);
     }
 
-    void AdvancePowerUpTimer()
+    public GunPowerUpBehavior GetGunPowerUpBehavior()
     {
-        if (hasGunPowerUp)
-        {
-            powerUpTimer += Time.deltaTime;
-            OnPowerUpTimerChange.Invoke(true, Mathf.Max(maxPowerUpTime - powerUpTimer, 0), camera.WorldToScreenPoint(transform.position));
-
-            if (powerUpTimer >= maxPowerUpTime)
-            {
-                PowerDownWeapon();
-            }
-        }
+        return this.gunPowerUpBehavior;
     }
 
-    public void PowerUpWeapon(float duration, float shootRate)
+    public void CollectGunPowerUp(float duration, float shootRate)
     {
-        hasGunPowerUp = true;
-        powerUpTimer = 0;
-        maxPowerUpTime = duration;
-        powerUpShootRate = shootRate;
-        powerUpSymbol.SetActive(true);
-        OnPowerUpTimerChange.Invoke(true, 0, camera.WorldToScreenPoint(transform.position));
-    }
-
-    public void PowerDownWeapon()
-    {
-        hasGunPowerUp = false;
-        powerUpTimer = 0;
-        powerUpSymbol.SetActive(false);
-        OnPowerUpTimerChange.Invoke(false, 0, Vector2.zero);
-        StopShootCoroutine();
-    }
-
-    public bool HasGunPowerUp()
-    {
-        return hasGunPowerUp;
+        gunPowerUpBehavior.PowerUpWeapon(duration, shootRate);
     }
 
     public void CollectNukePickup()
