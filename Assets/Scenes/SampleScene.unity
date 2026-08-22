@@ -217,6 +217,10 @@ MonoBehaviour:
   playerPrefab: {fileID: 681556212235292093, guid: 3dfd4ec77432143298bce9a853efe643, type: 3}
   enemyPrefabs:
   - {fileID: 5897845175592691663, guid: 15cf4edf80a264958b45516341fb9032, type: 3}
+  - {fileID: 4036427750115356696, guid: db1e761f7d2c944c0a7255c2c4f5bb9e, type: 3}
+  - {fileID: 4036427750115356696, guid: 18c9e759a8c1a47bdadcd1e4dbff703b, type: 3}
+  - {fileID: 4036427750115356696, guid: e0056e606c5a249d382cf4ba0eb7c493, type: 3}
+  - {fileID: 4036427750115356696, guid: d8188e0e97ec04028b076d997938801c, type: 3}
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
