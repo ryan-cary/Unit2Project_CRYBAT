@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eb3f7cbce708c49849b750ba5634fbcd
+guid: f18c733ebd707449cb416fd792fef369
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6584699375391165894
-    second: GameStat-HonorScore_0
+      213: -9028179669862906045
+    second: img-GameStat-HonorScore_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameStat-HonorScore_0
+      name: img-GameStat-HonorScore_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 149
-        height: 61
+        x: 41
+        y: 16
+        width: 299
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cd4de6d13d816b50800000000000000
-      internalID: 6584699375391165894
+      spriteID: 3470b617c6675b280800000000000000
+      internalID: -9028179669862906045
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GameStat-HonorScore_0: 6584699375391165894
+      img-GameStat-HonorScore_0: -9028179669862906045
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4f9e4bbbfdb3b416c974bbaa8e7a47dd
+guid: dbac4737ecfa04600a6bff8fa9e79b28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6817636953527425333
-    second: GameStat-Health_0
+      213: 5834760330674016053
+    second: img-GameStat-Health_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameStat-Health_0
+      name: img-GameStat-Health_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 152
-        height: 51
+        y: 33
+        width: 305
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 539149610bc1d9e50800000000000000
-      internalID: 6817636953527425333
+      spriteID: 53f8d5b5b9b39f050800000000000000
+      internalID: 5834760330674016053
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GameStat-Health_0: 6817636953527425333
+      img-GameStat-Health_0: 5834760330674016053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
