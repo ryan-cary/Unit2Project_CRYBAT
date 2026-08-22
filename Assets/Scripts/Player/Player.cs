@@ -52,6 +52,11 @@ public class Player : PlayableObject
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
+    public bool HasGunPowerUp()
+    {
+        return gunPowerUpBehavior.HasGunPowerUp();
+    }
+
     public override void GetDamage(float damage)
     {
         health.DeductHealth(damage);

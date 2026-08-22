@@ -28,6 +28,18 @@ public class GunPowerUpBehavior : MonoBehaviour
         AdvancePowerUpTimer();
     }
 
+    public void ShootPowerUp(bool startedShooting, bool stoppedShooting)
+    {
+        if (startedShooting)
+        {
+            StartShootCoroutine();
+        }
+        if (stoppedShooting)
+        {
+            StopShootCoroutine();
+        }
+    }
+
     public void StartShootCoroutine()
     {
         if (shootPowerUpCoroutine != null)
