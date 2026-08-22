@@ -35,19 +35,19 @@ public class DifficultyManager : MonoBehaviour
         switch (currentDifficulty)
         {
             case Difficulty.Easy:
-                currentDifficultySettings = difficulty_EASY;
+                currentDifficultySetting = difficulty_EASY;
                 break;
             case Difficulty.Normal:
-                currentDifficultySettings = difficulty_NORMAL;
+                currentDifficultySetting = difficulty_NORMAL;
                 break;
             case Difficulty.Hard:
-                currentDifficultySettings = difficulty_HARD;
+                currentDifficultySetting = difficulty_HARD;
                 break;
             case Difficulty.Hardcore:
-                currentDifficultySettings = difficulty_HARDCORE;
+                currentDifficultySetting = difficulty_HARDCORE;
                 break;
             default:
-                currentDifficultySettings = difficulty_NORMAL;
+                currentDifficultySetting = difficulty_NORMAL;
                 break;
         }
     }

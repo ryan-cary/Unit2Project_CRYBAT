@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(filename = "difficulty_settings", menuName = "Difficulty Settings", order = 0)]
+[CreateAssetMenu(fileName = "difficulty_settings", menuName = "Difficulty Settings", order = 0)]
 public class DifficultySetting : ScriptableObject
 {
     [Header("ID")]
