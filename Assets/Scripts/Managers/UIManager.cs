@@ -78,8 +78,6 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.GetInstance().GetPlayer() != null)
         {
-            Debug.Log("Subscribing to player events");
-
             SubscribePlayerHealth();
             SubscribePlayerPowerUpTimer();
             SubscribePlayerNukeEvents();
