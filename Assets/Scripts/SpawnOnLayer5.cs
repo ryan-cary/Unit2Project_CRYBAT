@@ -1,5 +1,8 @@
 using UnityEngine;
 
+
+// Super annoyiong issue where I couldn't get any of the prefabs to spawn on top of the background.
+// This script ensures that prefabs with specific tags are pushed to layer 5
 public class SpawnOnLayer5 : MonoBehaviour
 {
     static readonly string[] Tags = { "Enemy", "Projectile", "Shield", "Player", "Pickup" };
