@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e5417666b964497baa206325fde6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  speed: 3
+  speed: 10
   OnDefeated:
     m_PersistentCalls:
       m_Calls: []
