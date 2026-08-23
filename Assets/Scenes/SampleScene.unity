@@ -647,18 +647,6 @@ PrefabInstance:
       propertyPath: gunPowerUpTimerText
       value: 
       objectReference: {fileID: 840722662}
-    - target: {fileID: 3421007208219962615, guid: 3408c04c477494d4586b0327098a9824, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421007208219962615, guid: 3408c04c477494d4586b0327098a9824, type: 3}
-      propertyPath: onDifficultySettingUpdated.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421007208219962615, guid: 3408c04c477494d4586b0327098a9824, type: 3}
-      propertyPath: onDifficultySettingUpdated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3959753959934682462, guid: 3408c04c477494d4586b0327098a9824, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

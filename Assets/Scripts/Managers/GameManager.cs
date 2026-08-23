@@ -172,16 +172,6 @@ public class GameManager : MonoBehaviour
     {
         return bulletLifetime;
     }
-	
-	public void SetSpawnRate(float rate)
-	{ 
-		enemySpawnRate = rate; 
-	}
-	
-	public void SetHealthOverride(float healthOverride)
-	{
-		player.health = new Health(healthOverride);
-	}
 
     public bool IsGameInProgress()
     {
