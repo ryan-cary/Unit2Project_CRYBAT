@@ -38,13 +38,13 @@ public class PlayerInput : MonoBehaviour
 
         if (player.HasGunPowerUp())
         {
-            player.GetGunPowerUpBehavior().ShootPowerUp(shootInput, stopShootInput);
+            player.GetGunPowerUpBehavior().Shoot(shootInput, stopShootInput);
         }
         else
         {
             if (shootInput) player.Shoot();
         }
 
-        if (nukeInput) player.UseNukePickup();
+        if (nukeInput) player.GetNukeBehavior().Use();
     }
 }

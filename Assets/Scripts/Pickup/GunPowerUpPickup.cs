@@ -9,6 +9,16 @@ public class GunPowerUpPickup : Pickup
     public override void OnPicked()
     {
         base.OnPicked();
-        GameManager.GetInstance().GetPlayer().CollectGunPowerUp(duration, shootRate);
+        GameManager.GetInstance().GetPlayer().CollectGunPowerUp(this);
+    }
+
+    public float GetDuration()
+    {
+        return duration;
+    }
+
+    public float GetShootRate()
+    {
+        return shootRate;
     }
 }

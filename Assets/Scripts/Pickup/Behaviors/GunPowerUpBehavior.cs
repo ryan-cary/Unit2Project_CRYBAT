@@ -2,9 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class GunPowerUpBehavior : MonoBehaviour
+public class GunPowerUpBehavior : PowerUpBehavior
 {
-    [SerializeField] PlayableObject playableObject;
     [SerializeField] private GameObject powerUpSymbol;
     private bool hasGunPowerUp = false;
     private float timer = 0;
@@ -28,7 +27,7 @@ public class GunPowerUpBehavior : MonoBehaviour
         AdvancePowerUpTimer();
     }
 
-    public void ShootPowerUp(bool startedShooting, bool stoppedShooting)
+    public void Shoot(bool startedShooting, bool stoppedShooting)
     {
         if (startedShooting)
         {
@@ -81,12 +80,25 @@ public class GunPowerUpBehavior : MonoBehaviour
         }
     }
 
-    public void PowerUpWeapon(float _duration, float _shootRate)
+    public override void Collect(Pickup pickup)
+    {
+        if (pickup is GunPowerUpPickup gunPowerUpPickup)
+        {
+            duration = gunPowerUpPickup.GetDuration();
+            shootRate = gunPowerUpPickup.GetShootRate();
+            Use();
+        }
+    }
+
+    public override void Use()
+    {
+        PowerUpWeapon();
+    }
+
+    public void PowerUpWeapon()
     {
         hasGunPowerUp = true;
         timer = 0;
-        duration = _duration;
-        shootRate = _shootRate;
         powerUpSymbol.SetActive(true);
         OnPowerUpTimerChange.Invoke(true, 0, camera.WorldToScreenPoint(playableObject.transform.position));
     }

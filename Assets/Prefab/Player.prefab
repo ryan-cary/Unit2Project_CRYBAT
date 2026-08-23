@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2581944809482884190}
   - component: {fileID: 1170837032575299861}
   - component: {fileID: 557583186638852327}
+  - component: {fileID: 6846277690174017371}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -58,8 +59,7 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
   gunPowerUpBehavior: {fileID: 557583186638852327}
-  nukeBlastPrefab: {fileID: 2717138416901237613, guid: 1065403a8611e456888e556a27c01dd6, type: 3}
-  maxNumOfNukes: 10
+  nukeBehavior: {fileID: 6846277690174017371}
 --- !u!114 &54726437512371365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerUpBehavior
   playableObject: {fileID: 1512662758222267152}
   powerUpSymbol: {fileID: 8947386435525603592}
+--- !u!114 &6846277690174017371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681556212235292093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23a496630fd746a49b7e5bbc650804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NukeBehavior
+  playableObject: {fileID: 1512662758222267152}
+  nukeBlastPrefab: {fileID: 2717138416901237613, guid: 1065403a8611e456888e556a27c01dd6, type: 3}
+  maxNumOfNukes: 10
 --- !u!1 &1159013410033598867
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,14 +12,7 @@ public class Player : PlayableObject
 
     // Pickup behavior references
     [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
-
-    // Nuke Pickup variables
-    [SerializeField] private GameObject nukeBlastPrefab;
-    [SerializeField] private int maxNumOfNukes;
-    private int numOfNukes = 0;
-
-    public Action OnCollectNuke;
-    public Action OnUseNuke;
+    [SerializeField] NukeBehavior nukeBehavior;
 
     public override void Awake()
     {
@@ -75,32 +68,22 @@ public class Player : PlayableObject
 
     public GunPowerUpBehavior GetGunPowerUpBehavior()
     {
-        return this.gunPowerUpBehavior;
+        return gunPowerUpBehavior;
     }
 
-    public void CollectGunPowerUp(float duration, float shootRate)
+    public NukeBehavior GetNukeBehavior()
     {
-        gunPowerUpBehavior.PowerUpWeapon(duration, shootRate);
+        return nukeBehavior;
     }
 
-    public void CollectNukePickup()
+    public void CollectGunPowerUp(Pickup pickup)
     {
-        if (numOfNukes < maxNumOfNukes)
-        {
-            numOfNukes++;
-            OnCollectNuke.Invoke();
-        }
+        gunPowerUpBehavior.Collect(pickup);
     }
 
-    public void UseNukePickup()
+    public void CollectNuke(Pickup pickup)
     {
-        if (numOfNukes > 0)
-        {
-            numOfNukes--;
-            OnUseNuke.Invoke();
-            Vector3 blastPosition = new Vector3(transform.position.x, transform.position.y, nukeBlastPrefab.transform.position.z);
-            Instantiate(nukeBlastPrefab, blastPosition, Quaternion.identity);
-        }
+        nukeBehavior.Collect(pickup);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

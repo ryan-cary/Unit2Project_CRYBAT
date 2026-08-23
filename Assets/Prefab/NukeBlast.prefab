@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NukeBlast
   blastDuration: 4
-  blastRadius: 7
+  blastRadius: 20
 --- !u!58 &2608677160871752718
 CircleCollider2D:
   m_ObjectHideFlags: 0
