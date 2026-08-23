@@ -512,15 +512,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupSpawner
   pickups:
-  - pickup: {fileID: 4263971216824109267, guid: 62b477cb54d744300a4a495fa58f779a, type: 3}
-    spawnWeight: 0
   - pickup: {fileID: 6602132389807104513, guid: d11866b81f86545ca8b28d8a62af4dcb, type: 3}
-    spawnWeight: 0
-  - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
-    spawnWeight: 0
+    spawnWeight: 10
+  - pickup: {fileID: 4263971216824109267, guid: 62b477cb54d744300a4a495fa58f779a, type: 3}
+    spawnWeight: 5
   - pickup: {fileID: 2676878704781448246, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-    spawnWeight: 1
-  pickupProbability: 1
+    spawnWeight: 5
+  - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
+    spawnWeight: 2
+  pickupProbability: 0.4
 --- !u!4 &872089615
 Transform:
   m_ObjectHideFlags: 0
@@ -605,63 +605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1001 &1213330337
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3452882144865509107, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_Name
-      value: ShieldPickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06402
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.93579
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3510064795095747453, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
 --- !u!1 &1729359210
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,4 +827,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 2272386225579593029}
   - {fileID: 1729359213}
-  - {fileID: 1213330337}

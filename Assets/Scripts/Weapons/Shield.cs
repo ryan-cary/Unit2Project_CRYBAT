@@ -23,7 +23,10 @@ public class Shield : MonoBehaviour, IDamageable
 
         if (health.GetHealth() <= 0)
         {
-            // TODO: reset shield list in behavior class
+            if (shieldBehavior != null)
+            {
+                shieldBehavior.ReorderShieldList(this);
+            }
             Destroy(gameObject);
         }
     }
