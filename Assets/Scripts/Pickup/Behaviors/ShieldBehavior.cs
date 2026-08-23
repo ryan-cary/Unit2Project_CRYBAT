@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ShieldBehavior : PowerUpBehavior
 {
@@ -6,7 +7,7 @@ public class ShieldBehavior : PowerUpBehavior
     [SerializeField] private int maxNumOfShields;
     private bool hasShield;
     private int pickupNumOfShields;
-    private GameObject[] shieldList;
+    private List<GameObject> shieldList = new List<GameObject>();
 
     public override void Collect(Pickup pickup)
     {
@@ -28,20 +29,20 @@ public class ShieldBehavior : PowerUpBehavior
 
         if (hasShield)
         {
-            newNumOfShields = Mathf.Min(Mathf.Max(shieldList.Length, pickupNumOfShields) + 1, maxNumOfShields);
+            newNumOfShields = Mathf.Min(Mathf.Max(shieldList.Count, pickupNumOfShields) + 1, maxNumOfShields);
         }
         else
         {
             newNumOfShields = Mathf.Min(pickupNumOfShields, maxNumOfShields);
         }
-        AddShields(newNumOfShields - shieldList.Length);
+        AddShields(newNumOfShields - shieldList.Count);
     }
 
     private void AddShields(int count)
     {
         if (count > 0)
         {
-            Debug.Log("Add shields");
+            Debug.Log($"Added shields! Current number: {shieldList.Count + count}");
             hasShield = true;
         }
     }
