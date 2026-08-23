@@ -62,15 +62,16 @@ public class Bullet : MonoBehaviour
         }
         if (collider.gameObject.CompareTag("Shield"))
         {
-            Debug.Log("Hit shield");
-            
             Shield shield = collider.GetComponent<Shield>();
 
             if (shield != null)
             {
+                Debug.Log(shield.GetParentTag());
+
                 if (shield.GetParentTag() == targetTag)
                 {
                     shield.GetDamage(damage);
+                    Destroy(gameObject);
                 }
             }
         }
