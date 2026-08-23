@@ -515,9 +515,9 @@ MonoBehaviour:
   - pickup: {fileID: 4263971216824109267, guid: 62b477cb54d744300a4a495fa58f779a, type: 3}
     spawnWeight: 0
   - pickup: {fileID: 6602132389807104513, guid: d11866b81f86545ca8b28d8a62af4dcb, type: 3}
-    spawnWeight: 0
-  - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
     spawnWeight: 1
+  - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
+    spawnWeight: 0
   pickupProbability: 1
 --- !u!4 &872089615
 Transform:

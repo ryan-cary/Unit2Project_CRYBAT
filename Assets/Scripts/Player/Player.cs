@@ -11,6 +11,7 @@ public class Player : PlayableObject
     private Camera camera;
 
     // Pickup behavior references
+    [SerializeField] HealthPickupBehavior healthPickupBehavior;
     [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
     [SerializeField] NukeBehavior nukeBehavior;
 
@@ -66,6 +67,11 @@ public class Player : PlayableObject
         Destroy(gameObject);
     }
 
+    public HealthPickupBehavior GetHealthPickupBehavior()
+    {
+        return healthPickupBehavior;
+    }
+
     public GunPowerUpBehavior GetGunPowerUpBehavior()
     {
         return gunPowerUpBehavior;
@@ -74,6 +80,11 @@ public class Player : PlayableObject
     public NukeBehavior GetNukeBehavior()
     {
         return nukeBehavior;
+    }
+
+    public void CollectHealthPickup(Pickup pickup)
+    {
+        healthPickupBehavior.Collect(pickup);
     }
 
     public void CollectGunPowerUp(Pickup pickup)
