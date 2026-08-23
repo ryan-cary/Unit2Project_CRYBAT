@@ -3,14 +3,16 @@ using System;
 
 public class Player : PlayableObject
 {
-    // Attack variables
+    [SerializeField] private float baseHealth = 100f;
+	
+	[Header("Weapon Variables")]
     [SerializeField] private float weaponDamage = 10;
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
 
     private Camera camera;
 
-    // Pickup behavior references
+    [Header("Pickup Behaviour References")]
     [SerializeField] HealthPickupBehavior healthPickupBehavior;
     [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
     [SerializeField] NukeBehavior nukeBehavior;
@@ -19,6 +21,7 @@ public class Player : PlayableObject
     public override void Awake()
     {
         base.Awake();
+		health = new Health(baseHealth);
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
@@ -67,6 +70,8 @@ public class Player : PlayableObject
         base.Defeated();
         Destroy(gameObject);
     }
+	
+	// ====== Pickups ====== //
 
     public HealthPickupBehavior GetHealthPickupBehavior()
     {
@@ -116,4 +121,12 @@ public class Player : PlayableObject
             pickup.OnPicked();
         }
     }
+	
+	// ====== Difficulty ====== //
+	public void DifficultyOverride(DifficultySetting difficulty)
+	{
+		this.weapon = new Weapon("Player Weapon", weaponDamage * (1 / difficulty.baseDifficultyModifier), bulletSpeed);
+		this.health = new Health(baseHealth * (1 / difficulty.baseDifficultyModifier));
+	}
+
 }
