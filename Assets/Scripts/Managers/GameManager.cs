@@ -79,6 +79,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+	
+	public Dictionary<EnemyType, GameObject> GetEnemyPrefabDictionary()
+	{
+		return enemyTypeToPrefab;
+	}
 
     public void StartGame()
     {

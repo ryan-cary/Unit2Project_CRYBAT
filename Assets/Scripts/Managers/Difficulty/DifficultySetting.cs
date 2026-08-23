@@ -10,4 +10,5 @@ public class DifficultySetting : ScriptableObject
     [Header("Settings")]
     public float baseDifficultyModifier = 1.0f;
     public float enemySpawnRate = 5.0f;
+	public float playerHealthOverride = 100.0f;
 }
