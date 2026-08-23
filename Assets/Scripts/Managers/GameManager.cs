@@ -162,6 +162,11 @@ public class GameManager : MonoBehaviour
     {
         return difficultyManager;
     }
+	
+	public PickupSpawner GetPickupSpawner()
+    {
+        return pickupSpawner;
+    }
 
     public float GetBulletLifetime()
     {

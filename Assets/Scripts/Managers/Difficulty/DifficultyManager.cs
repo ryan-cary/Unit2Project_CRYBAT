@@ -8,16 +8,11 @@ public class DifficultyManager : MonoBehaviour
 	private float difficultyModifier;
 	
 	private DifficultySelector selector;
-	public UnityEvent<DifficultySetting> OnDifficultySettingUpdated;
 	
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         selector = GetComponent<DifficultySelector>();
-		
-		if (OnDifficultySettingUpdated == null)
-			OnDifficultySettingUpdated = new UnityEvent<DifficultySetting>();
-		//OnDifficultySettingUpdated.AddListener(ApplyDifficultySettings);
 		GameManager.GetInstance().OnGameStart.AddListener(ApplyDifficultySettings);
     }
 
@@ -30,6 +25,7 @@ public class DifficultyManager : MonoBehaviour
 	private void ApplyDifficultySettings()
 	{
 		GameManager.GetInstance().GetPlayer().DifficultyOverride(selector.GetCurrentDifficultySetting());
+		GameManager.GetInstance().GetickupSpawner().DifficultyOverride(selector.GetCurrentDifficultySetting());
 	}
 			
 	

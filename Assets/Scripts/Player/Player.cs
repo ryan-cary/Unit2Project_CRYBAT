@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class Player : PlayableObject
+public class Player : PlayableObject, IDifficultyOverridden
 {
     [SerializeField] private float baseHealth = 100f;
 	
