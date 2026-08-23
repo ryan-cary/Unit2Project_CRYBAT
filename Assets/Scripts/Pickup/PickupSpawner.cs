@@ -48,7 +48,7 @@ public class PickupSpawner : MonoBehaviour, IDifficultyOverridden
 	
 	public void DifficultyOverride(DifficultySetting difficulty)
 	{
-		this.pickupProbability = 0.5 * (1 / difficulty.baseDifficultyModifier);
+		this.pickupProbability = 0.5f * (1 / difficulty.baseDifficultyModifier);
 	}
 	
 }
