@@ -37,6 +37,15 @@ public class Player : PlayableObject
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
+        SetSpriteDrawOrder();
+    }
+
+    void SetSpriteDrawOrder()
+    {
+        foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            spriteRenderer.sortingOrder = 5;
+        }
     }
 
     void Update()
