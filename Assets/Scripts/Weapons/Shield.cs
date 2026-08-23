@@ -21,7 +21,7 @@ public class Shield : MonoBehaviour, IDamageable
     {
         health.DeductHealth(damage);
 
-        if (health.GetHealth() == 0)
+        if (health.GetHealth() <= 0)
         {
             // TODO: reset shield list in behavior class
             Destroy(this);
@@ -31,5 +31,10 @@ public class Shield : MonoBehaviour, IDamageable
     public void SetShieldBehavior(ShieldBehavior _shieldBehavior)
     {
         shieldBehavior = _shieldBehavior;
+    }
+
+    public string GetParentTag()
+    {
+        return shieldBehavior.GetPlayableObject().gameObject.tag;
     }
 }

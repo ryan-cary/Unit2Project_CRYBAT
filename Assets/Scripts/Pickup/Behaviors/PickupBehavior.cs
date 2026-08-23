@@ -7,4 +7,9 @@ public abstract class PowerUpBehavior : MonoBehaviour
     public abstract void Collect(Pickup pickup);
 
     public abstract void Use();
+
+    public PlayableObject GetPlayableObject()
+    {
+        return playableObject;
+    }
 }
