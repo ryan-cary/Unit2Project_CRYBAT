@@ -20,6 +20,7 @@ public class ShieldElectricEffect : MonoBehaviour
         host.transform.localScale = Vector3.one;
 
         ParticleSystem particles = host.AddComponent<ParticleSystem>();
+        particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         Configure(particles);
         particles.Play(true);
     }
@@ -27,7 +28,7 @@ public class ShieldElectricEffect : MonoBehaviour
     void Configure(ParticleSystem particles)
     {
         ParticleSystem.MainModule main = particles.main;
-        main.playOnAwake = true;
+        main.playOnAwake = false;
         main.loop = true;
         main.duration = 1f;
         main.startLifetime = new ParticleSystem.MinMaxCurve(0.18f, 0.32f);
