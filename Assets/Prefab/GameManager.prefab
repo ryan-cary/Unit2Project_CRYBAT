@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7980693720055085581}
   - component: {fileID: 4325961054091198028}
+  - component: {fileID: 3421007208219962615}
   m_Layer: 0
   m_Name: DifficultyManager
   m_TagString: Untagged
@@ -151,6 +152,19 @@ MonoBehaviour:
   difficulty_HARD: {fileID: 11400000, guid: a8945612f7d1fba40882cdb3917feca2, type: 2}
   difficulty_HARDCORE: {fileID: 11400000, guid: 70435070da101394db2a63ab446f4d85, type: 2}
   currentDifficultySetting: {fileID: 0}
+--- !u!114 &3421007208219962615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411992303494338396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00d45f3844b6c143889e95e870933f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
+  difficultyValue: 0
 --- !u!1 &7784438521434755075
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +228,7 @@ MonoBehaviour:
       m_Calls: []
   scoreManager: {fileID: 8044428394084830319}
   pickupSpawner: {fileID: 9053599052533365523}
-  difficultyManager: {fileID: 0}
+  difficultyManager: {fileID: 3421007208219962615}
   bulletLifetime: 5
   enemySpawnRate: 5
   spawnRadius: 30

@@ -20,6 +20,9 @@ public class DifficultySelector : MonoBehaviour
 
     void Awake() 
     { ApplySettings(); }
+	
+	public DifficultySetting GetCurrentDifficultySetting()
+	{ return currentDifficultySetting; }
 
     public void SetDifficulty(Difficulty difficulty)
     {
@@ -47,5 +50,7 @@ public class DifficultySelector : MonoBehaviour
                 currentDifficultySetting = difficulty_NORMAL;
                 break;
         }
+		GameManager.GetInstance().GetDifficultyManager().onDifficultySettingUpdated?.Invoke();
+		Debug.Log("Settings updated!");
     }
 }
