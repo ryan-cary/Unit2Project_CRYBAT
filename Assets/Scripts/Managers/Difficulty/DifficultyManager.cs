@@ -30,7 +30,7 @@ public class DifficultyManager : MonoBehaviour
 	private void ApplyDifficultySettings(DifficultySetting settingToApply)
 	{
 		difficultyModifier = settingToApply.baseDifficultyModifier;
-		GameManager.GetInstance().SetSpawnRate(settingToApply.enemySpawnRate);
+		//GameManager.GetInstance().SetSpawnRate(settingToApply.enemySpawnRate);
 		//TODO: apply player health override
 	}
 			

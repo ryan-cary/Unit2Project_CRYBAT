@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class WaveMaker : MonoBehaviour
 {
+	/*
     private Dictionary<EnemyType, GameObject> _enemyDict;
 	
 	private void Start()
@@ -13,4 +14,5 @@ public class WaveMaker : MonoBehaviour
 		return new EnemyWave(GameManager.GetInstance().GetDifficultyManager().GetDifficultyValue(), _enemyDict);
 	
 	}
+	*/
 }
