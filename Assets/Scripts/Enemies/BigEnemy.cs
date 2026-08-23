@@ -13,6 +13,7 @@ public class BigEnemy : Enemy
     new private void Start()
     {
         base.Start();
+		this.defeatScore = 50;
         health = new Health(maxHealth, healthRegenRate);
         weapon = new Weapon("Machine Gun", attackDamage, bulletSpeed);
         shootAngle = 360f / bulletsPerShot;

@@ -12,6 +12,7 @@ public class MeleeEnemy : Enemy
      new private void Start()
     {
         base.Start();
+		this.defeatScore = 5;
         punchSpeed = 2 * attackRange / punchTime;
         ResetFist();
     }

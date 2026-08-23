@@ -13,6 +13,7 @@ public class MachineGunEnemy : Enemy
     new private void Start()
     {
         base.Start();
+		this.defeatScore = 20;
         weapon = new Weapon("Machine Gun", attackDamage, bulletSpeed);
     }
 
