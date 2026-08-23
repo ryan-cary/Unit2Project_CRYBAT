@@ -25,7 +25,7 @@ public class DifficultyManager : MonoBehaviour
 	private void ApplyDifficultySettings()
 	{
 		GameManager.GetInstance().GetPlayer().DifficultyOverride(selector.GetCurrentDifficultySetting());
-		GameManager.GetInstance().GetickupSpawner().DifficultyOverride(selector.GetCurrentDifficultySetting());
+		GameManager.GetInstance().GetPickupSpawner().DifficultyOverride(selector.GetCurrentDifficultySetting());
 	}
 			
 	
