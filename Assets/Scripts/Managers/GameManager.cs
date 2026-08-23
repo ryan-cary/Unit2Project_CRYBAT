@@ -26,10 +26,7 @@ public class GameManager : MonoBehaviour
     // ------ End Singleton Setup ------
 
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject exploderEnemyPrefab;
-    [SerializeField] private GameObject MachineGunEnemyPrefab;
-    [SerializeField] private GameObject meleeEnemyPrefab;
-    [SerializeField] private GameObject shooterEnemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefabs;
 
     private Player player;
     private Dictionary<EnemyType, GameObject> enemyTypeToPrefab = new Dictionary<EnemyType, GameObject>();
@@ -40,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     // References
     [SerializeField] private ScoreManager scoreManager;
+	[SerializeField] private DifficultyManager difficultyManager;
     [SerializeField] private PickupSpawner pickupSpawner;
 
     // Game data
@@ -67,17 +65,18 @@ public class GameManager : MonoBehaviour
 
     void SetEnemyPrefabDictionary()
     {
-        if (exploderEnemyPrefab != null) {
-           enemyTypeToPrefab[EnemyType.Exploder] = exploderEnemyPrefab; 
-        }
-        if (MachineGunEnemyPrefab != null) {
-           enemyTypeToPrefab[EnemyType.MachineGun] = MachineGunEnemyPrefab;
-        }
-        if (meleeEnemyPrefab != null) {
-           enemyTypeToPrefab[EnemyType.Melee] = meleeEnemyPrefab; 
-        }
-        if (shooterEnemyPrefab != null) {
-           enemyTypeToPrefab[EnemyType.Shooter] = shooterEnemyPrefab;
+        foreach (GameObject enemyPrefab in enemyPrefabs)
+        {
+            if (enemyPrefab != null)
+            {
+                Enemy enemyScript = enemyPrefab.GetComponent<Enemy>();
+
+                if (enemyScript != null)
+                {
+                    EnemyType type = enemyScript.GetEnemyType();
+                    enemyTypeToPrefab[type] = enemyPrefab; 
+                }
+            }
         }
     }
 
@@ -157,6 +156,11 @@ public class GameManager : MonoBehaviour
     public ScoreManager GetScoreManager()
     {
         return scoreManager;
+    }
+	
+	public DifficultyManager GetDifficultyManager()
+    {
+        return difficultyManager;
     }
 
     public float GetBulletLifetime()

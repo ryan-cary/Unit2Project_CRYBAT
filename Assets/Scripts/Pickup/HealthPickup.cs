@@ -9,10 +9,16 @@ public class HealthPickup : Pickup
     public override void OnPicked()
     {
         base.OnPicked();
+        GameManager.GetInstance().GetPlayer().CollectHealthPickup(this);
+    }
 
-        float health = Random.Range(healthMin, healthMax);
-        Player player = GameManager.GetInstance().GetPlayer();
+    public float GetHealthMin()
+    {
+        return healthMin;
+    }
 
-        player.health.AddHealth(health);
+    public float GetHealthMax()
+    {
+        return healthMax;
     }
 }

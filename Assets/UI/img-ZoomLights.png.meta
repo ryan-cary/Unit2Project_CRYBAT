@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 5b12b5b9c75084d9ba248271488eca12
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3550906502475542124
+    second: img-ZoomLights_0
+  - first:
+      213: 1881552505619087479
+    second: img-ZoomLights_1
+  - first:
+      213: 5681663507606602092
+    second: img-ZoomLights_2
+  - first:
+      213: 1009182705864665695
+    second: img-ZoomLights_3
+  - first:
+      213: 6937770495707289872
+    second: img-ZoomLights_4
+  - first:
+      213: 6084516278480402057
+    second: img-ZoomLights_5
+  - first:
+      213: -1271042689493855688
+    second: img-ZoomLights_6
+  - first:
+      213: -7286263636810121850
+    second: img-ZoomLights_7
+  - first:
+      213: 2428873637215693291
+    second: img-ZoomLights_8
+  - first:
+      213: -9094531610377435569
+    second: img-ZoomLights_9
+  - first:
+      213: 7242387722495389573
+    second: img-ZoomLights_10
+  - first:
+      213: -286876757562921651
+    second: img-ZoomLights_11
+  - first:
+      213: -1597085103620739510
+    second: img-ZoomLights_12
+  - first:
+      213: -2522683202584197183
+    second: img-ZoomLights_13
+  - first:
+      213: 4559902804501176401
+    second: img-ZoomLights_14
+  - first:
+      213: 7776214823986483845
+    second: img-ZoomLights_15
+  - first:
+      213: 3126626979661305999
+    second: img-ZoomLights_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: img-ZoomLights_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1018
+        width: 117
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49112597955a8bec0800000000000000
+      internalID: -3550906502475542124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 935
+        width: 260
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7700ca3f80e9c1a10800000000000000
+      internalID: 1881552505619087479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_2
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 911
+        width: 270
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6101308bd259de40800000000000000
+      internalID: 5681663507606602092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_3
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 962
+        width: 159
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5ae788f256510e00800000000000000
+      internalID: 1009182705864665695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_4
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 899
+        width: 186
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01991d90289e74060800000000000000
+      internalID: 6937770495707289872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_5
+      rect:
+        serializedVersion: 2
+        x: 1619
+        y: 911
+        width: 269
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 986f7e0715b807450800000000000000
+      internalID: 6084516278480402057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_6
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 966
+        width: 197
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8329c5e78695c5ee0800000000000000
+      internalID: -1271042689493855688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_7
+      rect:
+        serializedVersion: 2
+        x: 2014
+        y: 1010
+        width: 158
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d361c93ddf1ea90800000000000000
+      internalID: -7286263636810121850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_8
+      rect:
+        serializedVersion: 2
+        x: 2174
+        y: 1069
+        width: 19
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be96d8e44b715b120800000000000000
+      internalID: 2428873637215693291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_9
+      rect:
+        serializedVersion: 2
+        x: 2210
+        y: 1021
+        width: 48
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4644ec6fabb9c180800000000000000
+      internalID: -9094531610377435569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 829
+        width: 317
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58fecf40341228460800000000000000
+      internalID: 7242387722495389573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_11
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 728
+        width: 303
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4d6523eb1fc40cf0800000000000000
+      internalID: -286876757562921651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_12
+      rect:
+        serializedVersion: 2
+        x: 2215
+        y: 842
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e2e9a5f8306d9e0800000000000000
+      internalID: -1597085103620739510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 743
+        width: 249
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7cf153ef0adfcd0800000000000000
+      internalID: -2522683202584197183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_14
+      rect:
+        serializedVersion: 2
+        x: 1928
+        y: 742
+        width: 319
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 150a998f077084f30800000000000000
+      internalID: 4559902804501176401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 0
+        width: 479
+        height: 286
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58257d8ae2aaaeb60800000000000000
+      internalID: 7776214823986483845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-ZoomLights_16
+      rect:
+        serializedVersion: 2
+        x: 1625
+        y: 0
+        width: 484
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f885dd32ca2046b20800000000000000
+      internalID: 3126626979661305999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      img-ZoomLights_0: -3550906502475542124
+      img-ZoomLights_1: 1881552505619087479
+      img-ZoomLights_10: 7242387722495389573
+      img-ZoomLights_11: -286876757562921651
+      img-ZoomLights_12: -1597085103620739510
+      img-ZoomLights_13: -2522683202584197183
+      img-ZoomLights_14: 4559902804501176401
+      img-ZoomLights_15: 7776214823986483845
+      img-ZoomLights_16: 3126626979661305999
+      img-ZoomLights_2: 5681663507606602092
+      img-ZoomLights_3: 1009182705864665695
+      img-ZoomLights_4: 6937770495707289872
+      img-ZoomLights_5: 6084516278480402057
+      img-ZoomLights_6: -1271042689493855688
+      img-ZoomLights_7: -7286263636810121850
+      img-ZoomLights_8: 2428873637215693291
+      img-ZoomLights_9: -9094531610377435569
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

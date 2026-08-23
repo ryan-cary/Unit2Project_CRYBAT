@@ -78,8 +78,6 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.GetInstance().GetPlayer() != null)
         {
-            Debug.Log("Subscribing to player events");
-
             SubscribePlayerHealth();
             SubscribePlayerPowerUpTimer();
             SubscribePlayerNukeEvents();
@@ -94,9 +92,9 @@ public class UIManager : MonoBehaviour
         if (GameManager.GetInstance().GetPlayer() != null)
         {
             GameManager.GetInstance().GetPlayer().health.OnHealthUpdate -= UpdateHealth;
-            GameManager.GetInstance().GetPlayer().OnPowerUpTimerChange -= UpdateGunPowerUpTimerText;
-            GameManager.GetInstance().GetPlayer().OnCollectNuke -= IncrementNukeList;
-            GameManager.GetInstance().GetPlayer().OnUseNuke -= DecrementNukeList;
+            GameManager.GetInstance().GetPlayer().GetGunPowerUpBehavior().OnPowerUpTimerChange -= UpdateGunPowerUpTimerText;
+            GameManager.GetInstance().GetPlayer().GetNukeBehavior().OnCollectNuke -= IncrementNukeList;
+            GameManager.GetInstance().GetPlayer().GetNukeBehavior().OnUseNuke -= DecrementNukeList;
         }
         isSubscribedToPlayerEvents = false;
     }
@@ -108,13 +106,13 @@ public class UIManager : MonoBehaviour
 
     public void SubscribePlayerPowerUpTimer()
     {
-        GameManager.GetInstance().GetPlayer().OnPowerUpTimerChange += UpdateGunPowerUpTimerText;
+        GameManager.GetInstance().GetPlayer().GetGunPowerUpBehavior().OnPowerUpTimerChange += UpdateGunPowerUpTimerText;
     }
 
     public void SubscribePlayerNukeEvents()
     {
-        GameManager.GetInstance().GetPlayer().OnCollectNuke += IncrementNukeList;
-        GameManager.GetInstance().GetPlayer().OnUseNuke += DecrementNukeList;
+        GameManager.GetInstance().GetPlayer().GetNukeBehavior().OnCollectNuke += IncrementNukeList;
+        GameManager.GetInstance().GetPlayer().GetNukeBehavior().OnUseNuke += DecrementNukeList;
     }
 
     void UpdateHealth(float health)

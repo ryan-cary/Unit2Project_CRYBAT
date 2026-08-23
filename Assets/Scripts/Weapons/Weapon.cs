@@ -28,6 +28,13 @@ public class Weapon
         GameObject.Destroy(bullet.gameObject, GameManager.GetInstance().GetBulletLifetime());
     }
 
+    public void Shoot(Bullet _bullet, PlayableObject _shooter, string _targetTag,  float angle)
+    {
+        Bullet bullet = GameObject.Instantiate(_bullet, _shooter.transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
+        bullet.SetBullet(damage, _targetTag, bulletSpeed);
+        GameObject.Destroy(bullet.gameObject, GameManager.GetInstance().GetBulletLifetime());
+    }
+
     public float GetDamage()
     {
         return damage;
