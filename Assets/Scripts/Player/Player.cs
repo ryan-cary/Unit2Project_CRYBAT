@@ -14,6 +14,7 @@ public class Player : PlayableObject
     [SerializeField] HealthPickupBehavior healthPickupBehavior;
     [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
     [SerializeField] NukeBehavior nukeBehavior;
+    [SerializeField] ShieldBehavior shieldBehavior;
 
     public override void Awake()
     {
@@ -82,6 +83,11 @@ public class Player : PlayableObject
         return nukeBehavior;
     }
 
+    public ShieldBehavior GetShieldBehavior()
+    {
+        return shieldBehavior;
+    }
+
     public void CollectHealthPickup(Pickup pickup)
     {
         healthPickupBehavior.Collect(pickup);
@@ -95,6 +101,11 @@ public class Player : PlayableObject
     public void CollectNuke(Pickup pickup)
     {
         nukeBehavior.Collect(pickup);
+    }
+
+    public void CollectShield(Pickup pickup)
+    {
+        shieldBehavior.Collect(pickup);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
