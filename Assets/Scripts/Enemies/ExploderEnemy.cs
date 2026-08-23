@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExploderEnemy : Enemy
 {
-	protected override Start()
+	protected override void Start()
 	{ this.defeatScore = 15; }
 	
     protected override void Attack()
