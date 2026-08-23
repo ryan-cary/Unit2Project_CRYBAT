@@ -36,21 +36,26 @@ public class DifficultySelector : MonoBehaviour
         {
             case Difficulty.Easy:
                 currentDifficultySetting = difficulty_EASY;
+				Debug.Log($"Now on {currentDifficulty}!");
                 break;
             case Difficulty.Normal:
                 currentDifficultySetting = difficulty_NORMAL;
+				Debug.Log($"Now on {currentDifficulty}!");
                 break;
             case Difficulty.Hard:
                 currentDifficultySetting = difficulty_HARD;
+				Debug.Log($"Now on {currentDifficulty}!");
                 break;
             case Difficulty.Hardcore:
                 currentDifficultySetting = difficulty_HARDCORE;
+				Debug.Log($"Now on {currentDifficulty}!");
                 break;
             default:
                 currentDifficultySetting = difficulty_NORMAL;
+				Debug.Log($"Now on {currentDifficulty}!");
                 break;
         }
-		GameManager.GetInstance().GetDifficultyManager().onDifficultySettingUpdated?.Invoke();
+		//GameManager.GetInstance().GetDifficultyManager().onDifficultySettingUpdated?.Invoke(currentDifficultySetting);
 		Debug.Log("Settings updated!");
     }
 }

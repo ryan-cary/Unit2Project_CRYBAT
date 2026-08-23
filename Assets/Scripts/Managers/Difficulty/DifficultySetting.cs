@@ -4,7 +4,7 @@ using UnityEngine;
 public class DifficultySetting : ScriptableObject
 {
     [Header("ID")]
-    public string name = "missingDifficultyName";
+    new public string name = "missingDifficultyName";
     public int difficultyCode = 1;
 
     [Header("Settings")]
