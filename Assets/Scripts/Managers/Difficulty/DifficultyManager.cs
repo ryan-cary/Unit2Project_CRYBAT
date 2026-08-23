@@ -8,7 +8,7 @@ public class DifficultyManager : MonoBehaviour
 	private float difficultyModifier;
 	
 	private DifficultySelector selector;
-	public UnityEvent onDifficultySettingUpdated;
+	public UnityEvent<DifficultySetting> onDifficultySettingUpdated;
 	
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +16,7 @@ public class DifficultyManager : MonoBehaviour
         selector = GetComponent<DifficultySelector>();
 		
 		if (onDifficultySettingUpdated == null)
-			onDifficultySettingUpdated = new UnityEvent();
+			onDifficultySettingUpdated = new UnityEvent<DifficultySetting>();
 		onDifficultySettingUpdated.AddListener(ApplyDifficultySettings);
 		
     }
@@ -27,12 +27,11 @@ public class DifficultyManager : MonoBehaviour
         //TODO: increment difficulty value over time
     }
 	
-	private void ApplyDifficultySettings()
+	private void ApplyDifficultySettings(DifficultySetting settingToApply)
 	{
-		DifficultySetting settingToApply = selector.GetCurrentDifficultySetting();
 		difficultyModifier = settingToApply.baseDifficultyModifier;
+		GameManager.GetInstance().SetSpawnRate(settingToApply.enemySpawnRate);
 		//TODO: apply player health override
-		//TODO: modify spawn rate
 	}
 			
 	
