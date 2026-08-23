@@ -2,33 +2,16 @@ using UnityEngine;
 
 public class SpaceSkyAlphaSwap : MonoBehaviour
 {
-    const string RootName = "_Spacesky";
-    const string TopName = "SpaceCloudsTop";
-    const string BottomName = "SpaceCloudsBottom";
-
+    [SerializeField] SpriteRenderer topLayer;
+    [SerializeField] SpriteRenderer bottomLayer;
     [SerializeField] float cycleDuration = 16f;
 
-    SpriteRenderer topLayer;
-    SpriteRenderer bottomLayer;
     float topAlpha;
     float bottomAlpha;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    static void AttachToSpaceSky()
-    {
-        GameObject root = GameObject.Find(RootName);
-        if (root == null || root.GetComponent<SpaceSkyAlphaSwap>() != null)
-        {
-            return;
-        }
-
-        root.AddComponent<SpaceSkyAlphaSwap>();
-    }
-
     void Awake()
     {
-        topLayer = FindLayer(TopName);
-        bottomLayer = FindLayer(BottomName);
+        ResolveLayers();
 
         if (topLayer != null)
         {
@@ -53,16 +36,44 @@ public class SpaceSkyAlphaSwap : MonoBehaviour
         SetAlpha(bottomLayer, Mathf.Lerp(bottomAlpha, topAlpha, wave));
     }
 
-    SpriteRenderer FindLayer(string childName)
+    void ResolveLayers()
     {
-        Transform child = transform.Find(childName);
-        if (child != null)
+        if (topLayer == null)
         {
-            return child.GetComponent<SpriteRenderer>();
+            topLayer = FindChildLayer("SpaceSkyTop");
         }
 
-        GameObject found = GameObject.Find(childName);
-        return found != null ? found.GetComponent<SpriteRenderer>() : null;
+        if (bottomLayer == null)
+        {
+            bottomLayer = FindChildLayer("SpaceSkyBottom");
+        }
+
+        if (topLayer != null && bottomLayer != null)
+        {
+            return;
+        }
+
+        SpriteRenderer[] layers = GetComponentsInChildren<SpriteRenderer>(true);
+        if (layers.Length < 2)
+        {
+            return;
+        }
+
+        if (topLayer == null)
+        {
+            topLayer = layers[0];
+        }
+
+        if (bottomLayer == null)
+        {
+            bottomLayer = layers[1] == topLayer ? layers[0] : layers[1];
+        }
+    }
+
+    SpriteRenderer FindChildLayer(string childName)
+    {
+        Transform child = transform.Find(childName);
+        return child != null ? child.GetComponent<SpriteRenderer>() : null;
     }
 
     static void SetAlpha(SpriteRenderer renderer, float alpha)
