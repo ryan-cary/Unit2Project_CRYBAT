@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1355265622348673408, guid: ac0e0c451a95048a28195357d9f2600e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355265622348673408, guid: ac0e0c451a95048a28195357d9f2600e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.82254136
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355265622348673408, guid: ac0e0c451a95048a28195357d9f2600e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.46855342
+      objectReference: {fileID: 0}
     - target: {fileID: 5901860170054215926, guid: ac0e0c451a95048a28195357d9f2600e, type: 3}
       propertyPath: m_Name
       value: MachineGunEnemy
