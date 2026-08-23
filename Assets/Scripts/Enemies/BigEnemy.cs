@@ -5,7 +5,6 @@ public class BigEnemy : Enemy
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float moveRange;
-    [SerializeField] private float maxHealth;
     [SerializeField] private float healthRegenRate;
     [SerializeField] private float bulletsPerShot;
     private float shootAngle;
@@ -14,7 +13,7 @@ public class BigEnemy : Enemy
     {
         base.Start();
 		this.defeatScore = 50;
-        health = new Health(maxHealth, healthRegenRate);
+        health = new Health(baseHealth, healthRegenRate);
         weapon = new Weapon("Machine Gun", attackDamage, bulletSpeed);
         shootAngle = 360f / bulletsPerShot;
     }

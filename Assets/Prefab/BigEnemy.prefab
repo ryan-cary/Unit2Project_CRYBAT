@@ -111,15 +111,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   enemyType: 5
+  explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
+  baseHealth: 500
   attackDamage: 15
   attackRange: 25
   attackRate: 4
   defeatScore: 100
-  explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
   bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
   bulletSpeed: 10
   moveRange: 6
-  maxHealth: 500
   healthRegenRate: 0.2
   bulletsPerShot: 24
 --- !u!50 &98011671773802240

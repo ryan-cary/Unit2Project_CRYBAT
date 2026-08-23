@@ -3,14 +3,17 @@ using System;
 
 public class Enemy : PlayableObject
 {
-    protected Transform target;
-    [SerializeField] private EnemyType enemyType;
+    [SerializeField] private EnemyType enemyType;	
+    [SerializeField] ExplosionFragment explosionFragmentPrefab;
+	
+	[Header("Enemy Stats")]
+	[SerializeField] protected float baseHealth = 100f;
     [SerializeField] protected float attackDamage = 10f;
     [SerializeField] protected float attackRange = 5;
     [SerializeField] protected float attackRate = 2f;
     [SerializeField] protected int defeatScore = 10;
-    [SerializeField] ExplosionFragment explosionFragmentPrefab;
-
+	
+	protected Transform target;
     protected float targetSpeed;
     protected float timer = 0;
     protected bool isAttacking;
