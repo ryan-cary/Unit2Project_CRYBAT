@@ -228,6 +228,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   scoreManager: {fileID: 142263670}
+  difficultyManager: {fileID: 0}
   pickupSpawner: {fileID: 872089614}
   bulletLifetime: 5
   enemySpawnRate: 5
@@ -248,6 +249,7 @@ Transform:
   - {fileID: 142263669}
   - {fileID: 1029348644}
   - {fileID: 872089615}
+  - {fileID: 637870179}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -471,6 +473,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &637870178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637870179}
+  - component: {fileID: 637870181}
+  - component: {fileID: 637870180}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &637870179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637870178}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448539890}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &637870180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637870178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00d45f3844b6c143889e95e870933f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
+  difficultyValue: 0
+  onDifficultySettingUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &637870181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637870178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9a41184ca4227439ba2367ea92ed95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultySelector
+  difficulty_EASY: {fileID: 11400000, guid: 50a3dfb7bdd30284b8ca425ec983da27, type: 2}
+  difficulty_NORMAL: {fileID: 11400000, guid: 460bb81ad281fd943a8d41bfccf0717e, type: 2}
+  difficulty_HARD: {fileID: 11400000, guid: a8945612f7d1fba40882cdb3917feca2, type: 2}
+  difficulty_HARDCORE: {fileID: 11400000, guid: 70435070da101394db2a63ab446f4d85, type: 2}
+  currentDifficultySetting: {fileID: 0}
 --- !u!114 &840722662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5495728929977961405, guid: f23279a828ddf2a4aa0923427908f509, type: 3}

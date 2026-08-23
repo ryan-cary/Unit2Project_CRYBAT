@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     // References
     [SerializeField] private ScoreManager scoreManager;
+	[SerializeField] private DifficultyManager difficultyManager;
     [SerializeField] private PickupSpawner pickupSpawner;
 
     // Game data
@@ -155,6 +156,11 @@ public class GameManager : MonoBehaviour
     public ScoreManager GetScoreManager()
     {
         return scoreManager;
+    }
+	
+	public DifficultyManager GetDifficultyManager()
+    {
+        return difficultyManager;
     }
 
     public float GetBulletLifetime()

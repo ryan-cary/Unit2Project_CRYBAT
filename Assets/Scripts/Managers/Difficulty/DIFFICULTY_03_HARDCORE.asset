@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5180764fc91163846b13b3afa689bb7c, type: 3}
-  m_Name: DIFFICULTY_HARD
+  m_Name: DIFFICULTY_03_HARDCORE
   m_EditorClassIdentifier: Assembly-CSharp::DifficultySetting
-  name: Hard
-  difficultyCode: 2
-  baseDifficultyModifier: 2
+  name: Normal
+  difficultyCode: 3
+  baseDifficultyModifier: 5
   enemySpawnRate: 5
+  playerHealthOverride: 25
