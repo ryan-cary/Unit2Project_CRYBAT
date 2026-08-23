@@ -3,8 +3,8 @@ using System;
 
 public class Enemy : PlayableObject
 {
-    private EnemyType enemyType;
     protected Transform target;
+    [SerializeField] private EnemyType enemyType;
     [SerializeField] protected float attackDamage = 10f;
     [SerializeField] protected float attackRange = 5;
     [SerializeField] protected float attackRate = 2f;
@@ -102,6 +102,11 @@ public class Enemy : PlayableObject
             ExplosionFragment fragment = GameObject.Instantiate(explosionFragmentPrefab, transform.position, Quaternion.identity);
             fragment.SetMoveDirection(new Vector2(i < 2 ? 1 : -1, i % 2 == 0 ? 1 : -1));
         }
+    }
+
+    public EnemyType GetEnemyType()
+    {
+        return enemyType;
     }
 
     public void SetEnemyType(EnemyType _enemyType)

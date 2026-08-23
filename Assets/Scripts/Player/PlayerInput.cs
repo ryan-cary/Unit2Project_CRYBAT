@@ -9,8 +9,8 @@ public class PlayerInput : MonoBehaviour
     private float verticalInput;
     private Vector2 lookTarget;
     private bool shootInput;
+    private bool stopShootInput;
     private bool nukeInput;
-    private bool startedShootingPowerUp;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,28 +32,19 @@ public class PlayerInput : MonoBehaviour
 
     void ShootInput()
     {
+        shootInput = Input.GetMouseButtonDown(0);
+        stopShootInput = Input.GetMouseButtonUp(0);
+        nukeInput = Input.GetMouseButtonDown(1);
+
         if (player.HasGunPowerUp())
         {
-            
-            if (!startedShootingPowerUp && Input.GetMouseButton(0))
-            {
-                player.StartShootCoroutine();
-                startedShootingPowerUp = true;
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                player.StopShootCoroutine();
-                startedShootingPowerUp = false;;
-            }
+            player.GetGunPowerUpBehavior().Shoot(shootInput, stopShootInput);
         }
         else
         {
-            shootInput = Input.GetMouseButtonDown(0);
-
             if (shootInput) player.Shoot();
         }
-        nukeInput = Input.GetMouseButtonDown(1);
 
-        if (nukeInput) player.UseNukePickup();
+        if (nukeInput) player.GetNukeBehavior().Use();
     }
 }
