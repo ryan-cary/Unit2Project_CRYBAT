@@ -29,7 +29,7 @@ public class DifficultyManager : MonoBehaviour
 	
 	private void ApplyDifficultySettings()
 	{
-		Debug.Log("Apply settings here!");
+		GameManager.GetInstance().GetPlayer().DifficultyOverride(selector.GetCurrentDifficultySetting());
 	}
 			
 	

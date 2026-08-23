@@ -16,10 +16,10 @@ public class DifficultySelector : MonoBehaviour
     [SerializeField] DifficultySetting difficulty_HARDCORE;
 
     public DifficultySetting currentDifficultySetting;
-    public Difficulty currentDifficulty { get; private set; } = Difficulty.Normal;
+    public Difficulty currentDifficulty { get; private set; }
 
     void Awake() 
-    { ApplySettings(); }
+    { SetDifficulty(Difficulty.Normal); }
 	
 	public DifficultySetting GetCurrentDifficultySetting()
 	{ return currentDifficultySetting; }
