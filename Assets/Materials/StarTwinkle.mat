@@ -36,7 +36,7 @@ Material:
     - PixelSnap: 0
     - _EnableExternalAlpha: 0
     - _GlintStrength: 0.7
-    - _GlowSpread: 1.1
+    - _GlowSpread: 0.2
     - _TwinkleAmount: 0.55
     - _TwinkleSpeed: 1.15
     - _ZWrite: 0
