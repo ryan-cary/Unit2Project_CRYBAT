@@ -334,6 +334,7 @@ MonoBehaviour:
   shieldPrefab: {fileID: 5054786796665575624, guid: cafe206f20ba24361a859b1e798df657, type: 3}
   maxNumOfShields: 8
   offsetRadius: 1.5
+  shieldHealth: 30
   rotationSpeed: 5
 --- !u!1 &8947386435525603592
 GameObject:

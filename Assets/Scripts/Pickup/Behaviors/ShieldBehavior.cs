@@ -7,6 +7,7 @@ public class ShieldBehavior : PowerUpBehavior
     [SerializeField] private GameObject shieldPrefab;
     [SerializeField] private int maxNumOfShields;
     [SerializeField] private float offsetRadius;
+    [SerializeField] private float shieldHealth;
     [SerializeField] private float rotationSpeed;
 
     private bool hasShield;
@@ -32,6 +33,23 @@ public class ShieldBehavior : PowerUpBehavior
     public override void Use()
     {
         UpdateNumOfShields();
+    }
+
+    public float GetShieldHealth()
+    {
+        return shieldHealth;
+    }
+
+    public void ReorderShieldList(Shield shield)
+    {
+        if (shieldList.Contains(shield))
+        {
+            shieldList.Remove(shield);
+            if (shieldList.Count == 0)
+            {
+                hasShield = false;
+            }
+        }
     }
 
     private void UpdateNumOfShields()
@@ -86,17 +104,5 @@ public class ShieldBehavior : PowerUpBehavior
     {
         angle += rotationSpeed * Time.deltaTime;
         transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
-    }
-
-    public void ReorderShieldList(Shield shield)
-    {
-        if (shieldList.Contains(shield))
-        {
-            shieldList.Remove(shield);
-            if (shieldList.Count == 0)
-            {
-                hasShield = false;
-            }
-        }
     }
 }
