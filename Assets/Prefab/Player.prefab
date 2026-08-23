@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 557583186638852327}
   - component: {fileID: 6846277690174017371}
   - component: {fileID: 4937450472454008980}
-  - component: {fileID: 5787660809237631400}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -39,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 7636333641531866334}
   - {fileID: 7036995633149172599}
+  - {fileID: 6261280816318800531}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1512662758222267152
@@ -63,7 +63,7 @@ MonoBehaviour:
   healthPickupBehavior: {fileID: 4937450472454008980}
   gunPowerUpBehavior: {fileID: 557583186638852327}
   nukeBehavior: {fileID: 6846277690174017371}
-  shieldBehavior: {fileID: 5787660809237631400}
+  shieldBehavior: {fileID: 1170204632658369936}
 --- !u!114 &54726437512371365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,21 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickupBehavior
   playableObject: {fileID: 1512662758222267152}
---- !u!114 &5787660809237631400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681556212235292093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66751a5dc71824187afe2a3d7f01e7ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShieldBehavior
-  playableObject: {fileID: 1512662758222267152}
-  shieldPrefab: {fileID: 5054786796665575624, guid: cafe206f20ba24361a859b1e798df657, type: 3}
-  maxNumOfShields: 8
 --- !u!1 &1159013410033598867
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +286,54 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5329654009579616125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6261280816318800531}
+  - component: {fileID: 1170204632658369936}
+  m_Layer: 0
+  m_Name: ShieldBehaviour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6261280816318800531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329654009579616125}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00057, y: 0.21054, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1819311420713271690}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1170204632658369936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329654009579616125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66751a5dc71824187afe2a3d7f01e7ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldBehavior
+  playableObject: {fileID: 1512662758222267152}
+  shieldPrefab: {fileID: 5054786796665575624, guid: cafe206f20ba24361a859b1e798df657, type: 3}
+  maxNumOfShields: 8
+  offsetRadius: 2
 --- !u!1 &8947386435525603592
 GameObject:
   m_ObjectHideFlags: 0

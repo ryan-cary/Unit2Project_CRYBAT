@@ -1,13 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class ShieldBehavior : PowerUpBehavior
 {
     [SerializeField] private GameObject shieldPrefab;
     [SerializeField] private int maxNumOfShields;
+    [SerializeField] private float offsetRadius;
     private bool hasShield;
     private int pickupNumOfShields;
-    private List<GameObject> shieldList = new List<GameObject>();
+    private List<Shield> shieldList = new List<Shield>();
+
+    private void Update()
+    {
+        transform.rotation = Quaternion.identity;
+    }
 
     public override void Collect(Pickup pickup)
     {
@@ -42,8 +49,31 @@ public class ShieldBehavior : PowerUpBehavior
     {
         if (count > 0)
         {
-            Debug.Log($"Added shields! Current number: {shieldList.Count + count}");
+            for (int i = 0; i < count; i++)
+            {
+                Shield shield = Instantiate(shieldPrefab, transform).GetComponent<Shield>();
+                if (shield != null)
+                {
+                    shield.SetShieldBehavior(this);
+                    shieldList.Add(shield);
+                } else
+                {
+                    throw new NullReferenceException("Instantiated shield object without shield script");
+                }
+            }
+            RepositionShields();
             hasShield = true;
+        }
+    }
+
+    private void RepositionShields()
+    {
+        float angle = 360f / shieldList.Count * Mathf.Deg2Rad;
+        for (int i = 0; i < shieldList.Count; i++)
+        {
+            Vector3 offset = new Vector2(Mathf.Cos(i * angle), Mathf.Sin(i * angle));
+            offset *= offsetRadius;
+            shieldList[i].gameObject.transform.position = playableObject.transform.position + offset;
         }
     }
 }
