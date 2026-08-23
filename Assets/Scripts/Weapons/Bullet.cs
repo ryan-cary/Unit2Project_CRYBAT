@@ -60,5 +60,19 @@ public class Bullet : MonoBehaviour
             IDamageable damageable = collider.GetComponent<IDamageable>();
             Damage(damageable);
         }
+        if (collider.gameObject.CompareTag("Shield"))
+        {
+            Shield shield = collider.GetComponent<Shield>();
+
+            if (shield != null)
+            {
+
+                if (shield.GetParentTag() == targetTag)
+                {
+                    shield.GetDamage(damage);
+                    Destroy(gameObject);
+                }
+            }
+        }
     }
 }

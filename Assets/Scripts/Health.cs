@@ -33,7 +33,6 @@ public class Health
         maxHealth = _maxHealth;
         currentHealth = _maxHealth;
         OnHealthUpdate?.Invoke(currentHealth);
-        Debug.Log("Invoked health update");
     }
 
     public Health()

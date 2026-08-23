@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using System.Collections;
 
 public class Player : PlayableObject
 {
@@ -9,27 +8,13 @@ public class Player : PlayableObject
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
 
-    [SerializeField] private GameObject powerUpSymbol;
-
     private Camera camera;
 
-    // GunPowerUp variables
-    private bool hasGunPowerUp = false;
-    private float powerUpTimer = 0;
-    private float powerUpShootRate;
-    private float maxPowerUpTime;
-
-    private Coroutine shootPowerUpCoroutine;
-
-    public Action<bool, float, Vector2> OnPowerUpTimerChange;
-
-    // Nuke Pickup variables
-    [SerializeField] private GameObject nukeBlastPrefab;
-    [SerializeField] private int maxNumOfNukes;
-    private int numOfNukes = 0;
-
-    public Action OnCollectNuke;
-    public Action OnUseNuke;
+    // Pickup behavior references
+    [SerializeField] HealthPickupBehavior healthPickupBehavior;
+    [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
+    [SerializeField] NukeBehavior nukeBehavior;
+    [SerializeField] ShieldBehavior shieldBehavior;
 
     public override void Awake()
     {
@@ -37,12 +22,20 @@ public class Player : PlayableObject
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
+        SetSpriteDrawOrder();
+    }
+
+    void SetSpriteDrawOrder()
+    {
+        foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            spriteRenderer.sortingOrder = 5;
+        }
     }
 
     void Update()
     {
         health.RegenHealth();
-        AdvancePowerUpTimer();
     }
 
     public void Move(Vector3 direction, Vector2 target)
@@ -63,31 +56,9 @@ public class Player : PlayableObject
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
-    public void StartShootCoroutine()
+    public bool HasGunPowerUp()
     {
-        if (shootPowerUpCoroutine != null)
-        {
-            StopCoroutine(shootPowerUpCoroutine);
-        }
-        shootPowerUpCoroutine = StartCoroutine(ShootPowerUpCorountine());
-    }
-
-    public void StopShootCoroutine()
-    {
-        if (shootPowerUpCoroutine != null)
-        {
-            StopCoroutine(shootPowerUpCoroutine);
-            shootPowerUpCoroutine = null;
-        }
-    }
-
-    public IEnumerator ShootPowerUpCorountine()
-    {
-        while (hasGunPowerUp)
-        {
-            yield return new WaitForSeconds(powerUpShootRate);
-            Shoot();
-        }
+        return gunPowerUpBehavior.HasGunPowerUp();
     }
 
     public override void GetDamage(float damage)
@@ -106,62 +77,44 @@ public class Player : PlayableObject
         Destroy(gameObject);
     }
 
-    void AdvancePowerUpTimer()
+    public HealthPickupBehavior GetHealthPickupBehavior()
     {
-        if (hasGunPowerUp)
-        {
-            powerUpTimer += Time.deltaTime;
-            OnPowerUpTimerChange.Invoke(true, Mathf.Max(maxPowerUpTime - powerUpTimer, 0), camera.WorldToScreenPoint(transform.position));
-
-            if (powerUpTimer >= maxPowerUpTime)
-            {
-                PowerDownWeapon();
-            }
-        }
+        return healthPickupBehavior;
     }
 
-    public void PowerUpWeapon(float duration, float shootRate)
+    public GunPowerUpBehavior GetGunPowerUpBehavior()
     {
-        hasGunPowerUp = true;
-        powerUpTimer = 0;
-        maxPowerUpTime = duration;
-        powerUpShootRate = shootRate;
-        powerUpSymbol.SetActive(true);
-        OnPowerUpTimerChange.Invoke(true, 0, camera.WorldToScreenPoint(transform.position));
+        return gunPowerUpBehavior;
     }
 
-    public void PowerDownWeapon()
+    public NukeBehavior GetNukeBehavior()
     {
-        hasGunPowerUp = false;
-        powerUpTimer = 0;
-        powerUpSymbol.SetActive(false);
-        OnPowerUpTimerChange.Invoke(false, 0, Vector2.zero);
-        StopShootCoroutine();
+        return nukeBehavior;
     }
 
-    public bool HasGunPowerUp()
+    public ShieldBehavior GetShieldBehavior()
     {
-        return hasGunPowerUp;
+        return shieldBehavior;
     }
 
-    public void CollectNukePickup()
+    public void CollectHealthPickup(Pickup pickup)
     {
-        if (numOfNukes < maxNumOfNukes)
-        {
-            numOfNukes++;
-            OnCollectNuke.Invoke();
-        }
+        healthPickupBehavior.Collect(pickup);
     }
 
-    public void UseNukePickup()
+    public void CollectGunPowerUp(Pickup pickup)
     {
-        if (numOfNukes > 0)
-        {
-            numOfNukes--;
-            OnUseNuke.Invoke();
-            Vector3 blastPosition = new Vector3(transform.position.x, transform.position.y, nukeBlastPrefab.transform.position.z);
-            Instantiate(nukeBlastPrefab, blastPosition, Quaternion.identity);
-        }
+        gunPowerUpBehavior.Collect(pickup);
+    }
+
+    public void CollectNuke(Pickup pickup)
+    {
+        nukeBehavior.Collect(pickup);
+    }
+
+    public void CollectShield(Pickup pickup)
+    {
+        shieldBehavior.Collect(pickup);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
