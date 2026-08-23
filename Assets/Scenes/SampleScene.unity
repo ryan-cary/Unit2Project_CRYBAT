@@ -228,7 +228,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   scoreManager: {fileID: 142263670}
-  difficultyManager: {fileID: 0}
+  difficultyManager: {fileID: 637870180}
   pickupSpawner: {fileID: 872089614}
   bulletLifetime: 5
   enemySpawnRate: 5
