@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ShooterEnemy : Enemy
 {
+	[Header("Weapon Stats")]
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed;
 

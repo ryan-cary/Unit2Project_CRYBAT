@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
-
+	[Header("Punch Stats")]
     [SerializeField] private GameObject fistObject;
     [SerializeField] private float punchTime = 1f;
 

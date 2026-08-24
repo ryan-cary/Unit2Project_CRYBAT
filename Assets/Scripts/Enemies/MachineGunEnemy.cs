@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MachineGunEnemy : Enemy
 {
+	[Header("Machine Gun Stats")]
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingDuration;

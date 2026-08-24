@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class BigEnemy : Enemy
 {
+	[Header("Weapon Stats")]
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private float moveRange;
-    [SerializeField] private float healthRegenRate;
     [SerializeField] private float bulletsPerShot;
+	
+	[Header("Boss Stats")]
+	[SerializeField] private float moveRange;
+    [SerializeField] private float healthRegenRate;
+	
     private float shootAngle;
 
     new private void Start()
