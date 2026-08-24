@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 4824fa28ba58074488d725843f545f35, type: 3}
-  m_Color: {r: 0.61635214, g: 0.009691008, b: 0.009691008, a: 1}
+  m_Color: {r: 0.6156863, g: 0.36807978, b: 0.007843119, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   attackRate: 4
   defeatScore: 100
   explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
-  bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
+  bulletPrefab: {fileID: 922171902542695900, guid: 7b2e9c4a1f583d6e90b4c7d2a8e15f36, type: 3}
   bulletSpeed: 10
   moveRange: 6
   maxHealth: 500
