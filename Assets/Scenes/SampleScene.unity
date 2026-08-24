@@ -1580,6 +1580,10 @@ MonoBehaviour:
   shieldPickupVolume: 0.8
   nukePickupClip: {fileID: 8300000, guid: 4ba388d5be6f9624885cf8893b52cbfa, type: 3}
   nukePickupVolume: 0.8
+  gunPickupClip: {fileID: 8300000, guid: e1761c95ddae38144bdac89a91d8cec5, type: 3}
+  gunPickupVolume: 0.8
+  healthPickupClip: {fileID: 8300000, guid: 766e6e9578750824482e8f17ff3a7901, type: 3}
+  healthPickupVolume: 0.8
   missileLaunchDetectedClip: {fileID: 8300000, guid: fc698d421757cc14da009baa5d46a970, type: 3}
   missileLaunchDetectedVolume: 0.549
   enemyDyingClip: {fileID: 8300000, guid: c36ca4d8a59972f4982bad4365937c3e, type: 3}

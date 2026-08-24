@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float shieldPickupVolume = 0.8f;
     [SerializeField] private AudioClip nukePickupClip;
     [SerializeField, Range(0f, 1f)] private float nukePickupVolume = 0.8f;
+    [SerializeField] private AudioClip gunPickupClip;
+    [SerializeField, Range(0f, 1f)] private float gunPickupVolume = 0.8f;
+    [SerializeField] private AudioClip healthPickupClip;
+    [SerializeField, Range(0f, 1f)] private float healthPickupVolume = 0.8f;
 
     [Header("Enemies")]
     [SerializeField] private AudioClip missileLaunchDetectedClip;
@@ -48,6 +53,17 @@ public class SoundManager : MonoBehaviour
     private AudioSource musicSource;
     private bool isEnginePlaying;
     private bool isSubscribedToPlayerEvents;
+    private Player subscribedPlayer;
+    private bool wasGunPowerUpActive;
+    private float lastGunPowerUpRemaining;
+    private int lastShieldCount;
+    private readonly List<TrackedHealthPickup> trackedHealthPickups = new List<TrackedHealthPickup>();
+
+    struct TrackedHealthPickup
+    {
+        public HealthPickup pickup;
+        public Vector3 position;
+    }
 
     void Awake()
     {
@@ -105,6 +121,9 @@ public class SoundManager : MonoBehaviour
 
         if (!isSubscribedToPlayerEvents)
             SubscribeToPlayerEvents();
+
+        CheckShieldPickup();
+        CheckHealthPickups();
     }
 
     void SetupEngineSource()
@@ -142,20 +161,82 @@ public class SoundManager : MonoBehaviour
         NukeBehavior nukeBehavior = player.GetNukeBehavior();
         nukeBehavior.OnUseNuke += PlayBigNuke;
         nukeBehavior.OnCollectNuke += PlayNukePickup;
+        player.GetGunPowerUpBehavior().OnPowerUpTimerChange += OnGunPowerUpTimerChange;
+
+        wasGunPowerUpActive = player.HasGunPowerUp();
+        lastGunPowerUpRemaining = 0f;
+        lastShieldCount = player.GetComponentsInChildren<Shield>(true).Length;
+        trackedHealthPickups.Clear();
+        subscribedPlayer = player;
         isSubscribedToPlayerEvents = true;
     }
 
     void UnsubscribeFromPlayerEvents()
     {
-        Player player = GameManager.GetInstance()?.GetPlayer();
-        if (player != null)
+        if (subscribedPlayer != null)
         {
-            NukeBehavior nukeBehavior = player.GetNukeBehavior();
+            NukeBehavior nukeBehavior = subscribedPlayer.GetNukeBehavior();
             nukeBehavior.OnUseNuke -= PlayBigNuke;
             nukeBehavior.OnCollectNuke -= PlayNukePickup;
+            subscribedPlayer.GetGunPowerUpBehavior().OnPowerUpTimerChange -= OnGunPowerUpTimerChange;
         }
 
+        subscribedPlayer = null;
+        trackedHealthPickups.Clear();
         isSubscribedToPlayerEvents = false;
+    }
+
+    void OnGunPowerUpTimerChange(bool isActive, float remainingTime, Vector2 screenPosition)
+    {
+        bool collected = isActive && remainingTime == 0f
+            && (!wasGunPowerUpActive || lastGunPowerUpRemaining > 0.25f);
+
+        if (collected)
+            PlayGunPickup();
+
+        wasGunPowerUpActive = isActive;
+        lastGunPowerUpRemaining = remainingTime;
+    }
+
+    void CheckHealthPickups()
+    {
+        if (subscribedPlayer == null || !IsGameplayActive())
+        {
+            trackedHealthPickups.Clear();
+            return;
+        }
+
+        Vector3 playerPosition = subscribedPlayer.transform.position;
+        const float collectDistance = 5f;
+
+        for (int i = 0; i < trackedHealthPickups.Count; i++)
+        {
+            TrackedHealthPickup tracked = trackedHealthPickups[i];
+            if (tracked.pickup == null && Vector2.Distance(playerPosition, tracked.position) <= collectDistance)
+                PlayHealthPickup();
+        }
+
+        trackedHealthPickups.Clear();
+        HealthPickup[] pickups = FindObjectsByType<HealthPickup>(FindObjectsSortMode.None);
+        for (int i = 0; i < pickups.Length; i++)
+        {
+            TrackedHealthPickup tracked;
+            tracked.pickup = pickups[i];
+            tracked.position = pickups[i].transform.position;
+            trackedHealthPickups.Add(tracked);
+        }
+    }
+
+    void CheckShieldPickup()
+    {
+        if (subscribedPlayer == null)
+            return;
+
+        int shieldCount = subscribedPlayer.GetComponentsInChildren<Shield>(true).Length;
+        if (shieldCount > lastShieldCount)
+            PlayShieldPickup();
+
+        lastShieldCount = shieldCount;
     }
 
     void OnGameEnded()
@@ -183,6 +264,16 @@ public class SoundManager : MonoBehaviour
     public void PlayNukePickup()
     {
         PlaySfx(nukePickupClip, nukePickupVolume);
+    }
+
+    public void PlayGunPickup()
+    {
+        PlaySfx(gunPickupClip, gunPickupVolume);
+    }
+
+    public void PlayHealthPickup()
+    {
+        PlaySfx(healthPickupClip, healthPickupVolume);
     }
 
     public void PlayMissileLaunchDetected()
