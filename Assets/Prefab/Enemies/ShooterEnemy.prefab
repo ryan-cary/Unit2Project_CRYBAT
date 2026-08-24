@@ -91,7 +91,7 @@ MonoBehaviour:
   attackDamage: 25
   attackRange: 10
   attackRate: 2.5
-  defeatScore: 10
+  defeatScore: 15
   bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
   bulletSpeed: 12
 --- !u!120 &4416117007683341566

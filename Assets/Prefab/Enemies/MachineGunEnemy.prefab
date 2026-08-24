@@ -83,11 +83,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   enemyType: 3
+  explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
+  baseHealth: 100
   attackDamage: 5
   attackRange: 7
   attackRate: 0.1
-  defeatScore: 10
-  explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
+  defeatScore: 20
   bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
   bulletSpeed: 7
   shootingDuration: 7

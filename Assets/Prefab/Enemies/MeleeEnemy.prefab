@@ -191,6 +191,6 @@ MonoBehaviour:
   attackDamage: 15
   attackRange: 2.5
   attackRate: 2
-  defeatScore: 10
+  defeatScore: 5
   fistObject: {fileID: 4548801796476287498}
   punchTime: 1
