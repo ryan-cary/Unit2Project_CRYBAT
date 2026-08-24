@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     public void OnEnemyDefeated(Enemy enemy)
     {
         pickupSpawner.SpawnPickup(enemy.transform.position);
+        SoundManager.GetInstance()?.PlayEnemyDying();
     }
 
     public Player GetPlayer()

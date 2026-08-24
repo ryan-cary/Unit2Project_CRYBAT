@@ -115,6 +115,7 @@ public class Player : PlayableObject
     public void CollectShield(Pickup pickup)
     {
         shieldBehavior.Collect(pickup);
+        SoundManager.GetInstance()?.PlayShieldPickup();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
