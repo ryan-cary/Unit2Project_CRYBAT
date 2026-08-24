@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(DifficultySelector))]
 public class DifficultyManager : MonoBehaviour
 {
-	[SerializeField] private int difficultyValue = 0;
+	[SerializeField] private float difficultyValue = 0;
 	private float difficultyModifier;
 	
 	private DifficultySelector selector;
@@ -14,12 +14,13 @@ public class DifficultyManager : MonoBehaviour
     {
         selector = GetComponent<DifficultySelector>();
 		GameManager.GetInstance().OnGameStart.AddListener(ApplyDifficultySettings);
+		GameManager.GetInstance().OnGameStart.AddListener(ResetDifficultyValue);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TODO: increment difficulty value over time
+        difficultyValue += Time.deltaTime * 0.1f;
     }
 	
 	private void ApplyDifficultySettings()
@@ -30,11 +31,11 @@ public class DifficultyManager : MonoBehaviour
 	}
 			
 	
-	public int GetDifficultyValue()
+	public float GetDifficultyValue()
 	{ return difficultyValue; }
 	
 	private void ResetDifficultyValue()
-	{ difficultyValue = 0; }
+	{ difficultyValue = 0f; }
 	
 	public float GetDifficultyModifier()
 	{ return this.difficultyModifier; }

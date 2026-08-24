@@ -64,8 +64,11 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
 
     void SpawnEnemy()
     {
+		//determine what to spawn
         int randomEnemyIndex = Random.Range(0, enemyTypeToPrefab.Count);
         GameObject randomEnemyPrefab = enemyTypeToPrefab.ElementAt(randomEnemyIndex).Value;
+		
+		//spawning
         Vector2 spawnPosition = Random.insideUnitCircle.normalized * spawnRadius;
         Instantiate(randomEnemyPrefab, spawnPosition, Quaternion.identity);
     }
