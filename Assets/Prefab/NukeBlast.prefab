@@ -184,6 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8e1c47d9a24f6ea0c5d12f84b7e390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NukePickupFlameEffect
-  pulseSpeed: 5
-  pulseScale: 0.4
+  pulseSpeed: 1
+  pulseScale: 20
   colorSpeed: 30
