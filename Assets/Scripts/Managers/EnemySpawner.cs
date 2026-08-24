@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
         while (doSpawnEnemies)
         {
             yield return new WaitForSeconds(enemySpawnRate);
-            SpawnRandomEnemy();
+            SpawnEnemyByDifficulty();
 			
 			if(enemySpawnRate >= 2)
 				enemySpawnRate -= 0.1f;
@@ -77,24 +77,23 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
 	
 	private void SpawnEnemyByDifficulty()
 	{
-		/*
 		List<GameObject> spawnList = new List<GameObject>();
 		
 		float difficultyValue = GameManager.GetInstance().GetDifficultyManager().GetDifficultyValue();
 		
 		
-		foreach (EnemyType typeName in enemyTypeToPrefab)
+		foreach (KeyValuePair<EnemyType, GameObject> enemyPair in enemyTypeToPrefab)
 		{
-			GameObject enemyQuery = enemyTypeToPrefab[typeName];
-			if(enemyQuery.GetDefeatScore() <= difficultyValue)
+			GameObject enemyQuery = enemyPair.Value;
+			if(enemyQuery.GetComponent<Enemy>().GetDefeatScore() <= difficultyValue)
+			{
 				spawnList.Add(enemyQuery);
+			}
 		}
 		
-		/*
-		GameObject enemyToSpawn = spawnList[random.Next(spawnList.Count)];
+		GameObject enemyToSpawn = spawnList[Random.Range(0, spawnList.Count)];
 		
 		SpawnEnemy(enemyToSpawn);
-		*/
 	}
 	
 	void SpawnEnemy(GameObject enemyToSpawn)
