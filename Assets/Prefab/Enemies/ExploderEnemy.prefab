@@ -135,8 +135,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   enemyType: 1
+  explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
+  baseHealth: 120
   attackDamage: 40
   attackRange: 0.5
   attackRate: 0
   defeatScore: 10
-  explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}

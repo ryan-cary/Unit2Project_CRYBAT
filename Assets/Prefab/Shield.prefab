@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762dee83a26a7454698fe6df1302b43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shield
+  damageColor: {r: 0, g: 0.09144923, b: 0.745283, a: 1}
 --- !u!50 &144541312156590884
 Rigidbody2D:
   serializedVersion: 5

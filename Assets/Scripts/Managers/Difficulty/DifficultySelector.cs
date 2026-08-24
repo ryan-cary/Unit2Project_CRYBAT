@@ -10,16 +10,20 @@ public enum Difficulty
 
 public class DifficultySelector : MonoBehaviour
 {
+	[Header("Debug")]
+	[SerializeField] Difficulty defaultDifficulty = Difficulty.Normal;
+	
+	[Header("Difficulty Settings")]
     [SerializeField] DifficultySetting difficulty_EASY;
     [SerializeField] DifficultySetting difficulty_NORMAL;
     [SerializeField] DifficultySetting difficulty_HARD;
     [SerializeField] DifficultySetting difficulty_HARDCORE;
 
     public DifficultySetting currentDifficultySetting;
-    public Difficulty currentDifficulty { get; private set; } = Difficulty.Normal;
+    public Difficulty currentDifficulty { get; private set; }
 
     void Awake() 
-    { ApplySettings(); }
+    { SetDifficulty(defaultDifficulty); }
 	
 	public DifficultySetting GetCurrentDifficultySetting()
 	{ return currentDifficultySetting; }
