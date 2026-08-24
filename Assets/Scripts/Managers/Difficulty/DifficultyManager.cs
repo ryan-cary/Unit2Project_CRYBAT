@@ -20,7 +20,7 @@ public class DifficultyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        difficultyValue += Time.deltaTime * 0.1f;
+        difficultyValue += Time.deltaTime * 0.1f * selector.GetCurrentDifficultySetting().baseDifficultyModifier;
     }
 	
 	private void ApplyDifficultySettings()
