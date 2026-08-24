@@ -4,7 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(DifficultySelector))]
 public class DifficultyManager : MonoBehaviour
 {
-	[SerializeField] private float difficultyValue = 5;
+	[SerializeField] private float baseDifficultyValue = 5;
+	[SerializeField] private float difficultyValue;
 	private float difficultyModifier;
 	
 	private DifficultySelector selector;
@@ -12,6 +13,8 @@ public class DifficultyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+		difficultyValue = baseDifficultyValue;
+		
         selector = GetComponent<DifficultySelector>();
 		GameManager.GetInstance().OnGameStart.AddListener(ApplyDifficultySettings);
 		GameManager.GetInstance().OnGameStart.AddListener(ResetDifficultyValue);
@@ -35,7 +38,7 @@ public class DifficultyManager : MonoBehaviour
 	{ return difficultyValue; }
 	
 	private void ResetDifficultyValue()
-	{ difficultyValue = 0f; }
+	{ difficultyValue = baseDifficultyValue; }
 	
 	public float GetDifficultyModifier()
 	{ return this.difficultyModifier; }
