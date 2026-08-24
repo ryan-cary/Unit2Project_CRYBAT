@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class NukeBehavior : PowerUpBehavior
 {
@@ -7,28 +8,45 @@ public class NukeBehavior : PowerUpBehavior
     [SerializeField] private GameObject nukeBlastPrefab;
     [SerializeField] private int maxNumOfNukes;
     protected override PickupType pickupType => PickupType.Nuke;
-    private int numOfNukes = 0;
+    private Stack<(float blastDuration, float blastRadius)> nukeParameterList = new Stack<(float blastDuration, float blastRadius)>();
 
     public Action OnCollectNuke;
     public Action OnUseNuke;
 
     public override void Collect(Pickup pickup)
     {
-        if (numOfNukes < maxNumOfNukes)
+        if (pickup is NukePickup nukePickup)
         {
-            numOfNukes++;
-            OnCollectNuke.Invoke();
+            if (nukeParameterList.Count < maxNumOfNukes)
+            {
+                AppendNukeParameters(nukePickup.GetBlastDuration(), nukePickup.GetBlastRadius());
+                OnCollectNuke.Invoke();
+            }
         }
     }
 
     public override void Use()
     {
-        if (numOfNukes > 0)
+        if (nukeParameterList.Count > 0)
         {
-            numOfNukes--;
-            OnUseNuke.Invoke();
             Vector3 blastPosition = new Vector3(transform.position.x, transform.position.y, nukeBlastPrefab.transform.position.z);
-            Instantiate(nukeBlastPrefab, blastPosition, Quaternion.identity);
+            GameObject nukeBlastObject = Instantiate(nukeBlastPrefab, blastPosition, Quaternion.identity);
+            NukeBlast nukeBlast = nukeBlastObject.GetComponent<NukeBlast>();
+
+            if (nukeBlast != null)
+            {
+                (float blastDuration, float blastRadius) = nukeParameterList.Pop();
+                nukeBlast.SetBlastParemeters(blastDuration, blastRadius);
+                OnUseNuke.Invoke();
+            } else
+            {
+                Destroy(nukeBlastObject);
+            }
         }
+    }
+
+    private void AppendNukeParameters(float _blastDuration, float _blastRadius)
+    {
+        nukeParameterList.Push((_blastDuration, _blastRadius));
     }
 }
