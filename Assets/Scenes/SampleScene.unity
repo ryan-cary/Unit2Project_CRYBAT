@@ -306,6 +306,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerPrefab: {fileID: 681556212235292093, guid: 3dfd4ec77432143298bce9a853efe643, type: 3}
+  enemyPrefabs:
+  - {fileID: 5897845175592691663, guid: 15cf4edf80a264958b45516341fb9032, type: 3}
+  - {fileID: 4036427750115356696, guid: db1e761f7d2c944c0a7255c2c4f5bb9e, type: 3}
+  - {fileID: 4036427750115356696, guid: e0056e606c5a249d382cf4ba0eb7c493, type: 3}
+  - {fileID: 4036427750115356696, guid: d8188e0e97ec04028b076d997938801c, type: 3}
+  - {fileID: 4036427750115356696, guid: 18c9e759a8c1a47bdadcd1e4dbff703b, type: 3}
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
@@ -313,10 +319,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   scoreManager: {fileID: 142263670}
-  difficultyManager: {fileID: 637870180}
-  enemySpawner: {fileID: 1474533662}
+  difficultyManager: {fileID: 0}
   pickupSpawner: {fileID: 872089614}
   bulletLifetime: 5
+  enemySpawnRate: 5
+  spawnRadius: 30
 --- !u!4 &448539890
 Transform:
   m_ObjectHideFlags: 0
@@ -334,11 +341,7 @@ Transform:
   - {fileID: 1029348644}
   - {fileID: 872089615}
   - {fileID: 637870179}
-<<<<<<< HEAD
   - {fileID: 8124001100220002}
-=======
-  - {fileID: 1474533661}
->>>>>>> diff-2
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -733,6 +736,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
   difficultyValue: 0
+  onDifficultySettingUpdated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &637870181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9a41184ca4227439ba2367ea92ed95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DifficultySelector
-  defaultDifficulty: 2
   difficulty_EASY: {fileID: 11400000, guid: 50a3dfb7bdd30284b8ca425ec983da27, type: 2}
   difficulty_NORMAL: {fileID: 11400000, guid: 460bb81ad281fd943a8d41bfccf0717e, type: 2}
   difficulty_HARD: {fileID: 11400000, guid: a8945612f7d1fba40882cdb3917feca2, type: 2}
@@ -884,23 +889,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickupSpawner
   pickups:
   - pickup: {fileID: 4263971216824109267, guid: 62b477cb54d744300a4a495fa58f779a, type: 3}
-<<<<<<< HEAD
     spawnWeight: 1
   - pickup: {fileID: 6602132389807104513, guid: d11866b81f86545ca8b28d8a62af4dcb, type: 3}
     spawnWeight: 1
   - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
     spawnWeight: 1
   - pickup: {fileID: 2676878704781448246, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-=======
-    spawnWeight: 3
-  - pickup: {fileID: 6602132389807104513, guid: d11866b81f86545ca8b28d8a62af4dcb, type: 3}
-    spawnWeight: 5
-  - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
->>>>>>> diff-2
     spawnWeight: 1
-  - pickup: {fileID: 2676878704781448246, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-    spawnWeight: 3
-  pickupProbability: 0.5
+  pickupProbability: 1
 --- !u!4 &872089615
 Transform:
   m_ObjectHideFlags: 0
@@ -1167,32 +1163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &1474533660
-GameObject:
+--- !u!1001 &1213330337
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1474533661}
-  - component: {fileID: 1474533662}
-  m_Layer: 0
-  m_Name: EnemySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1474533661
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474533660}
   serializedVersion: 2
-<<<<<<< HEAD
   m_Modification:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
@@ -1270,31 +1244,20 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406728065}
   serializedVersion: 2
-=======
->>>>>>> diff-2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-<<<<<<< HEAD
   m_Children:
   - {fileID: 1769316491}
   m_Father: {fileID: 1697237382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697237381
 GameObject:
-=======
-  m_Children: []
-  m_Father: {fileID: 448539890}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1474533662
-MonoBehaviour:
->>>>>>> diff-2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697237382}
@@ -1323,25 +1286,6 @@ Transform:
   - {fileID: 1868504452}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 1474533660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14afc6f09781ba24f9b9e2b3b6d7cadf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  enemyPrefabs:
-  - {fileID: 4036427750115356696, guid: d8188e0e97ec04028b076d997938801c, type: 3}
-  - {fileID: 4036427750115356696, guid: 18c9e759a8c1a47bdadcd1e4dbff703b, type: 3}
-  - {fileID: 4036427750115356696, guid: db1e761f7d2c944c0a7255c2c4f5bb9e, type: 3}
-  - {fileID: 4036427750115356696, guid: e0056e606c5a249d382cf4ba0eb7c493, type: 3}
-  - {fileID: 5897845175592691663, guid: 15cf4edf80a264958b45516341fb9032, type: 3}
-  enemySpawnRate: 7
-  spawnRadius: 32.5
-  OnEnemyDefeated:
-    m_PersistentCalls:
-      m_Calls: []
->>>>>>> diff-2
 --- !u!1 &1729359210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,11 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-<<<<<<< HEAD
 --- !u!1 &1868504451
-=======
---- !u!1 &1796106714
->>>>>>> diff-2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1535,92 +1475,21 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 1868504452}
   - component: {fileID: 1868504453}
   m_Layer: 0
   m_Name: SpaceSky
-=======
-  - component: {fileID: 1796106716}
-  - component: {fileID: 1796106715}
-  m_Layer: 0
-  m_Name: Circle
->>>>>>> diff-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!4 &1868504452
-=======
---- !u!212 &1796106715
-SpriteRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796106714}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
---- !u!4 &1796106716
->>>>>>> diff-2
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1868504451}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1647,17 +1516,6 @@ MonoBehaviour:
   topLayer: {fileID: 926957240}
   bottomLayer: {fileID: 828686900}
   cycleDuration: 16
-=======
-  m_GameObject: {fileID: 1796106714}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> diff-2
 --- !u!1 &2045215710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6395673110071938834, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
@@ -1874,9 +1732,5 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 2272386225579593029}
   - {fileID: 1729359213}
-<<<<<<< HEAD
   - {fileID: 1213330337}
   - {fileID: 1697237382}
-=======
-  - {fileID: 1796106716}
->>>>>>> diff-2
