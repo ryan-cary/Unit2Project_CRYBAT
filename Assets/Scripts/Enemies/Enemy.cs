@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 public class Enemy : PlayableObject
@@ -94,8 +95,8 @@ public class Enemy : PlayableObject
     {
         Explode();
         Destroy(gameObject);
-        GameManager.GetInstance().GetScoreManager().IncrementScore(defeatScore);
-        GameManager.GetInstance().OnEnemyDefeated(this);
+        //GameManager.GetInstance().GetScoreManager().IncrementScore(defeatScore);
+        GameManager.GetInstance().GetEnemySpawner().OnEnemyDefeated?.Invoke(this);
     }
 
     protected virtual void Explode()
