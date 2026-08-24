@@ -419,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 5329654009579616125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00057, y: 0.21054, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,9 +440,7 @@ MonoBehaviour:
   playableObject: {fileID: 1512662758222267152}
   shieldPrefab: {fileID: 5054786796665575624, guid: cafe206f20ba24361a859b1e798df657, type: 3}
   maxNumOfShields: 8
-  offsetRadius: 1.5
-  shieldHealth: 30
-  rotationSpeed: 5
+  offsetRadius: 2
 --- !u!1 &8947386435525603592
 GameObject:
   m_ObjectHideFlags: 0

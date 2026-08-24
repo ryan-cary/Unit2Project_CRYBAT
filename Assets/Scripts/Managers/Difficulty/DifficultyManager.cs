@@ -4,41 +4,42 @@ using UnityEngine.Events;
 [RequireComponent(typeof(DifficultySelector))]
 public class DifficultyManager : MonoBehaviour
 {
-	[SerializeField] private float baseDifficultyValue = 5;
-	[SerializeField] private float difficultyValue;
+	[SerializeField] private int difficultyValue = 0;
 	private float difficultyModifier;
 	
 	private DifficultySelector selector;
+	public UnityEvent<DifficultySetting> onDifficultySettingUpdated;
 	
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-		difficultyValue = baseDifficultyValue;
-		
         selector = GetComponent<DifficultySelector>();
-		GameManager.GetInstance().OnGameStart.AddListener(ApplyDifficultySettings);
-		GameManager.GetInstance().OnGameStart.AddListener(ResetDifficultyValue);
+		
+		if (onDifficultySettingUpdated == null)
+			onDifficultySettingUpdated = new UnityEvent<DifficultySetting>();
+		onDifficultySettingUpdated.AddListener(ApplyDifficultySettings);
+		
     }
 
     // Update is called once per frame
     void Update()
     {
-        difficultyValue += Time.deltaTime * 0.1f * selector.GetCurrentDifficultySetting().baseDifficultyModifier;
+        //TODO: increment difficulty value over time
     }
 	
-	private void ApplyDifficultySettings()
+	private void ApplyDifficultySettings(DifficultySetting settingToApply)
 	{
-		GameManager.GetInstance().GetPlayer().DifficultyOverride(selector.GetCurrentDifficultySetting());
-		GameManager.GetInstance().GetPickupSpawner().DifficultyOverride(selector.GetCurrentDifficultySetting());
-		GameManager.GetInstance().GetEnemySpawner().DifficultyOverride(selector.GetCurrentDifficultySetting());
+		difficultyModifier = settingToApply.baseDifficultyModifier;
+		//GameManager.GetInstance().SetSpawnRate(settingToApply.enemySpawnRate);
+		//TODO: apply player health override
 	}
 			
 	
-	public float GetDifficultyValue()
+	public int GetDifficultyValue()
 	{ return difficultyValue; }
 	
 	private void ResetDifficultyValue()
-	{ difficultyValue = baseDifficultyValue; }
+	{ difficultyValue = 0; }
 	
 	public float GetDifficultyModifier()
 	{ return this.difficultyModifier; }

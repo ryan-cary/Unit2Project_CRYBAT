@@ -1,18 +1,16 @@
 using UnityEngine;
 using System;
 
-public class Player : PlayableObject, IDifficultyOverridden
+public class Player : PlayableObject
 {
-    [SerializeField] private float baseHealth = 100f;
-	
-	[Header("Weapon Variables")]
+    // Attack variables
     [SerializeField] private float weaponDamage = 10;
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
 
     private Camera camera;
 
-    [Header("Pickup Behaviour References")]
+    // Pickup behavior references
     [SerializeField] HealthPickupBehavior healthPickupBehavior;
     [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
     [SerializeField] NukeBehavior nukeBehavior;
@@ -21,7 +19,6 @@ public class Player : PlayableObject, IDifficultyOverridden
     public override void Awake()
     {
         base.Awake();
-		health = new Health(baseHealth);
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
@@ -79,8 +76,6 @@ public class Player : PlayableObject, IDifficultyOverridden
         base.Defeated();
         Destroy(gameObject);
     }
-	
-	// ====== Pickups ====== //
 
     public HealthPickupBehavior GetHealthPickupBehavior()
     {
@@ -130,12 +125,4 @@ public class Player : PlayableObject, IDifficultyOverridden
             pickup.OnPicked();
         }
     }
-	
-	// ====== Difficulty ====== //
-	public void DifficultyOverride(DifficultySetting difficulty)
-	{
-		this.weapon = new Weapon("Player Weapon", weaponDamage * (1 / difficulty.baseDifficultyModifier), bulletSpeed);
-		this.health = new Health(baseHealth * (1 / difficulty.baseDifficultyModifier));
-	}
-
 }

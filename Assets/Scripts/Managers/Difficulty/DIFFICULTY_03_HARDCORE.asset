@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DifficultySetting
   name: Normal
   difficultyCode: 3
-  baseDifficultyModifier: 4
-  enemySpawnRate: 3
+  baseDifficultyModifier: 5
+  enemySpawnRate: 5
   playerHealthOverride: 25

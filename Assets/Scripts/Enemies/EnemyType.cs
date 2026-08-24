@@ -4,5 +4,6 @@ public enum EnemyType
     Exploder,
     Shooter,
     MachineGun,
+    Popup,
     Big
 }

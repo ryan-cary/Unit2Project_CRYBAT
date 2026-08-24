@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Easy
   difficultyCode: 0
   baseDifficultyModifier: 0.5
-  enemySpawnRate: 10
+  enemySpawnRate: 8
   playerHealthOverride: 150

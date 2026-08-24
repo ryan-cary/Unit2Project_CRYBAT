@@ -2,55 +2,39 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour, IDamageable
 {
-    [SerializeField] private Color damageColor;
-
-    private SpriteRenderer spriteRenderer;
     private ShieldBehavior shieldBehavior;
     private Health health;
-    private Color startColor;
 
-    private void Start()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        health = new Health(10);
+    }
 
-        if (spriteRenderer != null)
-        {
-            startColor = spriteRenderer.color;
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     public void GetDamage(float damage)
     {
-        if (health != null)
-        {
-            health.DeductHealth(damage);
-            UpdateColor();
+        health.DeductHealth(damage);
 
-            if (health.GetHealth() <= 0)
+        if (health.GetHealth() <= 0)
         {
-            if (shieldBehavior != null)
-            {
-                shieldBehavior.ReorderShieldList(this);
-            }
+            // TODO: reset shield list in behavior class
             Destroy(gameObject);
-        }
         }
     }
 
     public void SetShieldBehavior(ShieldBehavior _shieldBehavior)
     {
         shieldBehavior = _shieldBehavior;
-        health = new Health(_shieldBehavior.GetShieldHealth());
-
     }
 
     public string GetParentTag()
     {
         return shieldBehavior.GetPlayableObject().gameObject.tag;
-    }
-
-    private void UpdateColor()
-    {
-        spriteRenderer.color = Color.Lerp(damageColor, startColor, health.GetHealth() / health.GetMaxHealth());
     }
 }

@@ -1,20 +1,16 @@
 using UnityEngine;
-using UnityEngine.Events;
 using System;
 
 public class Enemy : PlayableObject
 {
-    [SerializeField] private EnemyType enemyType;	
-    [SerializeField] ExplosionFragment explosionFragmentPrefab;
-	
-	[Header("Enemy Stats")]
-	[SerializeField] protected float baseHealth = 100f;
+    protected Transform target;
+    [SerializeField] private EnemyType enemyType;
     [SerializeField] protected float attackDamage = 10f;
     [SerializeField] protected float attackRange = 5;
     [SerializeField] protected float attackRate = 2f;
     [SerializeField] protected int defeatScore = 10;
-	
-	protected Transform target;
+    [SerializeField] ExplosionFragment explosionFragmentPrefab;
+
     protected float targetSpeed;
     protected float timer = 0;
     protected bool isAttacking;
@@ -127,7 +123,4 @@ public class Enemy : PlayableObject
             Defeated();
         }
     }
-	
-	public int GetDefeatScore()
-	{ return this.defeatScore; }
 }

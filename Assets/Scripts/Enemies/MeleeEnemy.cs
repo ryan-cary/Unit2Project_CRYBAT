@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
-	[Header("Punch Stats")]
+
     [SerializeField] private GameObject fistObject;
     [SerializeField] private float punchTime = 1f;
 
@@ -12,7 +12,6 @@ public class MeleeEnemy : Enemy
      new private void Start()
     {
         base.Start();
-		this.defeatScore = 5;
         punchSpeed = 2 * attackRange / punchTime;
         ResetFist();
     }

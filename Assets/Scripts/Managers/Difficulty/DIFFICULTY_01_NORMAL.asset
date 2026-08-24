@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Normal
   difficultyCode: 1
   baseDifficultyModifier: 1
-  enemySpawnRate: 7
+  enemySpawnRate: 5
   playerHealthOverride: 100
