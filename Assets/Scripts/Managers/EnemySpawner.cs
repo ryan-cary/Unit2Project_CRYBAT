@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
 	private Dictionary<EnemyType, GameObject> enemyTypeToPrefab = new Dictionary<EnemyType, GameObject>();
 	
 	[SerializeField] private float enemySpawnRate = 7f;
-    [SerializeField] private float spawnRadius = 10f;
+    [SerializeField] private float spawnRadius = 32.5f; //roughly just past edges of the screen on standard 16:9 or 1920x1080
 	
 	private bool doSpawnEnemies = false;
 	
@@ -58,20 +58,27 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
         while (doSpawnEnemies)
         {
             yield return new WaitForSeconds(enemySpawnRate);
-            SpawnEnemy();
+            SpawnRandomEnemy();
+			
+			if(enemySpawnRate >= 2)
+				enemySpawnRate -= 0.1f;
         }
     }
 
-    void SpawnEnemy()
+    void SpawnRandomEnemy()
     {
 		//determine what to spawn
         int randomEnemyIndex = Random.Range(0, enemyTypeToPrefab.Count);
         GameObject randomEnemyPrefab = enemyTypeToPrefab.ElementAt(randomEnemyIndex).Value;
 		
-		//spawning
-        Vector2 spawnPosition = Random.insideUnitCircle.normalized * spawnRadius;
-        Instantiate(randomEnemyPrefab, spawnPosition, Quaternion.identity);
+		SpawnEnemy(randomEnemyPrefab);        
     }
+	
+	void SpawnEnemy(GameObject enemyToSpawn)
+	{
+		Vector2 spawnPosition = Random.insideUnitCircle.normalized * spawnRadius;
+        Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+	}
 	
 	// ====== Difficulty ======//
 	public void DifficultyOverride(DifficultySetting difficulty)
