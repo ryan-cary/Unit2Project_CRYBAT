@@ -1590,6 +1590,10 @@ MonoBehaviour:
   startMenuVolume: 0.253
   gameOverClip: {fileID: 8300000, guid: e80029b3cf7f68b4d8dfe8768c936ec0, type: 3}
   gameOverVolume: 0.249
+  buttonHoverClip: {fileID: 8300000, guid: efb5f1b0875bbc7408e2352c2367f89a, type: 3}
+  buttonHoverVolume: 0.7
+  buttonClickClip: {fileID: 8300000, guid: eb29844b03df258489a10c01c6e51552, type: 3}
+  buttonClickVolume: 0.7
 --- !u!1001 &2272386225579593029
 PrefabInstance:
   m_ObjectHideFlags: 0

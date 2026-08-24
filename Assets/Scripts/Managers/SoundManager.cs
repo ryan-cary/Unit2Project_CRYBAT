@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float startMenuVolume = 0.4f;
     [SerializeField] private AudioClip gameOverClip;
     [SerializeField, Range(0f, 1f)] private float gameOverVolume = 0.4f;
+
+    [Header("UI")]
+    [SerializeField] private AudioClip buttonHoverClip;
+    [SerializeField, Range(0f, 1f)] private float buttonHoverVolume = 0.7f;
+    [SerializeField] private AudioClip buttonClickClip;
+    [SerializeField, Range(0f, 1f)] private float buttonClickVolume = 0.7f;
 
     private AudioSource engineSource;
     private AudioSource sfxSource;
@@ -81,6 +88,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         PlayStartMenuMusic();
+        BindButtonSounds();
     }
 
     void Update()
@@ -187,6 +195,16 @@ public class SoundManager : MonoBehaviour
         PlaySfx(enemyDyingClip, enemyDyingVolume);
     }
 
+    public void PlayButtonHover()
+    {
+        PlaySfx(buttonHoverClip, buttonHoverVolume);
+    }
+
+    public void PlayButtonClick()
+    {
+        PlaySfx(buttonClickClip, buttonClickVolume);
+    }
+
     void PlaySfx(AudioClip clip, float volume)
     {
         if (sfxSource == null || clip == null)
@@ -260,5 +278,15 @@ public class SoundManager : MonoBehaviour
             return;
 
         musicSource.Stop();
+    }
+
+    void BindButtonSounds()
+    {
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Button button in buttons)
+        {
+            if (button.GetComponent<UIButtonSound>() == null)
+                button.gameObject.AddComponent<UIButtonSound>();
+        }
     }
 }
