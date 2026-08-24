@@ -8,11 +8,11 @@ public struct PickupSpawn
     public int spawnWeight;
 }
 
-public class PickupSpawner : MonoBehaviour
+public class PickupSpawner : MonoBehaviour, IDifficultyOverridden
 {
     [SerializeField] private PickupSpawn[] pickups;
 
-    [Range(0, 1)]
+    [Range(0, 1)][SerializeField] private float basePickupProbability;
     [SerializeField] private float pickupProbability;
 
     List<Pickup> pickupPool = new List<Pickup>();
@@ -45,4 +45,10 @@ public class PickupSpawner : MonoBehaviour
             Instantiate(chosenPickup, spawnPosition, Quaternion.identity);
         }
     }
+	
+	public void DifficultyOverride(DifficultySetting difficulty)
+	{
+		this.pickupProbability = basePickupProbability * (1 / difficulty.baseDifficultyModifier);
+	}
+	
 }

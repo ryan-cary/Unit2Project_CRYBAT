@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class Player : PlayableObject
+public class Player : PlayableObject, IDifficultyOverridden
 {
-    // Attack variables
+    [SerializeField] private float baseHealth = 100f;
+	
+	[Header("Weapon Variables")]
     [SerializeField] private float weaponDamage = 10;
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
@@ -14,9 +16,19 @@ public class Player : PlayableObject
     public override void Awake()
     {
         base.Awake();
+		health = new Health(baseHealth);
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
+        SetSpriteDrawOrder();
+    }
+
+    void SetSpriteDrawOrder()
+    {
+        foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            spriteRenderer.sortingOrder = 5;
+        }
     }
 
     void Update()
@@ -57,6 +69,8 @@ public class Player : PlayableObject
         base.Defeated();
         Destroy(gameObject);
     }
+	
+	// ====== Pickups ====== //
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -71,4 +85,11 @@ public class Player : PlayableObject
     {
         return pickupBehaviorController;
     }
+	
+	// ====== Difficulty ====== //
+	public void DifficultyOverride(DifficultySetting difficulty)
+	{
+		this.weapon = new Weapon("Player Weapon", weaponDamage * (1 / difficulty.baseDifficultyModifier), bulletSpeed);
+		this.health = new Health(baseHealth * (1 / difficulty.baseDifficultyModifier));
+	}
 }

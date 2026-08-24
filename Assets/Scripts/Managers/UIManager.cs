@@ -117,12 +117,12 @@ public class UIManager : MonoBehaviour
 
     void UpdateHealth(float health)
     {
-        healthText.text = $"Health: {health.ToString("0.0")}";
+        healthText.text = health.ToString("0.0");
     }
 
     void UpdateScore(int score)
     {
-        scoreText.text = $"Score: {score}";
+        scoreText.text = score.ToString();
     }
 
     void UpdateHighScore(int highScore)

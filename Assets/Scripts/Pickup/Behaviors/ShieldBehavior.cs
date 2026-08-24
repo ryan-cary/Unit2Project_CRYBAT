@@ -12,13 +12,12 @@ public class ShieldBehavior : PowerUpBehavior
     [SerializeField] private float rotationSpeed;
 
     protected override PickupType pickupType => PickupType.Shield;
-
     private bool hasShield;
     private int pickupNumOfShields;
     private List<Shield> shieldList = new List<Shield>();
 
     private float angle = 0;
-
+    
     private void Start()
     {
         if (startNumOfShields > 0)
