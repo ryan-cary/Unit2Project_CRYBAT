@@ -12,7 +12,7 @@ public class PickupSpawner : MonoBehaviour, IDifficultyOverridden
 {
     [SerializeField] private PickupSpawn[] pickups;
 
-    [Range(0, 1)]
+    [Range(0, 1)][SerializeField] private float basePickupProbability;
     [SerializeField] private float pickupProbability;
 
     List<Pickup> pickupPool = new List<Pickup>();
@@ -48,7 +48,7 @@ public class PickupSpawner : MonoBehaviour, IDifficultyOverridden
 	
 	public void DifficultyOverride(DifficultySetting difficulty)
 	{
-		this.pickupProbability = 0.5f * (1 / difficulty.baseDifficultyModifier);
+		this.pickupProbability = basePickupProbability * (1 / difficulty.baseDifficultyModifier);
 	}
 	
 }
