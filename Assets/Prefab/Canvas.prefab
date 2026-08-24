@@ -564,7 +564,6 @@ GameObject:
   - component: {fileID: 6723272493384535431}
   - component: {fileID: 1169936872419741192}
   - component: {fileID: 4120243439804944899}
-  - component: {fileID: 6701665913589947770}
   m_Layer: 5
   m_Name: Enemy07
   m_TagString: Untagged
@@ -629,28 +628,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &6701665913589947770
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 580997818709294160}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 87875cbe16ac044a3aefde09cf41bb18, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &840023858428513707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1630,7 @@ GameObject:
   - component: {fileID: 8947801490478454635}
   - component: {fileID: 2149924109182223553}
   - component: {fileID: 4520953135649597663}
+  - component: {fileID: 5466145638810691692}
   m_Layer: 5
   m_Name: Btn4-Genocide
   m_TagString: Untagged
@@ -1775,6 +1753,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5466145638810691692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690796911672621053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d8a3f2521cd47a5a6b9f7b1af82220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
+  buttonText: {fileID: 5115982287170212480}
 --- !u!1 &1920137496771885676
 GameObject:
   m_ObjectHideFlags: 0
@@ -4540,6 +4531,7 @@ GameObject:
   - component: {fileID: 8486280589095277248}
   - component: {fileID: 7743139956174432930}
   - component: {fileID: 2621409754027568500}
+  - component: {fileID: 2643365109698429456}
   m_Layer: 5
   m_Name: Btn1-GreenZone
   m_TagString: Untagged
@@ -4788,6 +4780,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2643365109698429456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886147617701546432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d8a3f2521cd47a5a6b9f7b1af82220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
+  buttonText: {fileID: 8043041897266529256}
 --- !u!1 &5238379725314276622
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,6 +6364,7 @@ GameObject:
   - component: {fileID: 860268786623591714}
   - component: {fileID: 7171091869609233997}
   - component: {fileID: 4248819294129771514}
+  - component: {fileID: 9186160458606021069}
   m_Layer: 5
   m_Name: Btn2-Combat
   m_TagString: Untagged
@@ -6481,6 +6487,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9186160458606021069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842242981268041341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d8a3f2521cd47a5a6b9f7b1af82220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
+  buttonText: {fileID: 5052730770236674478}
 --- !u!1 &8335544048489411679
 GameObject:
   m_ObjectHideFlags: 0
@@ -6751,6 +6770,7 @@ GameObject:
   - component: {fileID: 2868818306650108325}
   - component: {fileID: 8395716047390270975}
   - component: {fileID: 1797355663039835793}
+  - component: {fileID: 5475123462410078671}
   m_Layer: 5
   m_Name: Btn3-WarZone
   m_TagString: Untagged
@@ -6873,6 +6893,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5475123462410078671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512032536112309391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d8a3f2521cd47a5a6b9f7b1af82220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
+  buttonText: {fileID: 7578790176795547118}
 --- !u!1 &8616212884659136352
 GameObject:
   m_ObjectHideFlags: 0
