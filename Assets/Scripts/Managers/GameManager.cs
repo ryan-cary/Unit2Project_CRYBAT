@@ -26,58 +26,28 @@ public class GameManager : MonoBehaviour
     // ------ End Singleton Setup ------
 
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject[] enemyPrefabs;
 
     private Player player;
-    private Dictionary<EnemyType, GameObject> enemyTypeToPrefab = new Dictionary<EnemyType, GameObject>();
 
     // Actions
     public UnityEvent OnGameStart;
     public UnityEvent OnGameEnd;
 
-    // References
+    [Header("Manager References")]
     [SerializeField] private ScoreManager scoreManager;
 	[SerializeField] private DifficultyManager difficultyManager;
-    [SerializeField] private PickupSpawner pickupSpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
+	[SerializeField] private PickupSpawner pickupSpawner;
+	
 
-    // Game data
+    [Header("Game Data")]
     [SerializeField] private float bulletLifetime;
-    [SerializeField] private float enemySpawnRate = 7f;
-    [SerializeField] private float spawnRadius = 10f;
 
     // Game State
     bool isGameInProgress = false;
-    bool shouldEnemiesSpawn = false;
-
-    /*
-    TODO
-    main menu
-    game over screen
-    event for game start and stop
-    a way to clean up the game when it's over
-    */
-
     void Awake()
     {
         SetSingleton();
-        SetEnemyPrefabDictionary();
-    }
-
-    void SetEnemyPrefabDictionary()
-    {
-        foreach (GameObject enemyPrefab in enemyPrefabs)
-        {
-            if (enemyPrefab != null)
-            {
-                Enemy enemyScript = enemyPrefab.GetComponent<Enemy>();
-
-                if (enemyScript != null)
-                {
-                    EnemyType type = enemyScript.GetEnemyType();
-                    enemyTypeToPrefab[type] = enemyPrefab; 
-                }
-            }
-        }
     }
 
     public void StartGame()
@@ -87,24 +57,13 @@ public class GameManager : MonoBehaviour
         player = Instantiate(playerPrefab).GetComponent<Player>();
         player.OnDefeated.AddListener(StopGame);
         OnGameStart?.Invoke();
-        StartCoroutine(GameStartRoutine());
     }
 
     public void StopGame()
     {
         scoreManager.SaveHighScore();
         OnGameEnd?.Invoke();
-        shouldEnemiesSpawn = false;
         StartCoroutine(GameStopRoutine());
-    }
-
-    private IEnumerator GameStartRoutine()
-    {
-        yield return new WaitForSeconds(1.0f);
-        shouldEnemiesSpawn = true;
-        SpawnEnemy();
-        StartCoroutine(EnemySpawnRoutine());
-        
     }
 
     private IEnumerator GameStopRoutine()
@@ -126,28 +85,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator EnemySpawnRoutine()
-    {
-        while (shouldEnemiesSpawn)
-        {
-            yield return new WaitForSeconds(enemySpawnRate);
-            SpawnEnemy();
-        }
-    }
-
-    void SpawnEnemy()
-    {
-        int randomEnemyIndex = Random.Range(0, enemyTypeToPrefab.Count);
-        GameObject randomEnemyPrefab = enemyTypeToPrefab.ElementAt(randomEnemyIndex).Value;
-        Vector2 spawnPosition = Random.insideUnitCircle.normalized * spawnRadius;
-        Instantiate(randomEnemyPrefab, spawnPosition, Quaternion.identity);
-    }
-
-    public void OnEnemyDefeated(Enemy enemy)
-    {
-        pickupSpawner.SpawnPickup(enemy.transform.position);
-    }
-
     public Player GetPlayer()
     {
         return player;
@@ -163,6 +100,11 @@ public class GameManager : MonoBehaviour
         return difficultyManager;
     }
 	
+	public EnemySpawner GetEnemySpawner()
+    {
+        return enemySpawner;
+    }
+	
 	public PickupSpawner GetPickupSpawner()
     {
         return pickupSpawner;
@@ -176,10 +118,5 @@ public class GameManager : MonoBehaviour
     public bool IsGameInProgress()
     {
         return isGameInProgress;
-    }
-
-    public bool ShouldEnemiesSpawn()
-    {
-        return shouldEnemiesSpawn;
     }
 }
