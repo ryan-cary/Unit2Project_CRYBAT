@@ -6,6 +6,8 @@ public class GunPowerUpPickup : Pickup
     [SerializeField] private float duration;
     [SerializeField] private float shootRate;
 
+    protected override PickupType pickupType => PickupType.GunPowerUp;
+
     public float GetDuration()
     {
         return duration;

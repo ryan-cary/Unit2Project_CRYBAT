@@ -517,10 +517,10 @@ MonoBehaviour:
   - pickup: {fileID: 4263971216824109267, guid: 62b477cb54d744300a4a495fa58f779a, type: 3}
     spawnWeight: 5
   - pickup: {fileID: 2676878704781448246, guid: 6bad7ae93936145d6b25c014f00fb68b, type: 3}
-    spawnWeight: 5
+    spawnWeight: 6
   - pickup: {fileID: 7913966405493228481, guid: e976d6ce71c1d4f32a8f8e1e8802a85d, type: 3}
-    spawnWeight: 2
-  pickupProbability: 0.4
+    spawnWeight: 3
+  pickupProbability: 0.5
 --- !u!4 &872089615
 Transform:
   m_ObjectHideFlags: 0

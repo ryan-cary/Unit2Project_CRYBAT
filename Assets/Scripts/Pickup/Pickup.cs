@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour, IDamageable
 {
-    [SerializeField] private PickupType pickupType;
+    protected abstract PickupType pickupType { get; }
 
     public void OnPicked()
     {
