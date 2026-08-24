@@ -1579,13 +1579,13 @@ MonoBehaviour:
   shieldPickupClip: {fileID: 8300000, guid: 8b69d80483629c845b1acfb826a18069, type: 3}
   shieldPickupVolume: 0.8
   nukePickupClip: {fileID: 8300000, guid: 4ba388d5be6f9624885cf8893b52cbfa, type: 3}
-  nukePickupVolume: 0.8
+  nukePickupVolume: 0.605
   gunPickupClip: {fileID: 8300000, guid: e1761c95ddae38144bdac89a91d8cec5, type: 3}
   gunPickupVolume: 0.8
   healthPickupClip: {fileID: 8300000, guid: 766e6e9578750824482e8f17ff3a7901, type: 3}
   healthPickupVolume: 0.8
   missileLaunchDetectedClip: {fileID: 8300000, guid: fc698d421757cc14da009baa5d46a970, type: 3}
-  missileLaunchDetectedVolume: 0.549
+  missileLaunchDetectedVolume: 0.382
   enemyDyingClip: {fileID: 8300000, guid: c36ca4d8a59972f4982bad4365937c3e, type: 3}
   enemyDyingVolume: 0.2
   cosmicFuryClip: {fileID: 8300000, guid: e1b299d4e91b8e14ab3ff64f52a9f0a9, type: 3}
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 8300000, guid: e80029b3cf7f68b4d8dfe8768c936ec0, type: 3}
   gameOverVolume: 0.249
   buttonHoverClip: {fileID: 8300000, guid: efb5f1b0875bbc7408e2352c2367f89a, type: 3}
-  buttonHoverVolume: 0.7
+  buttonHoverVolume: 0.48
   buttonClickClip: {fileID: 8300000, guid: eb29844b03df258489a10c01c6e51552, type: 3}
   buttonClickVolume: 0.7
 --- !u!1001 &2272386225579593029
