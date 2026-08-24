@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: f5b24285f4db94a0da38968942c56684
+guid: cc6a3b54480344b08921013d1179c29c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5244453137740643858
-    second: img-PlayerFlight_0
+      213: 8418594631455486957
+    second: img-Dots1_0
+  - first:
+      213: 5447589659738122512
+    second: img-Dots1_1
+  - first:
+      213: -8838257975374073064
+    second: img-Dots1_2
+  - first:
+      213: 6602313869013503368
+    second: img-Dots1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: img-PlayerFlight_0
+      name: img-Dots1_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 25
-        width: 412
-        height: 397
+        x: 0
+        y: 0
+        width: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee149c358a5f737b0800000000000000
-      internalID: -5244453137740643858
+      spriteID: de33ae3b63bd4d470800000000000000
+      internalID: 8418594631455486957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-Dots1_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01928c6dee9b99b40800000000000000
+      internalID: 5447589659738122512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-Dots1_2
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 813b090d233385580800000000000000
+      internalID: -8838257975374073064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: img-Dots1_3
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88d4f2abb7120ab50800000000000000
+      internalID: 6602313869013503368
       vertices: []
       indices: 
       edges: []
@@ -161,7 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      img-PlayerFlight_0: -5244453137740643858
+      img-Dots1_0: 8418594631455486957
+      img-Dots1_1: 5447589659738122512
+      img-Dots1_2: -8838257975374073064
+      img-Dots1_3: 6602313869013503368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
