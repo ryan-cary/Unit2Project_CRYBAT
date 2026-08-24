@@ -45,6 +45,11 @@ public class Health
         return currentHealth;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void SetRegenRate(float _healthRegenRate)
     {
         this.healthRegenRate = _healthRegenRate;
