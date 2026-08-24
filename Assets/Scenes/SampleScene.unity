@@ -1583,11 +1583,11 @@ MonoBehaviour:
   cosmicFuryClip: {fileID: 8300000, guid: e1b299d4e91b8e14ab3ff64f52a9f0a9, type: 3}
   cosmicFuryVolume: 0.4
   startMenuClip: {fileID: 8300000, guid: 77394f3baf6c6ec4b8266fb0207190cc, type: 3}
-  startMenuVolume: 0.253
+  startMenuVolume: 0.118
   gameOverClip: {fileID: 8300000, guid: e80029b3cf7f68b4d8dfe8768c936ec0, type: 3}
   gameOverVolume: 0.249
   buttonHoverClip: {fileID: 8300000, guid: efb5f1b0875bbc7408e2352c2367f89a, type: 3}
-  buttonHoverVolume: 0.48
+  buttonHoverVolume: 0.703
   buttonClickClip: {fileID: 8300000, guid: eb29844b03df258489a10c01c6e51552, type: 3}
   buttonClickVolume: 0.7
 --- !u!1001 &2272386225579593029
@@ -1693,6 +1693,14 @@ PrefabInstance:
     - target: {fileID: 2571167970275174185, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957852107481559360, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957852107481559360, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7881321348827431530, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
