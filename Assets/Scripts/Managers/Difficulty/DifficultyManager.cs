@@ -4,7 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(DifficultySelector))]
 public class DifficultyManager : MonoBehaviour
 {
-	[SerializeField] private float difficultyValue = 0;
+	[SerializeField] private float difficultyValue = 5;
 	private float difficultyModifier;
 	
 	private DifficultySelector selector;
