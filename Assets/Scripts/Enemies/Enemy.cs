@@ -95,8 +95,8 @@ public class Enemy : PlayableObject
     {
         Explode();
         Destroy(gameObject);
-        //GameManager.GetInstance().GetScoreManager().IncrementScore(defeatScore);
-        GameManager.GetInstance().GetEnemySpawner().OnEnemyDefeated?.Invoke(this);
+        GameManager.GetInstance().GetScoreManager().IncrementScore(defeatScore);
+        GameManager.GetInstance().OnEnemyDefeated(this);
     }
 
     protected virtual void Explode()

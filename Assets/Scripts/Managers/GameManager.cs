@@ -84,6 +84,11 @@ public class GameManager : MonoBehaviour
             Destroy(nukeBlast.gameObject);
         }
     }
+	
+	public void OnEnemyDefeated(Enemy enemy)
+    {
+        pickupSpawner.SpawnPickup(enemy.transform.position);
+    }
 
     public Player GetPlayer()
     {
