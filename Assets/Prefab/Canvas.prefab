@@ -3737,6 +3737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8481169563188136427}
   - component: {fileID: 2928745754256805244}
+  - component: {fileID: 7791221051079766249}
   - component: {fileID: 7160867595186159349}
   m_Layer: 5
   m_Name: decor-right
@@ -3772,6 +3773,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3974809209954686171}
   m_CullTransparentMesh: 1
+--- !u!114 &7791221051079766249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974809209954686171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c107caa8d5c04a5194e8bb7a9e6bb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulseGlow
+  glowImage: {fileID: 7160867595186159349}
+  pulseSpeed: 2
+  minAlpha: 0.2
+  maxAlpha: 0.8
 --- !u!114 &7160867595186159349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5888,6 +5905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5755781454267894135}
   - component: {fileID: 3189363294895746854}
+  - component: {fileID: 8786403561189728672}
   - component: {fileID: 99562579124385289}
   m_Layer: 5
   m_Name: decor-left
@@ -5923,6 +5941,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6926206625483781166}
   m_CullTransparentMesh: 1
+--- !u!114 &8786403561189728672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926206625483781166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c107caa8d5c04a5194e8bb7a9e6bb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulseGlow
+  glowImage: {fileID: 99562579124385289}
+  pulseSpeed: 2
+  minAlpha: 0.2
+  maxAlpha: 0.8
 --- !u!114 &99562579124385289
 MonoBehaviour:
   m_ObjectHideFlags: 0
