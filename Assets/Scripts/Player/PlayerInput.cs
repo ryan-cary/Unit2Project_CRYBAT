@@ -36,15 +36,15 @@ public class PlayerInput : MonoBehaviour
         stopShootInput = Input.GetMouseButtonUp(0);
         nukeInput = Input.GetMouseButtonDown(1);
 
-        if (player.HasGunPowerUp())
+        if (player.GetPickupBehaviorController().HasGunPowerUp())
         {
-            player.GetGunPowerUpBehavior().Shoot(shootInput, stopShootInput);
+            player.GetPickupBehaviorController().GetGunPowerUpBehavior().Shoot(shootInput, stopShootInput);
         }
         else
         {
             if (shootInput) player.Shoot();
         }
 
-        if (nukeInput) player.GetNukeBehavior()?.Use();
+        if (nukeInput) player.GetPickupBehaviorController().GetNukeBehavior()?.Use();
     }
 }

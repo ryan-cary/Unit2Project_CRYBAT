@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Player : PlayableObject
 {
@@ -8,12 +7,9 @@ public class Player : PlayableObject
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
 
+    [SerializeField] private PickupBehaviorController pickupBehaviorController;
+
     private Camera camera;
-
-    // Pickup behavior references
-    [SerializeField] PowerUpBehavior[] powerUpBehaviors;
-
-    private Dictionary<PickupType, PowerUpBehavior> pickupTypeToBehavior = new Dictionary<PickupType, PowerUpBehavior>();
 
     public override void Awake()
     {
@@ -21,15 +17,6 @@ public class Player : PlayableObject
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
-        SetPickupDictionary();
-    }
-
-    private void SetPickupDictionary()
-    {
-        foreach (PowerUpBehavior powerUpBehavior in powerUpBehaviors)
-        {
-            pickupTypeToBehavior[powerUpBehavior.GetPickupType()] = powerUpBehavior;
-        }
     }
 
     void Update()
@@ -55,17 +42,6 @@ public class Player : PlayableObject
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
-    public bool HasGunPowerUp()
-    {
-        GunPowerUpBehavior gunPowerUpBehavior = GetGunPowerUpBehavior();
-
-        if (gunPowerUpBehavior != null)
-        {
-            return gunPowerUpBehavior.HasGunPowerUp();
-        }
-        return false;
-    }
-
     public override void GetDamage(float damage)
     {
         health.DeductHealth(damage);
@@ -82,42 +58,6 @@ public class Player : PlayableObject
         Destroy(gameObject);
     }
 
-    public PowerUpBehavior GetPowerUpBehavior(PickupType pickupType)
-    {
-        if (pickupTypeToBehavior.ContainsKey(pickupType))
-        {
-            return pickupTypeToBehavior[pickupType];
-        }
-        return null;
-    }
-
-    public GunPowerUpBehavior GetGunPowerUpBehavior()
-    {
-        PowerUpBehavior powerUpBehavior = GetPowerUpBehavior(PickupType.GunPowerUp);
-
-        if (powerUpBehavior is GunPowerUpBehavior gunPowerUpBehavior)
-        {
-            return gunPowerUpBehavior;
-        }
-        return null;
-    }
-
-    public NukeBehavior GetNukeBehavior()
-    {
-        PowerUpBehavior powerUpBehavior = GetPowerUpBehavior(PickupType.Nuke);
-
-        if (powerUpBehavior is NukeBehavior nukeBehavior)
-        {
-            return nukeBehavior;
-        }
-        return null;
-    }
-
-    public void CollectPickup(Pickup pickup)
-    {
-        GetPowerUpBehavior(pickup.GetPickupType())?.Collect(pickup);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Pickup"))
@@ -125,5 +65,10 @@ public class Player : PlayableObject
             Pickup pickup = collision.gameObject.GetComponent<Pickup>();
             pickup.OnPicked();
         }
+    }
+
+    public PickupBehaviorController GetPickupBehaviorController()
+    {
+        return pickupBehaviorController;
     }
 }

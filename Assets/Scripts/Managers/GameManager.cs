@@ -119,6 +119,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(pickup.gameObject);
         }
+        foreach (Bullet bullet in FindObjectsByType<Bullet>(FindObjectsSortMode.None))
+        {
+            Destroy(bullet.gameObject);
+        }
         foreach (NukeBlast nukeBlast in FindObjectsByType<NukeBlast>(FindObjectsSortMode.None))
         {
             Destroy(nukeBlast.gameObject);

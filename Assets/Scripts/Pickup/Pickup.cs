@@ -6,7 +6,7 @@ public abstract class Pickup : MonoBehaviour, IDamageable
 
     public void OnPicked()
     {
-        GameManager.GetInstance().GetPlayer().CollectPickup(this);
+        GameManager.GetInstance().GetPlayer().GetPickupBehaviorController().CollectPickup(this);
         Destroy(gameObject);
     }
 
