@@ -65,7 +65,7 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
         }
     }
 
-    void SpawnRandomEnemy()
+    private void SpawnRandomEnemy()
     {
 		//determine what to spawn
         int randomEnemyIndex = Random.Range(0, enemyTypeToPrefab.Count);
@@ -73,6 +73,29 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
 		
 		SpawnEnemy(randomEnemyPrefab);        
     }
+	
+	
+	private void SpawnEnemyByDifficulty()
+	{
+		/*
+		List<GameObject> spawnList = new List<GameObject>();
+		
+		float difficultyValue = GameManager.GetInstance().GetDifficultyManager().GetDifficultyValue();
+		
+		
+		foreach (EnemyType typeName in enemyTypeToPrefab)
+		{
+			GameObject enemyQuery = enemyTypeToPrefab[typeName];
+			if(enemyQuery.GetDefeatScore() <= difficultyValue)
+				spawnList.Add(enemyQuery);
+		}
+		
+		/*
+		GameObject enemyToSpawn = spawnList[random.Next(spawnList.Count)];
+		
+		SpawnEnemy(enemyToSpawn);
+		*/
+	}
 	
 	void SpawnEnemy(GameObject enemyToSpawn)
 	{
