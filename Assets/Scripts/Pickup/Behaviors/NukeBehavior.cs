@@ -19,7 +19,7 @@ public class NukeBehavior : PowerUpBehavior
         {
             if (nukeParameterList.Count < maxNumOfNukes)
             {
-                AppendNukeParameters(nukePickup.GetBlastDuration(), nukePickup.GetBlastRadius());
+                AppendNukeParameters(nukePickup.GenerateBlastDuration(), nukePickup.GenerateBlastRadius());
                 OnCollectNuke.Invoke();
             }
         }

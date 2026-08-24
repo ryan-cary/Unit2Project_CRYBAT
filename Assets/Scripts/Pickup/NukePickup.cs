@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class NukePickup : Pickup
 {
-    [SerializeField] private float blastDuration;
-    [SerializeField] private float blastRadius;
+    [SerializeField] private float minBlastDuration;
+    [SerializeField] private float maxBlastDuration;
+    [SerializeField] private float minBlastRadius;
+    [SerializeField] private float maxBlastRadius;
     protected override PickupType pickupType => PickupType.Nuke;
 
-    public float GetBlastDuration()
+    public float GenerateBlastDuration()
     {
-        return blastDuration;
+        return Random.Range(minBlastDuration, maxBlastDuration + 1);
     }
 
-    public float GetBlastRadius()
+    public float GenerateBlastRadius()
     {
-        return blastRadius;
+        return Random.Range(minBlastRadius, maxBlastRadius + 1);
     }
 }
