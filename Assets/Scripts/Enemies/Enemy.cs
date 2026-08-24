@@ -127,4 +127,7 @@ public class Enemy : PlayableObject
             Defeated();
         }
     }
+	
+	public int GetDefeatScore()
+	{ return this.defeatScore; }
 }
