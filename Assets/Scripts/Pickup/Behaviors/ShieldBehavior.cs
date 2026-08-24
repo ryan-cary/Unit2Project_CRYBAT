@@ -6,6 +6,7 @@ public class ShieldBehavior : PowerUpBehavior
 {
     [SerializeField] private GameObject shieldPrefab;
     [SerializeField] private int maxNumOfShields;
+    [SerializeField] private int startNumOfShields;
     [SerializeField] private float offsetRadius;
     [SerializeField] private float shieldHealth;
     [SerializeField] private float rotationSpeed;
@@ -15,6 +16,14 @@ public class ShieldBehavior : PowerUpBehavior
     private List<Shield> shieldList = new List<Shield>();
 
     private float angle = 0;
+
+    private void Start()
+    {
+        if (startNumOfShields > 0)
+        {
+            AddShields(startNumOfShields);
+        }
+    }
 
     private void Update()
     {
