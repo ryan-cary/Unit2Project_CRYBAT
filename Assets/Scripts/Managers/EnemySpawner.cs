@@ -40,12 +40,10 @@ public class EnemySpawner : MonoBehaviour, IDifficultyOverridden
                 }
             }
         }
-		Debug.Log("Dictionary set!");
     }
 	
 	private void StartSpawning()
 	{
-		Debug.Log("Spawning enemies!");
 		doSpawnEnemies = true;
 		StartCoroutine(EnemySpawnRoutine());
 	}
