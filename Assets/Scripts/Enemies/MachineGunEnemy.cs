@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MachineGunEnemy : Enemy
 {
+	[Header("Machine Gun Stats")]
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float shootingDuration;
@@ -13,6 +14,7 @@ public class MachineGunEnemy : Enemy
     new private void Start()
     {
         base.Start();
+		this.defeatScore = 20;
         weapon = new Weapon("Machine Gun", attackDamage, bulletSpeed);
     }
 
