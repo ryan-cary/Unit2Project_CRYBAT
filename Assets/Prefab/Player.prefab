@@ -60,10 +60,11 @@ MonoBehaviour:
   weaponDamage: 20
   bulletSpeed: 10
   bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
-  healthPickupBehavior: {fileID: 4937450472454008980}
-  gunPowerUpBehavior: {fileID: 557583186638852327}
-  nukeBehavior: {fileID: 6846277690174017371}
-  shieldBehavior: {fileID: 1170204632658369936}
+  powerUpBehaviors:
+  - {fileID: 557583186638852327}
+  - {fileID: 4937450472454008980}
+  - {fileID: 6846277690174017371}
+  - {fileID: 1170204632658369936}
 --- !u!114 &54726437512371365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerUpBehavior
   playableObject: {fileID: 1512662758222267152}
+  pickupType: 1
   powerUpSymbol: {fileID: 8947386435525603592}
 --- !u!114 &6846277690174017371
 MonoBehaviour:
@@ -180,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NukeBehavior
   playableObject: {fileID: 1512662758222267152}
+  pickupType: 3
   nukeBlastPrefab: {fileID: 2717138416901237613, guid: 1065403a8611e456888e556a27c01dd6, type: 3}
   maxNumOfNukes: 10
 --- !u!114 &4937450472454008980
@@ -195,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickupBehavior
   playableObject: {fileID: 1512662758222267152}
+  pickupType: 0
 --- !u!1 &1159013410033598867
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,8 +335,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShieldBehavior
   playableObject: {fileID: 1512662758222267152}
+  pickupType: 0
   shieldPrefab: {fileID: 5054786796665575624, guid: cafe206f20ba24361a859b1e798df657, type: 3}
   maxNumOfShields: 8
+  startNumOfShields: 0
   offsetRadius: 1.5
   shieldHealth: 30
   rotationSpeed: 5

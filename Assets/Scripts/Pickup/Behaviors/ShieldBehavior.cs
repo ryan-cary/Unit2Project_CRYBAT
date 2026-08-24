@@ -11,6 +11,8 @@ public class ShieldBehavior : PowerUpBehavior
     [SerializeField] private float shieldHealth;
     [SerializeField] private float rotationSpeed;
 
+    protected override PickupType pickupType => PickupType.Shield;
+
     private bool hasShield;
     private int pickupNumOfShields;
     private List<Shield> shieldList = new List<Shield>();

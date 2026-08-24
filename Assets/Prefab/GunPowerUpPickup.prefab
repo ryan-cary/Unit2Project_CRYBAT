@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673999cc3bd0c4d4d88c52916ecdd4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunPickup
+  pickupType: 1
   duration: 5
   shootRate: 0.05
 --- !u!60 &1412865989146795246

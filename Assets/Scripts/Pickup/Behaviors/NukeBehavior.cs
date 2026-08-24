@@ -6,6 +6,7 @@ public class NukeBehavior : PowerUpBehavior
     // Nuke Pickup variables
     [SerializeField] private GameObject nukeBlastPrefab;
     [SerializeField] private int maxNumOfNukes;
+    protected override PickupType pickupType => PickupType.Nuke;
     private int numOfNukes = 0;
 
     public Action OnCollectNuke;

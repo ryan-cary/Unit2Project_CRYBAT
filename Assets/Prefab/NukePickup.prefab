@@ -158,3 +158,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a14db0ca5fe456d85e1b346f73a8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NukePickup
+  pickupType: 3

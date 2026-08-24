@@ -45,6 +45,6 @@ public class PlayerInput : MonoBehaviour
             if (shootInput) player.Shoot();
         }
 
-        if (nukeInput) player.GetNukeBehavior().Use();
+        if (nukeInput) player.GetNukeBehavior()?.Use();
     }
 }

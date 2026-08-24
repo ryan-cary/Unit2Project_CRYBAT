@@ -141,4 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7669183507754fad98b5598158592c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShieldPickup
+  pickupType: 2
   startingNumOfShields: 3

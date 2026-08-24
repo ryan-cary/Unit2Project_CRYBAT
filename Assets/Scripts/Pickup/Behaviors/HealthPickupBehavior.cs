@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealthPickupBehavior : PowerUpBehavior
 {
-
+    protected override PickupType pickupType => PickupType.Health;
     private float healAmount;
 
     public override void Collect(Pickup pickup)
