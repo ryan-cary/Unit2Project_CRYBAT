@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour
@@ -47,6 +48,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float buttonHoverVolume = 0.7f;
     [SerializeField] private AudioClip buttonClickClip;
     [SerializeField, Range(0f, 1f)] private float buttonClickVolume = 0.7f;
+    [SerializeField] private Sprite soundToggleIcon;
+    [SerializeField, Range(0f, 1f)] private float masterVolume = 1f;
 
     private AudioSource engineSource;
     private AudioSource sfxSource;
@@ -58,6 +61,8 @@ public class SoundManager : MonoBehaviour
     private float lastGunPowerUpRemaining;
     private int lastShieldCount;
     private readonly List<TrackedHealthPickup> trackedHealthPickups = new List<TrackedHealthPickup>();
+    private RectTransform soundControlsRect;
+    private GameObject volumeSliderPanel;
 
     struct TrackedHealthPickup
     {
@@ -77,6 +82,7 @@ public class SoundManager : MonoBehaviour
         SetupEngineSource();
         SetupSfxSource();
         SetupMusicSource();
+        ApplyMasterVolume();
     }
 
     void OnEnable()
@@ -104,6 +110,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         PlayStartMenuMusic();
+        BuildSoundControls();
         BindButtonSounds();
     }
 
@@ -116,7 +123,7 @@ public class SoundManager : MonoBehaviour
         else
             StopEngine();
 
-        if (IsGameplayActive() && Input.GetMouseButtonDown(0))
+        if (IsGameplayActive() && Input.GetMouseButtonDown(0) && !IsPointerOverUi())
             PlayPlayerFireWeapon();
 
         if (!isSubscribedToPlayerEvents)
@@ -244,6 +251,9 @@ public class SoundManager : MonoBehaviour
         UnsubscribeFromPlayerEvents();
         StopEngine();
         PlayGameOverMusic();
+        PositionSoundControls(false);
+        if (volumeSliderPanel != null)
+            volumeSliderPanel.SetActive(false);
     }
 
     public void PlayBigNuke()
@@ -344,6 +354,9 @@ public class SoundManager : MonoBehaviour
     void StartGameplayMusic()
     {
         PlayMusic(cosmicFuryClip, cosmicFuryVolume, true);
+        PositionSoundControls(true);
+        if (volumeSliderPanel != null)
+            volumeSliderPanel.SetActive(false);
     }
 
     void PlayGameOverMusic()
@@ -371,11 +384,174 @@ public class SoundManager : MonoBehaviour
         musicSource.Stop();
     }
 
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+        ApplyMasterVolume();
+    }
+
+    void ApplyMasterVolume()
+    {
+        AudioListener.volume = masterVolume;
+    }
+
+    bool IsPointerOverUi()
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+    }
+
+    void BuildSoundControls()
+    {
+        Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
+        if (canvas == null)
+            return;
+
+        GameObject root = new GameObject("SoundControls", typeof(RectTransform));
+        root.layer = 5;
+        root.transform.SetParent(canvas.transform, false);
+        root.transform.SetAsLastSibling();
+
+        soundControlsRect = root.GetComponent<RectTransform>();
+        soundControlsRect.anchorMin = new Vector2(1f, 1f);
+        soundControlsRect.anchorMax = new Vector2(1f, 1f);
+        soundControlsRect.pivot = new Vector2(1f, 1f);
+        soundControlsRect.sizeDelta = new Vector2(56f, 56f);
+        PositionSoundControls(false);
+
+        Button soundToggleButton = CreateIconButton(root.transform, "SoundToggleButton", soundToggleIcon);
+        RectTransform buttonRect = soundToggleButton.GetComponent<RectTransform>();
+        buttonRect.anchorMin = Vector2.zero;
+        buttonRect.anchorMax = Vector2.one;
+        buttonRect.offsetMin = Vector2.zero;
+        buttonRect.offsetMax = Vector2.zero;
+
+        soundToggleButton.onClick.AddListener(ToggleVolumeSlider);
+
+        volumeSliderPanel = CreateVolumeSlider(root.transform);
+        volumeSliderPanel.SetActive(false);
+    }
+
+    Button CreateIconButton(Transform parent, string name, Sprite icon)
+    {
+        GameObject buttonObject = new GameObject(name, typeof(RectTransform));
+        buttonObject.layer = 5;
+        buttonObject.transform.SetParent(parent, false);
+
+        LayoutElement layoutElement = buttonObject.AddComponent<LayoutElement>();
+        layoutElement.preferredWidth = 56f;
+        layoutElement.preferredHeight = 56f;
+        layoutElement.minWidth = 56f;
+        layoutElement.minHeight = 56f;
+        layoutElement.ignoreLayout = true;
+
+        Image image = buttonObject.AddComponent<Image>();
+        image.sprite = icon;
+        image.preserveAspect = true;
+        image.color = new Color(1f, 1f, 1f, 0.55f);
+        image.raycastTarget = true;
+
+        Button button = buttonObject.AddComponent<Button>();
+        button.targetGraphic = image;
+        ColorBlock colors = button.colors;
+        colors.normalColor = new Color(1f, 1f, 1f, 1f);
+        colors.highlightedColor = new Color(1f, 1f, 1f, 1f);
+        colors.pressedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
+        colors.selectedColor = new Color(1f, 1f, 1f, 1f);
+        button.colors = colors;
+        return button;
+    }
+
+    GameObject CreateVolumeSlider(Transform parent)
+    {
+        GameObject sliderObject = new GameObject("VolumeSlider", typeof(RectTransform));
+        sliderObject.layer = 5;
+        sliderObject.transform.SetParent(parent, false);
+
+        RectTransform sliderRect = sliderObject.GetComponent<RectTransform>();
+        sliderRect.anchorMin = new Vector2(0.5f, 0f);
+        sliderRect.anchorMax = new Vector2(0.5f, 0f);
+        sliderRect.pivot = new Vector2(0.5f, 1f);
+        sliderRect.anchoredPosition = new Vector2(0f, -8f);
+        sliderRect.sizeDelta = new Vector2(28f, 140f);
+
+        Image background = sliderObject.AddComponent<Image>();
+        background.color = new Color(0f, 0f, 0f, 0.45f);
+
+        GameObject fillArea = new GameObject("Fill Area", typeof(RectTransform));
+        fillArea.layer = 5;
+        fillArea.transform.SetParent(sliderObject.transform, false);
+        RectTransform fillAreaRect = fillArea.GetComponent<RectTransform>();
+        fillAreaRect.anchorMin = new Vector2(0.25f, 0f);
+        fillAreaRect.anchorMax = new Vector2(0.75f, 1f);
+        fillAreaRect.offsetMin = new Vector2(0f, 10f);
+        fillAreaRect.offsetMax = new Vector2(0f, -10f);
+
+        GameObject fill = new GameObject("Fill", typeof(RectTransform));
+        fill.layer = 5;
+        fill.transform.SetParent(fillArea.transform, false);
+        Image fillImage = fill.AddComponent<Image>();
+        fillImage.color = new Color(1f, 1f, 1f, 0.8f);
+        RectTransform fillRect = fill.GetComponent<RectTransform>();
+        fillRect.anchorMin = Vector2.zero;
+        fillRect.anchorMax = Vector2.one;
+        fillRect.offsetMin = Vector2.zero;
+        fillRect.offsetMax = Vector2.zero;
+
+        GameObject handleArea = new GameObject("Handle Slide Area", typeof(RectTransform));
+        handleArea.layer = 5;
+        handleArea.transform.SetParent(sliderObject.transform, false);
+        RectTransform handleAreaRect = handleArea.GetComponent<RectTransform>();
+        handleAreaRect.anchorMin = Vector2.zero;
+        handleAreaRect.anchorMax = Vector2.one;
+        handleAreaRect.offsetMin = new Vector2(0f, 10f);
+        handleAreaRect.offsetMax = new Vector2(0f, -10f);
+
+        GameObject handle = new GameObject("Handle", typeof(RectTransform));
+        handle.layer = 5;
+        handle.transform.SetParent(handleArea.transform, false);
+        Image handleImage = handle.AddComponent<Image>();
+        handleImage.color = new Color(1f, 1f, 1f, 0.9f);
+        RectTransform handleRect = handle.GetComponent<RectTransform>();
+        handleRect.sizeDelta = new Vector2(20f, 20f);
+
+        Slider slider = sliderObject.AddComponent<Slider>();
+        slider.direction = Slider.Direction.BottomToTop;
+        slider.fillRect = fillRect;
+        slider.handleRect = handleRect;
+        slider.targetGraphic = handleImage;
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.value = masterVolume;
+        slider.onValueChanged.AddListener(SetMasterVolume);
+        return sliderObject;
+    }
+
+    void ToggleVolumeSlider()
+    {
+        if (volumeSliderPanel == null)
+            return;
+
+        volumeSliderPanel.SetActive(!volumeSliderPanel.activeSelf);
+    }
+
+    void PositionSoundControls(bool gameplay)
+    {
+        if (soundControlsRect == null)
+            return;
+
+        soundControlsRect.anchoredPosition = gameplay
+            ? new Vector2(-24f, -120f)
+            : new Vector2(-24f, -16f);
+    }
+
     void BindButtonSounds()
     {
         Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (Button button in buttons)
         {
+            if (button.gameObject.name == "SoundToggleButton")
+                continue;
+
             if (button.GetComponent<UIButtonSound>() == null)
                 button.gameObject.AddComponent<UIButtonSound>();
         }
