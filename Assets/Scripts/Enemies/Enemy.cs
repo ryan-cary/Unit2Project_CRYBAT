@@ -39,6 +39,7 @@ public class Enemy : PlayableObject
 
     private void Awake ()
     {
+        base.Awake();
         enemyRb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
     }
