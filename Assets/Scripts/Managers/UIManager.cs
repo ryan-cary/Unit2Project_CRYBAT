@@ -3,9 +3,12 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-
+	[Header("Menu Elements")]
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject gameOverScreen;
+	[SerializeField] private GameObject creditsTab;
+	
+	[Header("HUD Elements")]
     [SerializeField] private GameObject gameStats;
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text scoreText;
@@ -35,12 +38,14 @@ public class UIManager : MonoBehaviour
     {
         menuCanvas.SetActive(false);
         gameOverScreen.SetActive(false);
+		creditsTab.SetActive(false);
         gameStats.SetActive(true);
     }
 
     private void OnGameEnd()
     {
         gameOverScreen?.SetActive(true);
+		creditsTab.SetActive(true);
         gameStats.SetActive(false);
     }
 

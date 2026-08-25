@@ -393,6 +393,17 @@ MonoBehaviour:
   OnEnemyDefeated:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &503181787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3192213258152483313, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+  m_PrefabInstance: {fileID: 2272386225579593029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +575,17 @@ Transform:
   - {fileID: 303806011}
   m_Father: {fileID: 1697237382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564921007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 211114444748812873, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+  m_PrefabInstance: {fileID: 2272386225579593029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
 --- !u!1 &616994126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   menuCanvas: {fileID: 2045215710}
   gameOverScreen: {fileID: 1036078268}
+  creditsTab: {fileID: 1138043803}
   gameStats: {fileID: 2091855739}
   healthText: {fileID: 1069178758}
   scoreText: {fileID: 1782900782}
@@ -1201,6 +1224,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1273736087606323526, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
   m_PrefabInstance: {fileID: 2272386225579593029}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1058982890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3851392596535481184, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+  m_PrefabInstance: {fileID: 2272386225579593029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
 --- !u!114 &1069178758 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1340982288669308885, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
@@ -1212,6 +1246,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1138043803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1442470843919563904, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+  m_PrefabInstance: {fileID: 2272386225579593029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1319342358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5696851917725518815, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+  m_PrefabInstance: {fileID: 2272386225579593029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
 --- !u!1 &1406728065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1788,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1143148008639550387, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143148008639550387, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 564921007}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateText
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DifficultyButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2367558781100662993, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1768,18 +1854,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2367558781100662993, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367558781100662993, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367558781100662993, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2367558781100662993, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2367558781100662993, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
@@ -1834,22 +1908,87 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2957852107481559360, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2957852107481559360, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3101940346787816466, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 21.994019
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1058982890}
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7881321348827431530, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateText
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DifficultyButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248819294129771514, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 503181787}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateText
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DifficultyButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520953135649597663, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418233364439686375, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_text
+      value: "Cosmic Fury is created by CRYBAT:\nCyrus Stonebanks, Ryan Cary, Yvonne
+        Liao, Branden Dame, Alessandra Tallini, and Tasnim Rahat\n\nLead Programmers:
+        Alessandra, Ryan\nAdditional Programming: Cyrus, Branden\nEnemy Design: Alessandra,
+        Tasnim\nUI / UX: Yvonne, Branden\nMusic + VFX: Branden\nProject Coordinator:
+        Yvonne\n\nTitle image created by Nano Banana. \n2D sprites sourced from Unity
+        Asset Store.\n\nSpecial thanks to our mentor Justin Hamm!!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911460867816939546, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286383620670109019, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 448539889}
+    - target: {fileID: 8282317493285749490, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282317493285749490, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1859,36 +1998,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 448539889}
-    - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 448539889}
+      objectReference: {fileID: 1319342358}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StartGame
+      value: UpdateText
       objectReference: {fileID: 0}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: DifficultyButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517381234867139766, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8517381234867139766, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -55,6 +55,7 @@ MonoBehaviour:
   OnDefeated:
     m_PersistentCalls:
       m_Calls: []
+  baseHealth: 100
   weaponDamage: 20
   bulletSpeed: 10
   bulletPrefab: {fileID: 922171902542695900, guid: 8ece3a7643f14474294185afd8542bfb, type: 3}
@@ -176,7 +177,7 @@ Transform:
   m_GameObject: {fileID: 1159013410033598867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4932, y: -0.4262, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5.418908, y: 5.418908, z: 5.418908}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -268,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 2748193650182748193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.51, y: -1.31, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 7.335338, y: 7.335338, z: 1.4670677}
   m_ConstrainProportionsScale: 0
   m_Children: []
