@@ -129,4 +129,7 @@ public class GameManager : MonoBehaviour
     {
         return isGameInProgress;
     }
+	
+	public void QuitGame()
+	{ Application.Quit(); }
 }
