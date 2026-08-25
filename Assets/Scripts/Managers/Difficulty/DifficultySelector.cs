@@ -59,7 +59,5 @@ public class DifficultySelector : MonoBehaviour
 				Debug.Log($"Now on {currentDifficulty}!");
                 break;
         }
-		//GameManager.GetInstance().GetDifficultyManager().onDifficultySettingUpdated?.Invoke(currentDifficultySetting);
-		Debug.Log("Settings updated!");
     }
 }
