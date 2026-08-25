@@ -237,8 +237,9 @@ MonoBehaviour:
   explosionFragmentPrefab: {fileID: 6190283598460161463, guid: 7c7bb5e310c0942388c3213522ed62d6, type: 3}
   baseHealth: 120
   attackDamage: 15
-  attackRange: 2.5
+  attackRange: 3.25
   attackRate: 2
   defeatScore: 5
+  screenBorder: 0
   fistObject: {fileID: 4548801796476287498}
   punchTime: 1
