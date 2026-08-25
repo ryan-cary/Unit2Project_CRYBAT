@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class NukeBlast : MonoBehaviour
 {
-    [SerializeField] private float blastDuration;
-    [SerializeField] private float blastRadius;
-
     private float timer;
     private SpriteRenderer sr;
     private Color startingColor;
+
+    private float blastDuration;
+    private float blastRadius;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         startingColor = sr.color;
-        transform.localScale = new Vector3(blastRadius, blastRadius, transform.localScale.z);
     }
 
     // Update is called once per frame
@@ -26,6 +25,13 @@ public class NukeBlast : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetBlastParemeters(float _blastDuration, float _blastRadius)
+    {
+        blastDuration = _blastDuration;
+        blastRadius = _blastRadius;
+        transform.localScale = new Vector3(blastRadius, blastRadius, transform.localScale.z);
     }
 
     void AdvanceTimer()
@@ -50,7 +56,6 @@ public class NukeBlast : MonoBehaviour
         }
         if (collider.gameObject.CompareTag("Pickup"))
         {
-            Debug.Log("HIT PICKUP");
             Pickup pickup = collider.gameObject.GetComponent<Pickup>();
             pickup.GetDamage(0);
         }

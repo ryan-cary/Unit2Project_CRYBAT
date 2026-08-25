@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,60 +9,21 @@ public class SoundManager : MonoBehaviour
         return instance;
     }
 
-    [Header("Movement")]
-    [SerializeField] private AudioClip spaceshipEngineLightClip;
-    [SerializeField, Range(0f, 1f)] private float engineVolume = 0.45f;
-
-    [Header("Player")]
-    [SerializeField] private AudioClip bigNukeClip;
-    [SerializeField, Range(0f, 1f)] private float bigNukeVolume = 0.85f;
-    [SerializeField] private AudioClip playerFireWeaponClip;
-    [SerializeField, Range(0f, 1f)] private float playerFireWeaponVolume = 0.6f;
-    [SerializeField] private AudioClip shieldPickupClip;
-    [SerializeField, Range(0f, 1f)] private float shieldPickupVolume = 0.8f;
-    [SerializeField] private AudioClip nukePickupClip;
-    [SerializeField, Range(0f, 1f)] private float nukePickupVolume = 0.8f;
-    [SerializeField] private AudioClip gunPickupClip;
-    [SerializeField, Range(0f, 1f)] private float gunPickupVolume = 0.8f;
-    [SerializeField] private AudioClip healthPickupClip;
-    [SerializeField, Range(0f, 1f)] private float healthPickupVolume = 0.8f;
-
-    [Header("Enemies")]
-    [SerializeField] private AudioClip missileLaunchDetectedClip;
-    [SerializeField, Range(0f, 1f)] private float missileLaunchDetectedVolume = 0.8f;
-    [SerializeField] private AudioClip enemyDyingClip;
-    [SerializeField, Range(0f, 1f)] private float enemyDyingVolume = 0.75f;
-
-    [Header("Music")]
-    [SerializeField] private AudioClip cosmicFuryClip;
-    [SerializeField, Range(0f, 1f)] private float cosmicFuryVolume = 0.4f;
-    [SerializeField] private AudioClip startMenuClip;
-    [SerializeField, Range(0f, 1f)] private float startMenuVolume = 0.4f;
-    [SerializeField] private AudioClip gameOverClip;
-    [SerializeField, Range(0f, 1f)] private float gameOverVolume = 0.4f;
+    [Header("Sub Managers")]
+    [SerializeField] private StartMenuSoundManager startMenu;
+    [SerializeField] private GamePlaySoundManager gamePlay;
+    [SerializeField] private GameOverSoundManager gameOver;
 
     [Header("UI")]
-    [SerializeField] private AudioClip buttonHoverClip;
-    [SerializeField, Range(0f, 1f)] private float buttonHoverVolume = 0.7f;
-    [SerializeField] private AudioClip buttonClickClip;
-    [SerializeField, Range(0f, 1f)] private float buttonClickVolume = 0.7f;
+    [SerializeField] private Sprite soundToggleIcon;
+    [SerializeField, Range(0f, 1f)] private float masterVolume = 1f;
 
     private AudioSource engineSource;
     private AudioSource sfxSource;
     private AudioSource musicSource;
     private bool isEnginePlaying;
-    private bool isSubscribedToPlayerEvents;
-    private Player subscribedPlayer;
-    private bool wasGunPowerUpActive;
-    private float lastGunPowerUpRemaining;
-    private int lastShieldCount;
-    private readonly List<TrackedHealthPickup> trackedHealthPickups = new List<TrackedHealthPickup>();
-
-    struct TrackedHealthPickup
-    {
-        public HealthPickup pickup;
-        public Vector3 position;
-    }
+    private RectTransform soundControlsRect;
+    private GameObject volumeSliderPanel;
 
     void Awake()
     {
@@ -74,16 +34,25 @@ public class SoundManager : MonoBehaviour
         }
 
         instance = this;
+
+        if (startMenu == null)
+            startMenu = GetComponentInChildren<StartMenuSoundManager>(true);
+        if (gamePlay == null)
+            gamePlay = GetComponentInChildren<GamePlaySoundManager>(true);
+        if (gameOver == null)
+            gameOver = GetComponentInChildren<GameOverSoundManager>(true);
+
         SetupEngineSource();
         SetupSfxSource();
         SetupMusicSource();
+        ApplyMasterVolume();
     }
 
     void OnEnable()
     {
         if (GameManager.GetInstance() != null)
         {
-            GameManager.GetInstance().OnGameStart.AddListener(StartGameplayMusic);
+            GameManager.GetInstance().OnGameStart.AddListener(OnGameStarted);
             GameManager.GetInstance().OnGameEnd.AddListener(OnGameEnded);
         }
     }
@@ -92,38 +61,138 @@ public class SoundManager : MonoBehaviour
     {
         if (GameManager.GetInstance() != null)
         {
-            GameManager.GetInstance().OnGameStart.RemoveListener(StartGameplayMusic);
+            GameManager.GetInstance().OnGameStart.RemoveListener(OnGameStarted);
             GameManager.GetInstance().OnGameEnd.RemoveListener(OnGameEnded);
         }
 
-        UnsubscribeFromPlayerEvents();
         StopEngine();
         StopMusic();
     }
 
     void Start()
     {
-        PlayStartMenuMusic();
-        BindButtonSounds();
+        BuildSoundControls();
     }
 
-    void Update()
+    void OnGameStarted()
     {
-        bool shouldPlayEngine = IsGameplayActive() && IsMovementKeyHeld();
+        PositionSoundControls(true);
+        HideVolumeSlider();
+    }
 
-        if (shouldPlayEngine)
-            StartEngine();
-        else
-            StopEngine();
+    void OnGameEnded()
+    {
+        PositionSoundControls(false);
+        HideVolumeSlider();
+    }
 
-        if (IsGameplayActive() && Input.GetMouseButtonDown(0))
-            PlayPlayerFireWeapon();
+    public void PlayBigNuke()
+    {
+        gamePlay?.PlayBigNuke();
+    }
 
-        if (!isSubscribedToPlayerEvents)
-            SubscribeToPlayerEvents();
+    public void PlayPlayerFireWeapon()
+    {
+        gamePlay?.PlayPlayerFireWeapon();
+    }
 
-        CheckShieldPickup();
-        CheckHealthPickups();
+    public void PlayShieldPickup()
+    {
+        gamePlay?.PlayShieldPickup();
+    }
+
+    public void PlayNukePickup()
+    {
+        gamePlay?.PlayNukePickup();
+    }
+
+    public void PlayGunPickup()
+    {
+        gamePlay?.PlayGunPickup();
+    }
+
+    public void PlayHealthPickup()
+    {
+        gamePlay?.PlayHealthPickup();
+    }
+
+    public void PlayMissileLaunchDetected()
+    {
+        gamePlay?.PlayMissileLaunchDetected();
+    }
+
+    public void PlayEnemyDying()
+    {
+        gamePlay?.PlayEnemyDying();
+    }
+
+    public void PlayButtonHover()
+    {
+        startMenu?.PlayButtonHover();
+    }
+
+    public void PlayButtonClick()
+    {
+        startMenu?.PlayButtonClick();
+    }
+
+    public void PlaySfx(AudioClip clip, float volume)
+    {
+        if (sfxSource == null || clip == null)
+            return;
+
+        sfxSource.PlayOneShot(clip, volume);
+    }
+
+    public void PlayMusic(AudioClip clip, float volume, bool loop)
+    {
+        if (musicSource == null || clip == null)
+            return;
+
+        musicSource.Stop();
+        musicSource.clip = clip;
+        musicSource.volume = volume;
+        musicSource.loop = loop;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        if (musicSource == null)
+            return;
+
+        musicSource.Stop();
+    }
+
+    public void StartEngineLoop(AudioClip clip, float volume)
+    {
+        if (isEnginePlaying || engineSource == null || clip == null)
+            return;
+
+        engineSource.clip = clip;
+        engineSource.volume = volume;
+        engineSource.Play();
+        isEnginePlaying = true;
+    }
+
+    public void StopEngine()
+    {
+        if (!isEnginePlaying || engineSource == null)
+            return;
+
+        engineSource.Stop();
+        isEnginePlaying = false;
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+        ApplyMasterVolume();
+    }
+
+    void ApplyMasterVolume()
+    {
+        AudioListener.volume = masterVolume;
     }
 
     void SetupEngineSource()
@@ -132,8 +201,6 @@ public class SoundManager : MonoBehaviour
         engineSource.playOnAwake = false;
         engineSource.loop = true;
         engineSource.spatialBlend = 0f;
-        engineSource.clip = spaceshipEngineLightClip;
-        engineSource.volume = engineVolume;
     }
 
     void SetupSfxSource()
@@ -152,232 +219,153 @@ public class SoundManager : MonoBehaviour
         musicSource.spatialBlend = 0f;
     }
 
-    void SubscribeToPlayerEvents()
+    void BuildSoundControls()
     {
-        Player player = GameManager.GetInstance()?.GetPlayer();
-        if (player == null)
+        Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
+        if (canvas == null)
             return;
 
-        NukeBehavior nukeBehavior = player.GetNukeBehavior();
-        nukeBehavior.OnUseNuke += PlayBigNuke;
-        nukeBehavior.OnCollectNuke += PlayNukePickup;
-        player.GetGunPowerUpBehavior().OnPowerUpTimerChange += OnGunPowerUpTimerChange;
+        GameObject root = new GameObject("SoundControls", typeof(RectTransform));
+        root.layer = 5;
+        root.transform.SetParent(canvas.transform, false);
+        root.transform.SetAsLastSibling();
 
-        wasGunPowerUpActive = player.HasGunPowerUp();
-        lastGunPowerUpRemaining = 0f;
-        lastShieldCount = player.GetComponentsInChildren<Shield>(true).Length;
-        trackedHealthPickups.Clear();
-        subscribedPlayer = player;
-        isSubscribedToPlayerEvents = true;
+        soundControlsRect = root.GetComponent<RectTransform>();
+        soundControlsRect.anchorMin = new Vector2(1f, 1f);
+        soundControlsRect.anchorMax = new Vector2(1f, 1f);
+        soundControlsRect.pivot = new Vector2(1f, 1f);
+        soundControlsRect.sizeDelta = new Vector2(56f, 56f);
+        PositionSoundControls(false);
+
+        Button soundToggleButton = CreateIconButton(root.transform, "SoundToggleButton", soundToggleIcon);
+        RectTransform buttonRect = soundToggleButton.GetComponent<RectTransform>();
+        buttonRect.anchorMin = Vector2.zero;
+        buttonRect.anchorMax = Vector2.one;
+        buttonRect.offsetMin = Vector2.zero;
+        buttonRect.offsetMax = Vector2.zero;
+
+        soundToggleButton.onClick.AddListener(ToggleVolumeSlider);
+
+        volumeSliderPanel = CreateVolumeSlider(root.transform);
+        volumeSliderPanel.SetActive(false);
     }
 
-    void UnsubscribeFromPlayerEvents()
+    Button CreateIconButton(Transform parent, string name, Sprite icon)
     {
-        if (subscribedPlayer != null)
-        {
-            NukeBehavior nukeBehavior = subscribedPlayer.GetNukeBehavior();
-            nukeBehavior.OnUseNuke -= PlayBigNuke;
-            nukeBehavior.OnCollectNuke -= PlayNukePickup;
-            subscribedPlayer.GetGunPowerUpBehavior().OnPowerUpTimerChange -= OnGunPowerUpTimerChange;
-        }
+        GameObject buttonObject = new GameObject(name, typeof(RectTransform));
+        buttonObject.layer = 5;
+        buttonObject.transform.SetParent(parent, false);
 
-        subscribedPlayer = null;
-        trackedHealthPickups.Clear();
-        isSubscribedToPlayerEvents = false;
+        LayoutElement layoutElement = buttonObject.AddComponent<LayoutElement>();
+        layoutElement.preferredWidth = 56f;
+        layoutElement.preferredHeight = 56f;
+        layoutElement.minWidth = 56f;
+        layoutElement.minHeight = 56f;
+        layoutElement.ignoreLayout = true;
+
+        Image image = buttonObject.AddComponent<Image>();
+        image.sprite = icon;
+        image.preserveAspect = true;
+        image.color = new Color(1f, 1f, 1f, 0.55f);
+        image.raycastTarget = true;
+
+        Button button = buttonObject.AddComponent<Button>();
+        button.targetGraphic = image;
+        ColorBlock colors = button.colors;
+        colors.normalColor = new Color(1f, 1f, 1f, 1f);
+        colors.highlightedColor = new Color(1f, 1f, 1f, 1f);
+        colors.pressedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
+        colors.selectedColor = new Color(1f, 1f, 1f, 1f);
+        button.colors = colors;
+        return button;
     }
 
-    void OnGunPowerUpTimerChange(bool isActive, float remainingTime, Vector2 screenPosition)
+    GameObject CreateVolumeSlider(Transform parent)
     {
-        bool collected = isActive && remainingTime == 0f
-            && (!wasGunPowerUpActive || lastGunPowerUpRemaining > 0.25f);
+        GameObject sliderObject = new GameObject("VolumeSlider", typeof(RectTransform));
+        sliderObject.layer = 5;
+        sliderObject.transform.SetParent(parent, false);
 
-        if (collected)
-            PlayGunPickup();
+        RectTransform sliderRect = sliderObject.GetComponent<RectTransform>();
+        sliderRect.anchorMin = new Vector2(0.5f, 0f);
+        sliderRect.anchorMax = new Vector2(0.5f, 0f);
+        sliderRect.pivot = new Vector2(0.5f, 1f);
+        sliderRect.anchoredPosition = new Vector2(0f, -8f);
+        sliderRect.sizeDelta = new Vector2(28f, 140f);
 
-        wasGunPowerUpActive = isActive;
-        lastGunPowerUpRemaining = remainingTime;
+        Image background = sliderObject.AddComponent<Image>();
+        background.color = new Color(0f, 0f, 0f, 0.45f);
+
+        GameObject fillArea = new GameObject("Fill Area", typeof(RectTransform));
+        fillArea.layer = 5;
+        fillArea.transform.SetParent(sliderObject.transform, false);
+        RectTransform fillAreaRect = fillArea.GetComponent<RectTransform>();
+        fillAreaRect.anchorMin = new Vector2(0.25f, 0f);
+        fillAreaRect.anchorMax = new Vector2(0.75f, 1f);
+        fillAreaRect.offsetMin = new Vector2(0f, 10f);
+        fillAreaRect.offsetMax = new Vector2(0f, -10f);
+
+        GameObject fill = new GameObject("Fill", typeof(RectTransform));
+        fill.layer = 5;
+        fill.transform.SetParent(fillArea.transform, false);
+        Image fillImage = fill.AddComponent<Image>();
+        fillImage.color = new Color(1f, 1f, 1f, 0.8f);
+        RectTransform fillRect = fill.GetComponent<RectTransform>();
+        fillRect.anchorMin = Vector2.zero;
+        fillRect.anchorMax = Vector2.one;
+        fillRect.offsetMin = Vector2.zero;
+        fillRect.offsetMax = Vector2.zero;
+
+        GameObject handleArea = new GameObject("Handle Slide Area", typeof(RectTransform));
+        handleArea.layer = 5;
+        handleArea.transform.SetParent(sliderObject.transform, false);
+        RectTransform handleAreaRect = handleArea.GetComponent<RectTransform>();
+        handleAreaRect.anchorMin = Vector2.zero;
+        handleAreaRect.anchorMax = Vector2.one;
+        handleAreaRect.offsetMin = new Vector2(0f, 10f);
+        handleAreaRect.offsetMax = new Vector2(0f, -10f);
+
+        GameObject handle = new GameObject("Handle", typeof(RectTransform));
+        handle.layer = 5;
+        handle.transform.SetParent(handleArea.transform, false);
+        Image handleImage = handle.AddComponent<Image>();
+        handleImage.color = new Color(1f, 1f, 1f, 0.9f);
+        RectTransform handleRect = handle.GetComponent<RectTransform>();
+        handleRect.sizeDelta = new Vector2(20f, 20f);
+
+        Slider slider = sliderObject.AddComponent<Slider>();
+        slider.direction = Slider.Direction.BottomToTop;
+        slider.fillRect = fillRect;
+        slider.handleRect = handleRect;
+        slider.targetGraphic = handleImage;
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.value = masterVolume;
+        slider.onValueChanged.AddListener(SetMasterVolume);
+        return sliderObject;
     }
 
-    void CheckHealthPickups()
+    void ToggleVolumeSlider()
     {
-        if (subscribedPlayer == null || !IsGameplayActive())
-        {
-            trackedHealthPickups.Clear();
-            return;
-        }
-
-        Vector3 playerPosition = subscribedPlayer.transform.position;
-        const float collectDistance = 5f;
-
-        for (int i = 0; i < trackedHealthPickups.Count; i++)
-        {
-            TrackedHealthPickup tracked = trackedHealthPickups[i];
-            if (tracked.pickup == null && Vector2.Distance(playerPosition, tracked.position) <= collectDistance)
-                PlayHealthPickup();
-        }
-
-        trackedHealthPickups.Clear();
-        HealthPickup[] pickups = FindObjectsByType<HealthPickup>(FindObjectsSortMode.None);
-        for (int i = 0; i < pickups.Length; i++)
-        {
-            TrackedHealthPickup tracked;
-            tracked.pickup = pickups[i];
-            tracked.position = pickups[i].transform.position;
-            trackedHealthPickups.Add(tracked);
-        }
-    }
-
-    void CheckShieldPickup()
-    {
-        if (subscribedPlayer == null)
-            return;
-
-        int shieldCount = subscribedPlayer.GetComponentsInChildren<Shield>(true).Length;
-        if (shieldCount > lastShieldCount)
-            PlayShieldPickup();
-
-        lastShieldCount = shieldCount;
-    }
-
-    void OnGameEnded()
-    {
-        UnsubscribeFromPlayerEvents();
-        StopEngine();
-        PlayGameOverMusic();
-    }
-
-    public void PlayBigNuke()
-    {
-        PlaySfx(bigNukeClip, bigNukeVolume);
-    }
-
-    public void PlayPlayerFireWeapon()
-    {
-        PlaySfx(playerFireWeaponClip, playerFireWeaponVolume);
-    }
-
-    public void PlayShieldPickup()
-    {
-        PlaySfx(shieldPickupClip, shieldPickupVolume);
-    }
-
-    public void PlayNukePickup()
-    {
-        PlaySfx(nukePickupClip, nukePickupVolume);
-    }
-
-    public void PlayGunPickup()
-    {
-        PlaySfx(gunPickupClip, gunPickupVolume);
-    }
-
-    public void PlayHealthPickup()
-    {
-        PlaySfx(healthPickupClip, healthPickupVolume);
-    }
-
-    public void PlayMissileLaunchDetected()
-    {
-        PlaySfx(missileLaunchDetectedClip, missileLaunchDetectedVolume);
-    }
-
-    public void PlayEnemyDying()
-    {
-        PlaySfx(enemyDyingClip, enemyDyingVolume);
-    }
-
-    public void PlayButtonHover()
-    {
-        PlaySfx(buttonHoverClip, buttonHoverVolume);
-    }
-
-    public void PlayButtonClick()
-    {
-        PlaySfx(buttonClickClip, buttonClickVolume);
-    }
-
-    void PlaySfx(AudioClip clip, float volume)
-    {
-        if (sfxSource == null || clip == null)
+        if (volumeSliderPanel == null)
             return;
 
-        sfxSource.PlayOneShot(clip, volume);
+        volumeSliderPanel.SetActive(!volumeSliderPanel.activeSelf);
     }
 
-    bool IsMovementKeyHeld()
+    void HideVolumeSlider()
     {
-        return Input.GetKey(KeyCode.W)
-            || Input.GetKey(KeyCode.A)
-            || Input.GetKey(KeyCode.S)
-            || Input.GetKey(KeyCode.D);
+        if (volumeSliderPanel != null)
+            volumeSliderPanel.SetActive(false);
     }
 
-    bool IsGameplayActive()
+    void PositionSoundControls(bool gameplay)
     {
-        return GameManager.GetInstance() != null && GameManager.GetInstance().IsGameInProgress();
-    }
-
-    void StartEngine()
-    {
-        if (isEnginePlaying || engineSource == null || engineSource.clip == null)
+        if (soundControlsRect == null)
             return;
 
-        engineSource.volume = engineVolume;
-        engineSource.Play();
-        isEnginePlaying = true;
-    }
-
-    void StopEngine()
-    {
-        if (!isEnginePlaying || engineSource == null)
-            return;
-
-        engineSource.Stop();
-        isEnginePlaying = false;
-    }
-
-    void PlayStartMenuMusic()
-    {
-        PlayMusic(startMenuClip, startMenuVolume, true);
-    }
-
-    void StartGameplayMusic()
-    {
-        PlayMusic(cosmicFuryClip, cosmicFuryVolume, true);
-    }
-
-    void PlayGameOverMusic()
-    {
-        PlayMusic(gameOverClip, gameOverVolume, false);
-    }
-
-    void PlayMusic(AudioClip clip, float volume, bool loop)
-    {
-        if (musicSource == null || clip == null)
-            return;
-
-        musicSource.Stop();
-        musicSource.clip = clip;
-        musicSource.volume = volume;
-        musicSource.loop = loop;
-        musicSource.Play();
-    }
-
-    void StopMusic()
-    {
-        if (musicSource == null)
-            return;
-
-        musicSource.Stop();
-    }
-
-    void BindButtonSounds()
-    {
-        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (Button button in buttons)
-        {
-            if (button.GetComponent<UIButtonSound>() == null)
-                button.gameObject.AddComponent<UIButtonSound>();
-        }
+        soundControlsRect.anchoredPosition = gameplay
+            ? new Vector2(-24f, -120f)
+            : new Vector2(-24f, -16f);
     }
 }
