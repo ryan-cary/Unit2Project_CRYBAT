@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 3874960194208681948}
   - component: {fileID: 7578790176795547118}
   m_Layer: 5
-  m_Name: Text (TMP) WarZone
+  m_Name: HardText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '    WAR ZONE'
+  m_text: HARD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
   m_sharedMaterial: {fileID: -7998477807284449812, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
@@ -2045,8 +2045,9 @@ GameObject:
   - component: {fileID: 2149924109182223553}
   - component: {fileID: 4520953135649597663}
   - component: {fileID: 5466145638810691692}
+  - component: {fileID: 2371409342800220074}
   m_Layer: 5
-  m_Name: Btn4-Genocide
+  m_Name: Button-Hardcore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2168,6 +2169,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
   buttonText: {fileID: 5115982287170212480}
+--- !u!114 &2371409342800220074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690796911672621053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
+  difficultyToLoad: 3
 --- !u!1 &1920137496771885676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,7 +2830,7 @@ RectTransform:
   m_GameObject: {fileID: 2571167970275174185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4987670666882125431}
@@ -3118,7 +3132,7 @@ GameObject:
   - component: {fileID: 3315730899831968530}
   - component: {fileID: 8043041897266529256}
   m_Layer: 5
-  m_Name: Text (TMP) GreenZone
+  m_Name: EasyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3171,7 +3185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '        GREEN ZONE'
+  m_text: '        EASY'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
   m_sharedMaterial: {fileID: -7998477807284449812, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
@@ -3755,7 +3769,7 @@ GameObject:
   - component: {fileID: 6845613700878836472}
   - component: {fileID: 5115982287170212480}
   m_Layer: 5
-  m_Name: Text (TMP) Genocide
+  m_Name: HardcoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3808,7 +3822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '    GENOCIDE'
+  m_text: '    HARDCORE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
   m_sharedMaterial: {fileID: -7998477807284449812, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
@@ -4886,7 +4900,7 @@ GameObject:
   - component: {fileID: 3907246331198603434}
   - component: {fileID: 5052730770236674478}
   m_Layer: 5
-  m_Name: Text (TMP) Combat
+  m_Name: NormalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4939,7 +4953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' COMBAT'
+  m_text: NORMAL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
   m_sharedMaterial: {fileID: -7998477807284449812, guid: 69e0fe7fc343f4e8eb93f0e6a3b1a0e3, type: 2}
@@ -5121,10 +5135,10 @@ GameObject:
   - component: {fileID: 2409702891365418788}
   - component: {fileID: 4200570382315634082}
   - component: {fileID: 8486280589095277248}
-  - component: {fileID: 7743139956174432930}
   - component: {fileID: 2643365109698429456}
+  - component: {fileID: 1848579540762366461}
   m_Layer: 5
-  m_Name: Btn1-GreenZone
+  m_Name: Button-Easy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5233,35 +5247,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7743139956174432930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4886147617701546432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: efb5f1b0875bbc7408e2352c2367f89a, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &2643365109698429456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5275,6 +5260,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
   buttonText: {fileID: 8043041897266529256}
+--- !u!114 &1848579540762366461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886147617701546432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
+  difficultyToLoad: 0
 --- !u!1 &4962149298228964573
 GameObject:
   m_ObjectHideFlags: 0
@@ -7349,8 +7347,9 @@ GameObject:
   - component: {fileID: 7171091869609233997}
   - component: {fileID: 4248819294129771514}
   - component: {fileID: 9186160458606021069}
+  - component: {fileID: 1152544824073096191}
   m_Layer: 5
-  m_Name: Btn2-Combat
+  m_Name: Button-Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7472,6 +7471,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
   buttonText: {fileID: 5052730770236674478}
+--- !u!114 &1152544824073096191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842242981268041341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
+  difficultyToLoad: 1
 --- !u!1 &8335544048489411679
 GameObject:
   m_ObjectHideFlags: 0
@@ -7836,8 +7848,9 @@ GameObject:
   - component: {fileID: 8395716047390270975}
   - component: {fileID: 1797355663039835793}
   - component: {fileID: 5475123462410078671}
+  - component: {fileID: 1790454599583776743}
   m_Layer: 5
-  m_Name: Btn3-WarZone
+  m_Name: Button-Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7959,6 +7972,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverBlink
   buttonText: {fileID: 7578790176795547118}
+--- !u!114 &1790454599583776743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512032536112309391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96548a1275e10274fa0535691591e1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyButton
+  difficultyToLoad: 2
 --- !u!1 &8616212884659136352
 GameObject:
   m_ObjectHideFlags: 0
