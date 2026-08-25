@@ -21,7 +21,6 @@ public class Enemy : PlayableObject
     protected float timer = 0;
     protected bool isAttacking;
     private Camera camera;
-   private Rigidbody2D enemyRb;
 
     protected virtual void Start()
     {
@@ -40,7 +39,6 @@ public class Enemy : PlayableObject
     private void Awake ()
     {
         base.Awake();
-        enemyRb = GetComponent<Rigidbody2D>();
         camera = Camera.main;
     }
 
@@ -84,7 +82,7 @@ public class Enemy : PlayableObject
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90; 
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        enemyRb.linearVelocity = direction.normalized * speed;
+        rb.linearVelocity = direction.normalized * speed;
     }
 
 
