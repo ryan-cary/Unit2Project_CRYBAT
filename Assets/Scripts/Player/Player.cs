@@ -12,6 +12,7 @@ public class Player : PlayableObject, IDifficultyOverridden
     [SerializeField] private PickupBehaviorController pickupBehaviorController;
 
     private Camera camera;
+    private Rigidbody2D playerRb;
 
     public override void Awake()
     {
@@ -20,6 +21,7 @@ public class Player : PlayableObject, IDifficultyOverridden
         health.SetRegenRate(0.5f);
         weapon = new Weapon("Player Weapon", weaponDamage, bulletSpeed);
         camera = Camera.main;
+        playerRb = GetComponent<Rigidbody2D>();
         SetSpriteDrawOrder();
     }
 
@@ -31,6 +33,22 @@ public class Player : PlayableObject, IDifficultyOverridden
         }
     }
 
+    private void PreventPlayerGoingOffScreen()
+    {
+        Vector2 screenPosition = camera.WorldToScreenPoint(transform.position);
+
+        if ((screenPosition.x < 0 && playerRb.linearVelocity.x < 0) || (screenPosition.x > camera.pixelWidth && playerRb.linearVelocity.x > 0))
+        {
+            playerRb.linearVelocity = new Vector2(0, playerRb.linearVelocity.y);
+        }
+
+        if ((screenPosition.y < 0 && playerRb.linearVelocity.y < 0) || (screenPosition.y > camera.pixelHeight && playerRb.linearVelocity.y > 0))
+        {
+            playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, 0);
+        }
+
+    }
+
     void Update()
     {
         health.RegenHealth();
@@ -38,7 +56,7 @@ public class Player : PlayableObject, IDifficultyOverridden
 
     public void Move(Vector3 direction, Vector2 target)
     {
-        rb.linearVelocity = direction * speed;
+        playerRb.linearVelocity = direction * speed;
 
         Vector3 playerScreenPos = camera.WorldToScreenPoint(transform.position);
 
@@ -47,6 +65,7 @@ public class Player : PlayableObject, IDifficultyOverridden
 
         float angle = Mathf.Atan2(target.y, target.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+        PreventPlayerGoingOffScreen();
     }
 
     public override void Shoot()
