@@ -66,7 +66,6 @@ public class Bullet : MonoBehaviour
 
             if (shield != null)
             {
-
                 if (shield.GetParentTag() == targetTag)
                 {
                     shield.GetDamage(damage);

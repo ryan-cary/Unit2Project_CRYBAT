@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class Player : PlayableObject, IDifficultyOverridden
 {
@@ -10,13 +9,9 @@ public class Player : PlayableObject, IDifficultyOverridden
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
 
-    private Camera camera;
+    [SerializeField] private PickupBehaviorController pickupBehaviorController;
 
-    [Header("Pickup Behaviour References")]
-    [SerializeField] HealthPickupBehavior healthPickupBehavior;
-    [SerializeField] GunPowerUpBehavior gunPowerUpBehavior;
-    [SerializeField] NukeBehavior nukeBehavior;
-    [SerializeField] ShieldBehavior shieldBehavior;
+    private Camera camera;
 
     public override void Awake()
     {
@@ -59,11 +54,6 @@ public class Player : PlayableObject, IDifficultyOverridden
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
-    public bool HasGunPowerUp()
-    {
-        return gunPowerUpBehavior.HasGunPowerUp();
-    }
-
     public override void GetDamage(float damage)
     {
         health.DeductHealth(damage);
@@ -82,46 +72,6 @@ public class Player : PlayableObject, IDifficultyOverridden
 	
 	// ====== Pickups ====== //
 
-    public HealthPickupBehavior GetHealthPickupBehavior()
-    {
-        return healthPickupBehavior;
-    }
-
-    public GunPowerUpBehavior GetGunPowerUpBehavior()
-    {
-        return gunPowerUpBehavior;
-    }
-
-    public NukeBehavior GetNukeBehavior()
-    {
-        return nukeBehavior;
-    }
-
-    public ShieldBehavior GetShieldBehavior()
-    {
-        return shieldBehavior;
-    }
-
-    public void CollectHealthPickup(Pickup pickup)
-    {
-        healthPickupBehavior.Collect(pickup);
-    }
-
-    public void CollectGunPowerUp(Pickup pickup)
-    {
-        gunPowerUpBehavior.Collect(pickup);
-    }
-
-    public void CollectNuke(Pickup pickup)
-    {
-        nukeBehavior.Collect(pickup);
-    }
-
-    public void CollectShield(Pickup pickup)
-    {
-        shieldBehavior.Collect(pickup);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Pickup"))
@@ -130,6 +80,11 @@ public class Player : PlayableObject, IDifficultyOverridden
             pickup.OnPicked();
         }
     }
+
+    public PickupBehaviorController GetPickupBehaviorController()
+    {
+        return pickupBehaviorController;
+    }
 	
 	// ====== Difficulty ====== //
 	public void DifficultyOverride(DifficultySetting difficulty)
@@ -137,5 +92,4 @@ public class Player : PlayableObject, IDifficultyOverridden
 		this.weapon = new Weapon("Player Weapon", weaponDamage * (1 / difficulty.baseDifficultyModifier), bulletSpeed);
 		this.health = new Health(baseHealth * (1 / difficulty.baseDifficultyModifier));
 	}
-
 }
