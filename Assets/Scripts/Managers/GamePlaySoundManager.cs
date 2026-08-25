@@ -97,12 +97,13 @@ public class GamePlaySoundManager : MonoBehaviour
         if (player == null)
             return;
 
-        NukeBehavior nukeBehavior = player.GetNukeBehavior();
+        PickupBehaviorController pickupBehaviors = player.GetPickupBehaviorController();
+        NukeBehavior nukeBehavior = pickupBehaviors.GetNukeBehavior();
         nukeBehavior.OnUseNuke += PlayBigNuke;
         nukeBehavior.OnCollectNuke += PlayNukePickup;
-        player.GetGunPowerUpBehavior().OnPowerUpTimerChange += OnGunPowerUpTimerChange;
+        pickupBehaviors.GetGunPowerUpBehavior().OnPowerUpTimerChange += OnGunPowerUpTimerChange;
 
-        wasGunPowerUpActive = player.HasGunPowerUp();
+        wasGunPowerUpActive = pickupBehaviors.HasGunPowerUp();
         lastGunPowerUpRemaining = 0f;
         lastShieldCount = player.GetComponentsInChildren<Shield>(true).Length;
         trackedHealthPickups.Clear();
@@ -114,10 +115,11 @@ public class GamePlaySoundManager : MonoBehaviour
     {
         if (subscribedPlayer != null)
         {
-            NukeBehavior nukeBehavior = subscribedPlayer.GetNukeBehavior();
+            PickupBehaviorController pickupBehaviors = subscribedPlayer.GetPickupBehaviorController();
+            NukeBehavior nukeBehavior = pickupBehaviors.GetNukeBehavior();
             nukeBehavior.OnUseNuke -= PlayBigNuke;
             nukeBehavior.OnCollectNuke -= PlayNukePickup;
-            subscribedPlayer.GetGunPowerUpBehavior().OnPowerUpTimerChange -= OnGunPowerUpTimerChange;
+            pickupBehaviors.GetGunPowerUpBehavior().OnPowerUpTimerChange -= OnGunPowerUpTimerChange;
         }
 
         subscribedPlayer = null;

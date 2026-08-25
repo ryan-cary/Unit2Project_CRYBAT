@@ -6,11 +6,7 @@ public class HealthPickup : Pickup
     [SerializeField] private float healthMin = 25;
     [SerializeField] private float healthMax = 50;
 
-    public override void OnPicked()
-    {
-        base.OnPicked();
-        GameManager.GetInstance().GetPlayer().CollectHealthPickup(this);
-    }
+    protected override PickupType pickupType => PickupType.Health;
 
     public float GetHealthMin()
     {

@@ -4,11 +4,7 @@ public class ShieldPickup : Pickup
 {
     [SerializeField] private int startingNumOfShields;
 
-    public override void OnPicked()
-    {
-        base.OnPicked();
-        GameManager.GetInstance().GetPlayer().CollectShield(this);
-    }
+    protected override PickupType pickupType => PickupType.Shield;
 
     public int GetStartingNumOfShields()
     {

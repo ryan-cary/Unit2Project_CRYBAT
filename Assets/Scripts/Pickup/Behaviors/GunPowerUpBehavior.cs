@@ -5,6 +5,7 @@ using System;
 public class GunPowerUpBehavior : PowerUpBehavior
 {
     [SerializeField] private GameObject powerUpSymbol;
+    protected override PickupType pickupType => PickupType.GunPowerUp;
     private bool hasGunPowerUp = false;
     private float timer = 0;
     private float shootRate;
