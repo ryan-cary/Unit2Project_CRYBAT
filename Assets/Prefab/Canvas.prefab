@@ -6318,7 +6318,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 900}
+  m_SizeDelta: {x: 1500, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6053468458201575908
 CanvasRenderer:
@@ -6350,33 +6350,34 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Cosmic Fury is created by CRYBAT:
 
-    Cyrus, Ryan, Yvonne, Branden, Alessandra,
-    and Tasnim
+    Cyrus Stonebanks, Ryan Cary, Yvonne
+    Liao, Branden Dame, Alessandra Tallini, and Tasnim Rahat
 
 
     Team Lead: Alessandra
 
-    Tech Lead: Ryan
+    Tech
+    Lead: Ryan
 
-    Game Dev: Alessandra,
-    Ryan, Branden, Tasnim, Cyrus
+    Game Dev: Alessandra, Ryan, Branden, Tasnim, Cyrus
 
-    Audios, Assets, Animation: Branden
+    Audios,
+    Assets, Animation: Branden
 
-    Level
-    Design: Branden
+    Level Design: Branden
 
-    UI/Visual Designs: Yvonne, Branden
+    UI/Visual Designs:
+    Yvonne, Branden
 
     Coordination: Yvonne
 
 
-    Title
-    image created by Nano Banana. 2D sprites sourced from Unity Asset Store''s Space
-    Shooter FREE package.
+    Title image created by Nano Banana.
+    2D sprites sourced from Unity Asset Store''s Space Shooter FREE package.
 
 
-    Special thanks to our mentor Justin Hamm'
+    Special
+    thanks to our mentor Justin Hamm'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
