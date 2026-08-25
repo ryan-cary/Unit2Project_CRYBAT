@@ -2791,6 +2791,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3192213258152483313}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5466145638810691692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3581,7 +3593,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 0.8}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 0}
+  m_SizeDelta: {x: 900, y: 480.01}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4107457463323577883
 CanvasRenderer:
@@ -6417,6 +6429,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5696851917725518815}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2643365109698429456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6509,36 +6533,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cosmic Fury is created by CRYBAT:
-
-    Cyrus Stonebanks, Ryan Cary, Yvonne
-    Liao, Branden Dame, Alessandra Tallini, and Tasnim Rahat
-
-
-    Team Lead: Alessandra
-
-    Tech
-    Lead: Ryan
-
-    Game Dev: Alessandra, Ryan, Branden, Tasnim, Cyrus
-
-    Audios,
-    Assets, Animation: Branden
-
-    Level Design: Branden
-
-    UI/Visual Designs:
-    Yvonne, Branden
-
-    Coordination: Yvonne
-
-
-    Title image created by Nano Banana.
-    2D sprites sourced from Unity Asset Store''s Space Shooter FREE package.
-
-
-    Special
-    thanks to our mentor Justin Hamm'
+  m_text: "Cosmic Fury is created by CRYBAT:\nCyrus Stonebanks, Ryan Cary, Yvonne
+    Liao, Branden Dame, Alessandra Tallini, and Tasnim Rahat\n\nLead Programmers:
+    Alessandra, Ryan\nAdditional Programming: Cyrus, Branden\nEnemy Design: Alessandra,
+    Tasnim\nUI / UX: Yvonne, Branden\nMusic + VFX: Branden\nProject Coordinator:
+    Yvonne\n\nTitle image created by Nano Banana. \n2D sprites sourced from Unity
+    Asset Store.\n\nSpecial thanks to our mentor Justin Hamm!!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -9201,6 +9201,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3851392596535481184}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9186160458606021069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9706,6 +9718,18 @@ MonoBehaviour:
       - m_Target: {fileID: 211114444748812873}
         m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
         m_MethodName: SelectDifficulty
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 211114444748812873}
+        m_TargetAssemblyTypeName: DifficultyButton, Assembly-CSharp
+        m_MethodName: UpdateText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10579,7 +10603,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6475314654232508338, guid: 7f88090c758604ced8b376c5493a2e40, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
