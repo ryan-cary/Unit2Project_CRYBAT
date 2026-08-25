@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   menuCanvas: {fileID: 2045215710}
   gameOverScreen: {fileID: 1036078268}
+  creditsTab: {fileID: 1138043803}
   gameStats: {fileID: 2091855739}
   healthText: {fileID: 1069178758}
   scoreText: {fileID: 1782900782}
@@ -1245,6 +1246,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1138043803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1442470843919563904, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+  m_PrefabInstance: {fileID: 2272386225579593029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1319342358 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5696851917725518815, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
@@ -1782,6 +1788,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1143148008639550387, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143148008639550387, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1797355663039835793, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1954,6 +1968,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 448539889}
+    - target: {fileID: 8282317493285749490, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282317493285749490, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8486280589095277248, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
