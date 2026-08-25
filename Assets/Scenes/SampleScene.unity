@@ -1964,6 +1964,19 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5418233364439686375, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_text
+      value: "Cosmic Fury is created by CRYBAT:\nCyrus Stonebanks, Ryan Cary, Yvonne
+        Liao, Branden Dame, Alessandra Tallini, and Tasnim Rahat\n\nLead Programmers:
+        Alessandra, Ryan\nAdditional Programming: Cyrus, Branden\nEnemy Design: Alessandra,
+        Tasnim\nUI / UX: Yvonne, Branden\nMusic + VFX: Branden\nProject Coordinator:
+        Yvonne\n\nTitle image created by Nano Banana. \n2D sprites sourced from Unity
+        Asset Store.\n\nSpecial thanks to our mentor Justin Hamm!!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911460867816939546, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7286383620670109019, guid: f23279a828ddf2a4aa0923427908f509, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
