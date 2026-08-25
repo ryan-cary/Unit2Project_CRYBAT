@@ -13,11 +13,15 @@ public class Enemy : PlayableObject
     [SerializeField] protected float attackRange = 5;
     [SerializeField] protected float attackRate = 2f;
     [SerializeField] protected int defeatScore = 10;
+    [SerializeField] float screenBorder;
+    
 	
 	protected Transform target;
     protected float targetSpeed;
     protected float timer = 0;
     protected bool isAttacking;
+    private Camera camera;
+   private Rigidbody2D enemyRb;
 
     protected virtual void Start()
     {
@@ -31,6 +35,12 @@ public class Enemy : PlayableObject
             Destroy(gameObject);
         }
         targetSpeed = speed;
+    }
+
+    private void Awake ()
+    {
+        enemyRb = GetComponent<Rigidbody2D>();
+        camera = Camera.main;
     }
 
     protected virtual void Update()
@@ -57,6 +67,8 @@ public class Enemy : PlayableObject
             Attack();
         }
         Move(target.position);
+
+       // HandleEnemyOffScreen();
     }
 
     public void Move()
@@ -71,8 +83,25 @@ public class Enemy : PlayableObject
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90; 
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        rb.linearVelocity = direction.normalized * speed;
+        enemyRb.linearVelocity = direction.normalized * speed;
     }
+
+
+    // Not in use yet
+/*    private void HandleEnemyOffScreen()
+    {
+        Vector2 screenPosition = camera.WorldToScreenPoint(transform.position);
+
+        if ((screenPosition.x < 0 && target.linearVelocity.x < 0) || (screenPosition.x > camera.pixelWidth && target.linearVelocity.x > 0))
+        {
+            target = new Vector2(-target.x, target.y);
+        }
+
+        if ((screenPosition.y < 0 && target.linearVelocity.y < 0) || (screenPosition.y > camera.pixelHeight && target.linearVelocity.y > 0))
+        {
+            target = new Vector2(target.x, -target.y);
+        }
+    }*/
 
     public override void Shoot() { }
 

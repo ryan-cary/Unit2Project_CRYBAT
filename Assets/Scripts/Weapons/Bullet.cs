@@ -6,10 +6,13 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 10;
     private float damage;
     private string targetTag;
+    private Camera _camera;
 
     private void Update()
     {
+        _camera = Camera.main;
         Move();
+        DestroyWhenOffScreen();
     }
 
     private void Move()
@@ -51,6 +54,19 @@ public class Bullet : MonoBehaviour
     void AddScore()
     {
         GameManager.GetInstance().GetScoreManager().IncrementScore();
+    }
+
+    private void DestroyWhenOffScreen()
+    {
+        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
+
+        if (screenPosition.x < 0 
+        || screenPosition.x > _camera.pixelWidth
+        || screenPosition.y < 0 
+        || screenPosition.y > _camera.pixelHeight)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
