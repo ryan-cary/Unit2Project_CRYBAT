@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class GamePlaySoundManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class GamePlaySoundManager : MonoBehaviour
     float lastGunPowerUpRemaining;
     int lastShieldCount;
     readonly List<TrackedHealthPickup> trackedHealthPickups = new List<TrackedHealthPickup>();
+    readonly List<RaycastResult> uiRaycastHits = new List<RaycastResult>();
 
     struct TrackedHealthPickup
     {
@@ -251,6 +253,24 @@ public class GamePlaySoundManager : MonoBehaviour
 
     bool IsPointerOverUi()
     {
-        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        if (EventSystem.current == null)
+            return false;
+
+        PointerEventData eventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        uiRaycastHits.Clear();
+        EventSystem.current.RaycastAll(eventData, uiRaycastHits);
+
+        for (int i = 0; i < uiRaycastHits.Count; i++)
+        {
+            GameObject hit = uiRaycastHits[i].gameObject;
+            if (hit.GetComponentInParent<Slider>() != null || hit.GetComponentInParent<Button>() != null)
+                return true;
+        }
+
+        return false;
     }
 }
